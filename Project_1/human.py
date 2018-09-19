@@ -1,4 +1,4 @@
-import Gobang
+import Project_1.Gobang as Gobang
 
 
 class HumanPlayer(object):

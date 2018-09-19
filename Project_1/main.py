@@ -1,6 +1,6 @@
-import Gobang
-import human
-import sb_bot
+import Project_1.Gobang as Gobang
+import Project_1.human as human
+import Project_1.sb_bot as sb_bot
 
 game = Gobang.Gobang()
 p1 = sb_bot.AI(game.BOARD_SIZE, 1, 10000)
