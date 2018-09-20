@@ -14,6 +14,8 @@ class AI(object):
         self.candidate_list = []
 
     def go(self, chessboard):
+        COLOR = COLOR_BLACK
+        print(chessboard)
         self.candidate_list.clear()
         idx = np.where(chessboard == COLOR_NONE)
         idx = list(zip(idx[0], idx[1]))
