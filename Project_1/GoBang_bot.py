@@ -1,5 +1,7 @@
+# -*- coding:utf-8 -*
 import numpy as np
 import random
+import time
 
 COLOR_BLACK = -1
 COLOR_WHITE = 1
@@ -87,9 +89,9 @@ class AI(object):
             value = 24
         elif z[4] > 1:  # 双三
             value = 22
-        elif z[3] > 0:  # 冲四
-            value = 20
         elif (z[4] > 0 and z[5] > 0):  # 活三+冲三
+            value = 20
+        elif z[3] > 0:  # 冲四
             value = 18
         elif (z[4] > 0 and z[6] >0): #活三 + 活二
             value = 16
@@ -111,6 +113,18 @@ class AI(object):
             value = 4
         return value
 
+
+    def go_timeout(self, chessboard):
+        COLOR = self.color
+        print(chessboard)
+        self.candidate_list.clear()
+        idx = np.where(chessboard == COLOR_NONE)
+        idx = list(zip(idx[0], idx[1]))
+        pos_idx = random.randint(0, len(idx) - 1)
+        new_pos = idx[pos_idx]
+        assert chessboard[new_pos[0], new_pos[1]] == COLOR_NONE
+        print(new_pos)
+        self.candidate_list.append(new_pos)
 
     def go(self, chessboard):
         candidate_value = np.array([[-2 for j in range(self.chessboard_size)] for i in range(self.chessboard_size)])
