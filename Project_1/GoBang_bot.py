@@ -97,4 +97,22 @@ class AI(object):
         for a in range (0,self.chessboard_size):
             for b in range (0,self.chessboard_size):
                 value = self.calcute_value(chessboard,a,b,COLOR)
-                if value > self.candidate_list(a,b):
+                if value > self.candidate_list[a][b]:
+                    self.candidate_list = value
+        COLOR = COLOR_WHITE
+        for a in range(0, self.chessboard_size):
+            for b in range(0, self.chessboard_size):
+                value = self.calcute_value(chessboard, a, b, COLOR) - 1
+                if value > self.candidate_list[a][b]:
+                    self.candidate_list = value
+        list = []
+        temp_max = 0
+        for a in range(0, self.chessboard_size):
+            for b in range(0, self.chessboard_size):
+                if self.candidate_list[a][b] > temp_max:
+                    list.clear()
+                    list.append([a,b])
+                elif self.candidate_list[a][b] == temp_max:
+                    list.append([a,b])
+
+
