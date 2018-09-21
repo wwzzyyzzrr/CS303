@@ -22,5 +22,6 @@ class AI(object):
         pos_idx = random.randint(0, len(idx) - 1)
         new_pos = idx[pos_idx]
         assert chessboard[new_pos[0], new_pos[1]] == COLOR_NONE
+        print(new_pos)
         self.candidate_list.append(new_pos)
 
