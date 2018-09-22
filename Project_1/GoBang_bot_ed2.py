@@ -15,7 +15,7 @@ class AI(object):
         self.color = color
         self.time_out = time_out
         self.candidate_list = []
-        
+
     def count(self, chessboard, a, b, j, k, COLOR):
         i = 0
         while (-1 < a + j < 15 and -1 < b + k < 15 and chessboard[a + j, b + k] == COLOR):
@@ -26,7 +26,7 @@ class AI(object):
             if chessboard[a + j, b + k] == COLOR_NONE:
                 i = i * 2
             else:
-                i = i * 2 -1
+                i = i * 2 - 1
         else:
             i = i * 2 - 1
         return i
@@ -69,50 +69,51 @@ class AI(object):
             elif flag == 1:
                 y.append(7)  # 冲二
             elif flag == 0:
-                if (x[i] * x[i+4])==0:
-                    y.append(8) #活一
+                if (x[i] * x[i + 4]) == 0:
+                    y.append(8)  # 活一
                 else:
-                    y.append(10) #死二
+                    y.append(10)  # 死二
             elif flag == -1:
-                y.append(9) #冲一
+                y.append(9)  # 冲一
 
         z = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         for m in y:
             z[m] = z[m] + 1
         if z[1] > 0:
             value = 100
+        elif (z[2] > 0 and (z[3] > 0 or z[4] > 0)):
+            value = 28 + z[3] * 6 + z[4] * 4
         elif z[2] > 0:
-            value = 70 + z[3]*4 + z[4]*2
+            value = 28
         elif z[3] > 1:  # 双冲四
-            value = 60 + z[4]*2
-        elif (z[3] > 0 and z[4 ] > 0):  # 四三
-            value = 50 + z[3]*2
-        elif z[4] > 1:  # 双三
-            value = 40 + z[4]*2
-        elif (z[4] > 0 and z[6] > 0):  # 活三+活二
-            value = 30 + z[6]*2
-        elif (z[4] > 0 and z[5] >0): #活三 + 冲三
-            value = 26 + z[5]
-        elif z[4] > 0:  # 活三
+            value = 26
+        elif (z[3] > 0 and z[4] > 0):  # 四三
             value = 24
+        elif z[4] > 1:  # 双三
+            value = 22
+        elif (z[4] > 0 and z[5] > 0):  # 活三+冲三
+            value = 20
         elif z[3] > 0:  # 冲四
-            value = 18 + z[3] + z[5]
+            value = 18
+        elif (z[4] > 0 and z[6] > 0):  # 活三 + 活二
+            value = 16
+        elif z[4] > 0:  # 活三
+            value = 14
         elif z[5] > 0:  # 冲三
-            value = 10 + z[5] * 2
-        elif (z[5] > 0 and z[6] > 0):#冲三+活二
-            value = 10 + z[6]
-        elif z[6] > 0: #活二
+            value = 8 + z[5]
+        elif (z[5] > 0 and a[6] > 0):  # 冲三+活二
+            value = 10
+        elif z[6] > 0:  # 活二
             value = 6 + z[6]
-        elif z[7] > 0: #冲二
+        elif z[7] > 0:  # 冲二
             value = 4 + z[7]
-        elif z[8] > 0: #活一
+        elif z[8] > 0:  # 活一
             value = 2 + z[8]
         elif z[9] > 0:
             value = z[9]
         else:
             value = 4
         return value
-
 
     def go_timeout(self, chessboard):
         COLOR = self.color
@@ -147,13 +148,13 @@ class AI(object):
         pos_list = []
         temp_max = -1
         for pos in idx:
-                if candidate_value[pos[0], pos[1]] > temp_max:
-                    pos_list.clear()
-                    pos_list.append(pos)
-                    temp_max = candidate_value[pos[0], pos[1]]
-                elif candidate_value[pos[0], pos[1]] == temp_max:
-                    pos_list.append(pos)
-        #print(candidate_value)
+            if candidate_value[pos[0], pos[1]] > temp_max:
+                pos_list.clear()
+                pos_list.append(pos)
+                temp_max = candidate_value[pos[0], pos[1]]
+            elif candidate_value[pos[0], pos[1]] == temp_max:
+                pos_list.append(pos)
+        # print(candidate_value)
         pos_index = random.randint(0, len(pos_list) - 1)
         new_pos = pos_list[pos_index]
         print(len(pos_list))
