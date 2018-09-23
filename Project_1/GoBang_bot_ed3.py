@@ -131,32 +131,36 @@ class AI(object):
         candidate_value = np.array([[-2 for j in range(self.chessboard_size)] for i in range(self.chessboard_size)])
         idx = np.where(chessboard == COLOR_NONE)
         idx = list(zip(idx[0], idx[1]))
-        COLOR = self.color
-        print(chessboard)
-        self.candidate_list.clear()
-        for pos in idx:
-            value = self.calcute_value(chessboard, pos[0], pos[1], COLOR)
-            if value > candidate_value[pos[0], pos[1]]:
-                candidate_value[pos[0], pos[1]] = value
-        COLOR = -self.color
-        for pos in idx:
-            value = self.calcute_value(chessboard, pos[0], pos[1], COLOR)
-            if value > 0:
-                value = value - 1
+        print(len(idx))
+        if(len(idx) == 225):
+            self.candidate_list.append([7,7])
+        else:
+            COLOR = self.color
+            print(chessboard)
+            self.candidate_list.clear()
+            for pos in idx:
+                value = self.calcute_value(chessboard, pos[0], pos[1], COLOR)
                 if value > candidate_value[pos[0], pos[1]]:
                     candidate_value[pos[0], pos[1]] = value
-        pos_list = []
-        temp_max = -1
-        for pos in idx:
-            if candidate_value[pos[0], pos[1]] > temp_max:
-                pos_list.clear()
-                pos_list.append(pos)
-                temp_max = candidate_value[pos[0], pos[1]]
-            elif candidate_value[pos[0], pos[1]] == temp_max:
-                pos_list.append(pos)
-        print(candidate_value)
-        pos_index = random.randint(0, len(pos_list) - 1)
-        new_pos = pos_list[pos_index]
-        print(len(pos_list))
-        assert chessboard[new_pos[0], new_pos[1]] == COLOR_NONE
-        self.candidate_list.append(new_pos)
+            COLOR = -self.color
+            for pos in idx:
+                value = self.calcute_value(chessboard, pos[0], pos[1], COLOR)
+                if value > 0:
+                    value = value - 1
+                    if value > candidate_value[pos[0], pos[1]]:
+                        candidate_value[pos[0], pos[1]] = value
+            pos_list = []
+            temp_max = -1
+            for pos in idx:
+                if candidate_value[pos[0], pos[1]] > temp_max:
+                    pos_list.clear()
+                    pos_list.append(pos)
+                    temp_max = candidate_value[pos[0], pos[1]]
+                elif candidate_value[pos[0], pos[1]] == temp_max:
+                    pos_list.append(pos)
+            #print(candidate_value)
+            pos_index = random.randint(0, len(pos_list) - 1)
+            new_pos = pos_list[pos_index]
+            print(len(pos_list))
+            assert chessboard[new_pos[0], new_pos[1]] == COLOR_NONE
+            self.candidate_list.append(new_pos)
