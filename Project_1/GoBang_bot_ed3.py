@@ -131,8 +131,17 @@ class AI(object):
         candidate_value = np.array([[-2 for j in range(self.chessboard_size)] for i in range(self.chessboard_size)])
         idx = np.where(chessboard == COLOR_NONE)
         idx = list(zip(idx[0], idx[1]))
+        A = False
         print(len(idx))
-        if(len(idx) == 225):
+        if (len(idx) == 224):
+            pos_first = np.where(chessboard == -self.color)
+            pos_first = list(zip(pos_first[0], pos_first[1]))
+            pos_1 = pos_first[0]
+            if ( (pos_1[0]==1 or pos_1[0]==13) and (pos_1[1]==1 or pos_1[1]==13)):
+                A = True
+            else:
+                A = False
+        if(len(idx) == 225 or A):
             self.candidate_list.append([7,7])
         else:
             COLOR = self.color
@@ -158,7 +167,7 @@ class AI(object):
                     temp_max = candidate_value[pos[0], pos[1]]
                 elif candidate_value[pos[0], pos[1]] == temp_max:
                     pos_list.append(pos)
-            #print(candidate_value)
+            print(candidate_value)
             pos_index = random.randint(0, len(pos_list) - 1)
             new_pos = pos_list[pos_index]
             print(len(pos_list))
