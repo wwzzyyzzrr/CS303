@@ -143,6 +143,7 @@ class AI(object):
                 A = False
         if(len(idx) == 225 or A):
             self.candidate_list.append([7,7])
+
         else:
             COLOR = self.color
             print(chessboard)
