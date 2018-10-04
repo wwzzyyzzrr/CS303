@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17159689-dee8-4d62-a434-b8ed8747a8d1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Project_1/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_1/GoBang_bot_ed3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1/GoBang_bot_ed3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_1/Gobang.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1/Gobang.py" afterDir="false" />
-    </list>
+    <list default="true" id="17159689-dee8-4d62-a434-b8ed8747a8d1" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +21,8 @@
       <file leaf-file-name="GoBang_bot_ed3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_1/GoBang_bot_ed3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="153" column="36" lean-forward="true" selection-end-line="176" />
+            <state relative-caret-position="2603">
+              <caret line="153" column="36" selection-end-line="176" />
               <folding>
                 <element signature="e#505#558#0" />
                 <element signature="e#621#737#0" />
@@ -40,7 +35,7 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Project_1/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="205">
               <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
               <folding>
                 <element signature="e#505#558#0" />
@@ -346,7 +341,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1081" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.9685466" />
@@ -725,8 +719,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_1/GoBang_bot_ed3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="153" column="36" lean-forward="true" selection-end-line="176" />
+        <state relative-caret-position="2603">
+          <caret line="153" column="36" selection-end-line="176" />
           <folding>
             <element signature="e#505#558#0" />
             <element signature="e#621#737#0" />
@@ -737,7 +731,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_1/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="205">
           <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
           <folding>
             <element signature="e#505#558#0" />
