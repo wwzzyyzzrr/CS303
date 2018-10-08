@@ -22,13 +22,10 @@ while True:
     lst_player = game.get_current_move()[2]
     cur_player = - lst_player
     print("Now player {0} go:".format(cur_player))
-    try:
-        player[cur_player].go(game.get_chess_board())
-        nxt_move = player[cur_player].candidate_list[-1]
-        winner = game.set_chessboard_state(nxt_move[0], nxt_move[1], cur_player)
-    except Exception as e:
-        print('\033[32;0m'+e.__str__()+'\033[0m')
-        continue
+
+    player[cur_player].go(game.get_chess_board())
+    nxt_move = player[cur_player].candidate_list[-1]
+    winner = game.set_chessboard_state(nxt_move[0], nxt_move[1], cur_player)
 
     if winner != 0:
         print(('\033[1;32;40m'+"Player {0} win!"+'\033[1;32;40m').format(winner))
