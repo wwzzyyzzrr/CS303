@@ -5,7 +5,7 @@ import Project_1.GoBang_bot_ed3 as sb_bot_ed2
 
 game = Gobang.Gobang()
 #p1 = sb_bot.AI(game.BOARD_SIZE, 1, 10000)
-p1 = sb_bot_ed2.AI(game.BOARD_SIZE, -1, 10000)
+p1 = human.HumanPlayer(game.BOARD_SIZE, -1, 10000)
 p2 = sb_bot.AI(game.BOARD_SIZE, -1, 10000)
 player = {1: p2, -1: p1}
 
