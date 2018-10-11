@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17159689-dee8-4d62-a434-b8ed8747a8d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CS303.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS303.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_1/GoBang_bot_ed4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1/GoBang_bot_ed4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,13 +37,20 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-46241880">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Project_1/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="133">
               <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
@@ -57,18 +60,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/core/arrayprint.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24596">
-              <caret line="1118" selection-start-line="1118" selection-end-line="1118" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_1/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3850">
+            <state relative-caret-position="3325">
               <caret line="178" column="52" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
             </state>
           </provider>
@@ -77,7 +71,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_1/Gobang.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="880">
+            <state relative-caret-position="760">
               <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
@@ -139,6 +133,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,7 +150,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,9 +359,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="1078" width="1920" height="1082" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -425,13 +419,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/core/fromnumeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/core/fromnumeric.py" />
     <entry file="file://$PROJECT_DIR$/Project_1/GoBang_bot_ed4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -455,7 +443,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_1/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="133">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
@@ -463,23 +451,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/core/arrayprint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24596">
-          <caret line="1118" selection-start-line="1118" selection-end-line="1118" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/core/arrayprint.py" />
     <entry file="file://$PROJECT_DIR$/Project_1/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3850">
+        <state relative-caret-position="3325">
           <caret line="178" column="52" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_1/Gobang.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
+        <state relative-caret-position="760">
           <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
