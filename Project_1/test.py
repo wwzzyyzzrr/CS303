@@ -155,7 +155,7 @@ class AI(object):
             elif candidate_value[pos[0], pos[1]] == temp_max:
                 pos_list.append(pos)
         pos1 = pos_list[0]
-        print(candidate_value)
+        #print(candidate_value)
         return [pos_list, candidate_value[pos1[0], pos1[1]]]
 
     def go(self, chessboard):

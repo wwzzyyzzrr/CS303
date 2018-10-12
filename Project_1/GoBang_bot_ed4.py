@@ -155,7 +155,7 @@ class AI(object):
             elif candidate_value[pos[0], pos[1]] == temp_max:
                 pos_list.append(pos)
         pos1 = pos_list[0]
-        print(candidate_value)
+        #print(candidate_value)
         return [pos_list, candidate_value[pos1[0], pos1[1]]]
 
     def go(self, chessboard):
@@ -176,7 +176,7 @@ class AI(object):
         else:
             list_t_1 = self.get_pos_list(chessboard, self.color)
             pos_list_1 = list_t_1[0]
-            if len(pos_list_1) == 1 or len(idx) <= 2:
+            if len(pos_list_1) == 1 or len(idx) <= 4:
                 self.candidate_list.append(pos_list_1[0])
             else:
                 chessboard_temp = copy.deepcopy(chessboard)
@@ -190,19 +190,28 @@ class AI(object):
                     chessboard_temp_2 = copy.deepcopy(chessboard_temp)
                     for pos1 in pos_list_2:
                         chessboard_temp_2[pos1[0],pos1[1]] = -self.color
-                        pos_list_3 = self.get_pos_list(chessboard_temp_2, self.color)
-                        if pos_list_3[1] < a1:
-                            break
-                        elif pos_list_3[1] > a1:
-                            a1 = pos_list_3[1]
-                            b1 = len(pos_list_3[0])
-                            pos_pull = pos
-                        elif pos_list_3[1] == a1 and len(pos_list_3[0]) > b1:
-                            b1 = len(pos_list_3[0])
-                            pos_pull = pos
+                        list_t_3 = self.get_pos_list(chessboard_temp_2, self.color)
+                        pos_list_3 = list_t_3[0]
+                        chessboard_temp_3 = copy.deepcopy(chessboard_temp_2)
+                        for pos2 in pos_list_3:
+                            chessboard_temp_3[pos2[0], pos2[1]] = self.color
+                            list_t_4 = self.get_pos_list(chessboard_temp_3, -self.color)
+                            pos_list_4 = list_t_4[0]
+                            chessboard_temp_4 = copy.deepcopy(chessboard_temp_3)
+                            for pos3 in pos_list_4:
+                                chessboard_temp_4[pos3[0], pos3[1]] = -self.color
+                                pos_list_5 = self.get_pos_list(chessboard_temp_4, self.color)
+                                if pos_list_5[1] < a1:
+                                    break
+                                elif pos_list_5[1] > a1:
+                                    a1 = pos_list_5[1]
+                                    b1 = len(pos_list_5[0])
+                                    pos_pull = pos
+                                elif pos_list_5[1] == a1 and len(pos_list_5[0]) > b1:
+                                    b1 = len(pos_list_5[0])
+                                    pos_pull = pos
+                                chessboard_temp_4[pos3[0],pos3[1]] = COLOR_NONE
+                            chessboard_temp_3[pos2[0],pos[1]] = COLOR_NONE
                         chessboard_temp_2[pos1[0], pos1[1]] = COLOR_NONE
                     chessboard_temp[pos[0], pos[1]] = COLOR_NONE
                 self.candidate_list.append(pos_pull)
-
-
-        def choice_point(self, pos_list, ):
