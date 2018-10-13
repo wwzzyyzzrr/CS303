@@ -159,7 +159,7 @@ class AI(object):
                     max_second_list.append(pos)
                 elif value_temp == temp_max_second:
                     max_second_list.append(pos)
-        if temp_max-temp_max_second < 10 and temp_max<47:
+        if temp_max-temp_max_second < 5 and temp_max<0:
             pos_list = max_list + max_second_list
         else:
             pos_list = max_list
@@ -169,7 +169,7 @@ class AI(object):
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 9:
+            if time < 11:
                 chessboard[pos[0],pos[1]] = alpha_beta
                 pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
