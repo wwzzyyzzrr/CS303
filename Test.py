@@ -1,14 +1,10 @@
-class a:
-    def __init__(self):
-        mm = 0
+import copy
 
+list1 = [1,2,3,4,5]
+list2 = copy.deepcopy(list1)
+list1.clear()
+print(list2)
 
-x=[]
-t = a()
-t.mm = 1
-x.append(t)
-for i in range(1,5):
-    x.append(a())
-    x[i].mm = x[i-1].mm+i
-for k in x:
-    print k.mm
+a = 1
+b = -a
+print(b)
