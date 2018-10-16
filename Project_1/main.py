@@ -7,7 +7,7 @@ game = Gobang.Gobang()
 #p1 = sb_bot.AI(game.BOARD_SIZE, 1, 10000)
 p1 = sb_bot_ed2.AI(game.BOARD_SIZE, -1, 10000)
 p2 = sb_bot.AI(game.BOARD_SIZE, -1, 10000)
-player = {1: p2, -1: p1}
+player = {1: p1, -1: p2}
 
 
 # # test

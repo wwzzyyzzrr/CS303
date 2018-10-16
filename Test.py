@@ -3,11 +3,17 @@ import copy
 list1 = [1,2,3,4,5]
 list2 = copy.deepcopy(list1)
 list1.clear()
-print(list2)
+
 
 a = 1
 b = -a
-print(b)
+while (a > 0 ):
+    a = a + 1
+    if a<100:
+        b = a
+        if b > 3:
+            break
+    print(a)
 
 '''
         elif(len(idx) == 223 and chessboard[7,7] == COLOR_NONE):

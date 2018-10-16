@@ -15,6 +15,7 @@ class AI(object):
         self.chessboard_size = chessboard_size
         self.color = color
         self.time_out = time_out
+        self.interger = 0
         self.candidate_list = []
 
     def count(self, chessboard, a, b, j, k, COLOR):
@@ -163,18 +164,20 @@ class AI(object):
             pos_list = max_list + max_second_list
         else:
             pos_list = max_list
-        if len(pos_list) > 8:
+        if len(pos_list) > 20:
             pos_list = pos_list[0:7]
         return pos_list
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 11:
+            if time < 16:
                 chessboard[pos[0],pos[1]] = alpha_beta
-                pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
+                idx = np.where(chessboard == COLOR_NONE)
+                idx = list(zip(idx[0], idx[1]))
+                pos_list_temp = idx
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -1:
+                if alpha_beta == -self.color:
                     if value_temp[1] > value[0]:
                         value[0] = copy.deepcopy(value_temp[1])
                     else:
@@ -186,12 +189,13 @@ class AI(object):
                         break
             else:
                 chessboard[pos[0], pos[1]] = alpha_beta
-                if alpha_beta == 1:
+                if alpha_beta == self.color:
                     value_temp = [self.calcute_value(chessboard, pos[0], pos[1], alpha_beta),10000]
                 else:
                     value_temp = [-10000,self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)]
+                self.interger = self.interger + 1
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -1:
+                if alpha_beta == -self.color:
                     if value_temp[1] > value[0]:
                         value[0] = copy.deepcopy(value_temp[1])
                     else:
@@ -225,20 +229,29 @@ class AI(object):
             #pos = pos_list[0]
             pos_set = []
             print(pos_list)
-            for pos in pos_list:
-                chessboard_temp[pos[0],pos[1]] = self.color
-                pos_list_temp = self.get_pos_list(chessboard_temp,-self.color)
-                value = self.tree(chessboard_temp, self.color,[-10000,10000],pos_list_temp,0)
-                chessboard_temp[pos[0],pos[1]] = COLOR_NONE
-                if value[0] > alpha_value:
-                    alpha_value = copy.deepcopy(value[0])
-                    pos_set.clear()
-                    pos_set.append(pos)
-                elif value[0] == alpha_value:
-                    pos_set.append(pos)
-            pos = pos_set[random.randint(0,len(pos_set)-1)]
-            print(pos_set)
-            self.candidate_list.append(pos)
+            cal_value = self.calcute_value(chessboard, pos_list[0][0], pos_list[0][1], self.color)
+            cal_value_temp = self.calcute_value(chessboard, pos_list[0][0], pos_list[0][1], -self.color) - 1
+            if cal_value < cal_value_temp:
+                cal_value = cal_value_temp
+            if cal_value > 48:
+                self.candidate_list.append(pos_list[0])
+            else:
+                self.interger = 0
+                for pos in pos_list:
+                    chessboard_temp[pos[0],pos[1]] = self.color
+                    pos_list_temp = self.get_pos_list(chessboard_temp,-self.color)
+                    value = self.tree(chessboard_temp, self.color,[-10000,10000],pos_list_temp,0)
+                    chessboard_temp[pos[0],pos[1]] = COLOR_NONE
+                    if value[0] > alpha_value:
+                        alpha_value = copy.deepcopy(value[0])
+                        pos_set.clear()
+                        pos_set.append(pos)
+                    elif value[0] == alpha_value:
+                        pos_set.append(pos)
+                pos = pos_set[random.randint(0,len(pos_set)-1)]
+                print(pos_set)
+                print(self.interger)
+                self.candidate_list.append(pos)
 
 
 
