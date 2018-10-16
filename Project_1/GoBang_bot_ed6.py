@@ -120,7 +120,7 @@ class AI(object):
             value = 60
         elif z[3] > 1:  # 双冲四
             value = 56
-        elif (z[3] > 0 and z[4] > 0):  # 四三
+        elif ((z[3] > 0 or z[11] > 0 or z[12] > 0 )and z[4] > 0):  # 四三
             value = 52
         elif z[4] > 1:  # 双三
             value = 48
@@ -194,45 +194,33 @@ class AI(object):
                 elif value_temp == temp_max_second:
                     max_second_list.append(pos)
         pos_list = max_list
+        if len(pos_list) > 200:
+            pos_list = pos_list[0:5]
         return pos_list
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 4:
+            if time < 2:
                 chessboard[pos[0],pos[1]] = alpha_beta
-                idx = np.where(chessboard == COLOR_NONE)
-                idx = list(zip(idx[0], idx[1]))
-                pos_list_temp = idx
+                pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -self.color:
+                if alpha_beta == self.color:
                     if value_temp[1] > value[0]:
                         value[0] = copy.deepcopy(value_temp[1])
-                    else:
-                        break
                 else:
                     if value_temp[0] < value[1]:
                         value[1] = copy.deepcopy(value_temp[0])
-                    else:
-                        break
+                if value[0] > value[1]:
+                    break
             else:
                 chessboard[pos[0], pos[1]] = alpha_beta
-                if alpha_beta == self.color:
-                    value_temp = [self.calcute_value(chessboard, pos[0], pos[1], alpha_beta),10000]
-                else:
-                    value_temp = [-10000,self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)]
+
+                value_temp = self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)
+
                 self.interger = self.interger + 1
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -self.color:
-                    if value_temp[1] > value[0]:
-                        value[0] = copy.deepcopy(value_temp[1])
-                    else:
-                        break
-                else:
-                    if value_temp[0] < value[1]:
-                        value[1] = copy.deepcopy(value_temp[0])
-                    else:
-                        break
+                value[0] = value_temp
         return value
 
     def go(self, chessboard):
@@ -265,10 +253,10 @@ class AI(object):
                 self.candidate_list.append(pos_list[0])
             else:
                 self.interger = 0
-                for pos in idx:
+                for pos in pos_list:
                     chessboard_temp[pos[0],pos[1]] = self.color
                     pos_list_temp = self.get_pos_list(chessboard_temp,-self.color)
-                    value = self.tree(chessboard_temp, self.color,[-10000,10000],pos_list_temp,0)
+                    value = self.tree(chessboard_temp, -self.color,[-10000,10000],pos_list_temp,0)
                     chessboard_temp[pos[0],pos[1]] = COLOR_NONE
                     if value[0] > alpha_value:
                         alpha_value = copy.deepcopy(value[0])

@@ -161,41 +161,27 @@ class AI(object):
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 124:
+            if time < 2:
                 chessboard[pos[0],pos[1]] = alpha_beta
-                idx = np.where(chessboard == COLOR_NONE)
-                idx = list(zip(idx[0], idx[1]))
-                pos_list_temp = idx
+                pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -self.color:
+                if alpha_beta == self.color:
                     if value_temp[1] > value[0]:
                         value[0] = copy.deepcopy(value_temp[1])
-                    else:
-                        break
                 else:
                     if value_temp[0] < value[1]:
                         value[1] = copy.deepcopy(value_temp[0])
-                    else:
-                        break
+                if value[0] > value[1]:
+                    break
             else:
                 chessboard[pos[0], pos[1]] = alpha_beta
-                if alpha_beta == self.color:
-                    value_temp = [self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)+0.9*self.calcute_value(chessboard, pos[0], pos[1], -alpha_beta),1000000]
-                else:
-                    value_temp = [-1000000,self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)+0.9*self.calcute_value(chessboard, pos[0], pos[1], -alpha_beta)]
+
+                value_temp = self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)
+
                 self.interger = self.interger + 1
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -self.color:
-                    if value_temp[1] > value[0]:
-                        value[0] = copy.deepcopy(value_temp[1])
-                    else:
-                        break
-                else:
-                    if value_temp[0] < value[1]:
-                        value[1] = copy.deepcopy(value_temp[0])
-                    else:
-                        break
+                value[0] = value_temp
         return value
 
     def go(self, chessboard):
