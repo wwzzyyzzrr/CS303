@@ -265,7 +265,7 @@ class AI(object):
                 self.candidate_list.append(pos_list[0])
             else:
                 self.interger = 0
-                for pos in pos_list:
+                for pos in idx:
                     chessboard_temp[pos[0],pos[1]] = self.color
                     pos_list_temp = self.get_pos_list(chessboard_temp,-self.color)
                     value = self.tree(chessboard_temp, self.color,[-10000,10000],pos_list_temp,0)

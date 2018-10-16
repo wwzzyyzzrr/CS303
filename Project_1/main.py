@@ -1,12 +1,12 @@
 import Project_1.Gobang as Gobang
 import Project_1.human as human
 import Project_1.GoBang_bot_ed3 as sb_bot
-import Project_1.GoBang_bot_ed5 as sb_bot_ed2
+import Project_1.GoBang_bot_ed4 as sb_bot_ed2
 
 game = Gobang.Gobang()
 #p1 = sb_bot.AI(game.BOARD_SIZE, 1, 10000)
-p1 = sb_bot_ed2.AI(game.BOARD_SIZE, -1, 10000)
-p2 = sb_bot.AI(game.BOARD_SIZE, -1, 10000)
+p2 = sb_bot_ed2.AI(game.BOARD_SIZE, -1, 10000)
+p1 = sb_bot.AI(game.BOARD_SIZE, -1, 10000)
 player = {1: p1, -1: p2}
 
 

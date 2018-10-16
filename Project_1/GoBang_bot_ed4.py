@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*
 import numpy as np
 import random
-import time
 import copy
 
 COLOR_BLACK = -1
@@ -81,82 +80,123 @@ class AI(object):
         for m in y:
             z[m] = z[m] + 1
         if z[1] > 0:
-            value = 100
+            value = 1000000
         elif (z[2] > 0 and (z[3] > 0 or z[4] > 0)):
-            value = 60 + z[3] * 6 + z[4] * 4
+            value = 50000 + z[3] * 6000 + z[4] * 4000
         elif z[2] > 0:
-            value = 60
+            value = 50000
         elif z[3] > 1:  # 双冲四
-            value = 56
+            value = 45000
         elif (z[3] > 0 and z[4] > 0):  # 四三
-            value = 52
+            value = 45000
         elif z[4] > 1:  # 双三
-            value = 48
+            value = 20000
         elif (z[4] > 0 and z[5] > 0):  # 活三+冲三
-            value = 44
+            value = 1000
         elif z[3] > 0:  # 冲四
-            value = 40
+            value = 500
         elif (z[4] > 0 and z[6] > 0):  # 活三 + 活二
-            value = 36
+            value = 250
         elif z[4] > 0:  # 活三
-            value = 32
+            value = 125
         elif z[5] > 0:  # 冲三
-            value = 28 + z[5]
+            value = 64 + z[5] * 2
         elif (z[5] > 0 and a[6] > 0):  # 冲三+活二
-            value = 24
+            value = 32
         elif z[6] > 0:  # 活二
-            value = 20 + z[6]
+            value = 16 + z[6] * 2
         elif z[7] > 0:  # 冲二
-            value = 16 + z[7]
+            value = 8
         elif z[8] > 0:  # 活一
-            value = 12 + z[8]
+            value = 4
         elif z[9] > 0:
             value = z[9]
         else:
             value = 4
         return value
 
-    def go_timeout(self, chessboard):
-        COLOR = self.color
-        print(chessboard)
-        self.candidate_list.clear()
-        idx = np.where(chessboard == COLOR_NONE)
-        idx = list(zip(idx[0], idx[1]))
-        pos_idx = random.randint(0, len(idx) - 1)
-        new_pos = idx[pos_idx]
-        assert chessboard[new_pos[0], new_pos[1]] == COLOR_NONE
-        print(new_pos)
-        self.candidate_list.append(new_pos)
-
-    def get_pos_list(self, chessboard, color):       
+    def get_pos_value(self, chessboard, color):
         candidate_value = np.array([[-2 for j in range(self.chessboard_size)] for i in range(self.chessboard_size)])
         idx = np.where(chessboard == COLOR_NONE)
         idx = list(zip(idx[0], idx[1]))
         self.candidate_list.clear()
         COLOR = color
         for pos in idx:
-            value = self.calcute_value(chessboard, pos[0], pos[1], COLOR)
+            value = self.calcute_value(chessboard, pos[0], pos[1], COLOR) + 0.9*self.calcute_value(chessboard, pos[0], pos[1], -COLOR)
             if value > candidate_value[pos[0], pos[1]]:
                 candidate_value[pos[0], pos[1]] = value
-        COLOR = -color
-        for pos in idx:
-            value = self.calcute_value(chessboard, pos[0], pos[1], COLOR)
-            if value > 0:
-                value = value - 1
-                if value > candidate_value[pos[0], pos[1]]:
-                    candidate_value[pos[0], pos[1]] = value
-        pos_list = []
+        return candidate_value
+
+    def get_pos_list(self,chessboard,COLOR):
+        idx = np.where(chessboard == COLOR_NONE)
+        idx = list(zip(idx[0], idx[1]))
+        candidate_value = self.get_pos_value(chessboard, COLOR)
+        max_list = []
+        max_second_list = []
         temp_max = -10
+        temp_max_second = -10
         for pos in idx:
-            if candidate_value[pos[0], pos[1]] > temp_max:
-                pos_list.clear()
-                pos_list.append(pos)
-                temp_max = candidate_value[pos[0], pos[1]]
-            elif candidate_value[pos[0], pos[1]] == temp_max:
-                pos_list.append(pos)
-        pos1 = pos_list[0]
-        #print(candidate_value)
-        return [pos_list, candidate_value[pos1[0], pos1[1]]]
+            value_temp = candidate_value[pos[0], pos[1]]
+            if value_temp > temp_max:
+                max_second_list = copy.deepcopy(max_list)
+                max_list.clear()
+                max_list.append(pos)
+                temp_max_second = temp_max
+                temp_max = value_temp
+            elif value_temp == temp_max:
+                max_list.append(pos)
+            else:
+                if value_temp > temp_max_second:
+                    max_second_list.clear()
+                    max_second_list.append(pos)
+                elif value_temp == temp_max_second:
+                    max_second_list.append(pos)
+        if temp_max-temp_max_second < 5 and temp_max<0:
+            pos_list = max_list + max_second_list
+        else:
+            pos_list = max_list
+        if len(pos_list) > 20:
+            pos_list = pos_list[0:7]
+        return pos_list
+
+    def tree(self, chessboard, alpha_beta,value ,pos_list,time):
+        for pos in pos_list:
+            if time < 124:
+                chessboard[pos[0],pos[1]] = alpha_beta
+                idx = np.where(chessboard == COLOR_NONE)
+                idx = list(zip(idx[0], idx[1]))
+                pos_list_temp = idx
+                value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
+                chessboard[pos[0], pos[1]] = 0
+                if alpha_beta == -self.color:
+                    if value_temp[1] > value[0]:
+                        value[0] = copy.deepcopy(value_temp[1])
+                    else:
+                        break
+                else:
+                    if value_temp[0] < value[1]:
+                        value[1] = copy.deepcopy(value_temp[0])
+                    else:
+                        break
+            else:
+                chessboard[pos[0], pos[1]] = alpha_beta
+                if alpha_beta == self.color:
+                    value_temp = [self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)+0.9*self.calcute_value(chessboard, pos[0], pos[1], -alpha_beta),1000000]
+                else:
+                    value_temp = [-1000000,self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)+0.9*self.calcute_value(chessboard, pos[0], pos[1], -alpha_beta)]
+                self.interger = self.interger + 1
+                chessboard[pos[0], pos[1]] = 0
+                if alpha_beta == -self.color:
+                    if value_temp[1] > value[0]:
+                        value[0] = copy.deepcopy(value_temp[1])
+                    else:
+                        break
+                else:
+                    if value_temp[0] < value[1]:
+                        value[1] = copy.deepcopy(value_temp[0])
+                    else:
+                        break
+        return value
 
     def go(self, chessboard):
         idx = np.where(chessboard == COLOR_NONE)
@@ -174,44 +214,29 @@ class AI(object):
         if (len(idx) == 225 or A):
             self.candidate_list.append([7, 7])
         else:
-            list_t_1 = self.get_pos_list(chessboard, self.color)
-            pos_list_1 = list_t_1[0]
-            if len(pos_list_1) == 1 or len(idx) <= 4:
-                self.candidate_list.append(pos_list_1[0])
+            chessboard_temp = copy.deepcopy(chessboard)
+            pos_list = self.get_pos_list(chessboard,self.color)
+            alpha_value = -1000000
+            #pos = pos_list[0]
+            pos_set = []
+            print(pos_list)
+            cal_value = self.calcute_value(chessboard, pos_list[0][0], pos_list[0][1], self.color)+self.calcute_value(chessboard, pos_list[0][0], pos_list[0][1], -self.color)
+            if cal_value > 20000:
+                self.candidate_list.append(pos_list[0])
             else:
-                chessboard_temp = copy.deepcopy(chessboard)
-                pos_pull = pos_list_1[0]
-                a1 = 0
-                b1 = 0
-                for pos in pos_list_1:
-                    chessboard_temp[pos[0], pos[1]] = self.color
-                    list_t_2 = self.get_pos_list(chessboard_temp, -self.color)
-                    pos_list_2 = list_t_2[0]
-                    chessboard_temp_2 = copy.deepcopy(chessboard_temp)
-                    for pos1 in pos_list_2:
-                        chessboard_temp_2[pos1[0],pos1[1]] = -self.color
-                        list_t_3 = self.get_pos_list(chessboard_temp_2, self.color)
-                        pos_list_3 = list_t_3[0]
-                        chessboard_temp_3 = copy.deepcopy(chessboard_temp_2)
-                        for pos2 in pos_list_3:
-                            chessboard_temp_3[pos2[0], pos2[1]] = self.color
-                            list_t_4 = self.get_pos_list(chessboard_temp_3, -self.color)
-                            pos_list_4 = list_t_4[0]
-                            chessboard_temp_4 = copy.deepcopy(chessboard_temp_3)
-                            for pos3 in pos_list_4:
-                                chessboard_temp_4[pos3[0], pos3[1]] = -self.color
-                                pos_list_5 = self.get_pos_list(chessboard_temp_4, self.color)
-                                if pos_list_5[1] < a1:
-                                    break
-                                elif pos_list_5[1] > a1:
-                                    a1 = pos_list_5[1]
-                                    b1 = len(pos_list_5[0])
-                                    pos_pull = pos
-                                elif pos_list_5[1] == a1 and len(pos_list_5[0]) > b1:
-                                    b1 = len(pos_list_5[0])
-                                    pos_pull = pos
-                                chessboard_temp_4[pos3[0],pos3[1]] = COLOR_NONE
-                            chessboard_temp_3[pos2[0],pos[1]] = COLOR_NONE
-                        chessboard_temp_2[pos1[0], pos1[1]] = COLOR_NONE
-                    chessboard_temp[pos[0], pos[1]] = COLOR_NONE
-                self.candidate_list.append(pos_pull)
+                self.interger = 0
+                for pos in pos_list:
+                    chessboard_temp[pos[0],pos[1]] = self.color
+                    pos_list_temp = self.get_pos_list(chessboard_temp,-self.color)
+                    value = self.tree(chessboard_temp, self.color,[-1000000,1000000],pos_list_temp,0)
+                    chessboard_temp[pos[0],pos[1]] = COLOR_NONE
+                    if value[0] > alpha_value:
+                        alpha_value = copy.deepcopy(value[0])
+                        pos_set.clear()
+                        pos_set.append(pos)
+                    elif value[0] == alpha_value:
+                        pos_set.append(pos)
+                pos = pos_set[random.randint(0,len(pos_set)-1)]
+                print(pos_set)
+                print(self.interger)
+                self.candidate_list.append(pos)
