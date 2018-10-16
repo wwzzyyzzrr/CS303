@@ -170,7 +170,7 @@ class AI(object):
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 16:
+            if time < 4:
                 chessboard[pos[0],pos[1]] = alpha_beta
                 idx = np.where(chessboard == COLOR_NONE)
                 idx = list(zip(idx[0], idx[1]))

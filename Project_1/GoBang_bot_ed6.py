@@ -198,14 +198,14 @@ class AI(object):
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 9:
+            if time < 4:
                 chessboard[pos[0],pos[1]] = alpha_beta
                 idx = np.where(chessboard == COLOR_NONE)
                 idx = list(zip(idx[0], idx[1]))
                 pos_list_temp = idx
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -1:
+                if alpha_beta == -self.color:
                     if value_temp[1] > value[0]:
                         value[0] = copy.deepcopy(value_temp[1])
                     else:
@@ -217,16 +217,13 @@ class AI(object):
                         break
             else:
                 chessboard[pos[0], pos[1]] = alpha_beta
-                cal_value = self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)
-                cal_value_temp = self.calcute_value(chessboard, pos[0], pos[1], -alpha_beta)-1
-                if cal_value<cal_value_temp:
-                    cal_value = cal_value_temp
-                if alpha_beta == 1:
-                    value_temp = [cal_value,10000]
+                if alpha_beta == self.color:
+                    value_temp = [self.calcute_value(chessboard, pos[0], pos[1], alpha_beta),10000]
                 else:
-                    value_temp = [-10000,cal_value]
+                    value_temp = [-10000,self.calcute_value(chessboard, pos[0], pos[1], alpha_beta)]
+                self.interger = self.interger + 1
                 chessboard[pos[0], pos[1]] = 0
-                if alpha_beta == -1:
+                if alpha_beta == -self.color:
                     if value_temp[1] > value[0]:
                         value[0] = copy.deepcopy(value_temp[1])
                     else:
@@ -267,6 +264,7 @@ class AI(object):
             if cal_value > 48:
                 self.candidate_list.append(pos_list[0])
             else:
+                self.interger = 0
                 for pos in pos_list:
                     chessboard_temp[pos[0],pos[1]] = self.color
                     pos_list_temp = self.get_pos_list(chessboard_temp,-self.color)
@@ -280,9 +278,5 @@ class AI(object):
                         pos_set.append(pos)
                 pos = pos_set[random.randint(0,len(pos_set)-1)]
                 print(pos_set)
+                print(self.interger)
                 self.candidate_list.append(pos)
-
-
-
-
-
