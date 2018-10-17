@@ -167,7 +167,7 @@ class AI(object):
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 2:
+            if time < 4:
                 chessboard[pos[0],pos[1]] = alpha_beta
                 pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
@@ -178,7 +178,7 @@ class AI(object):
                 else:
                     if value_temp[0] < value[1]:
                         value[1] = copy.deepcopy(value_temp[0])
-                if value[0] > value[1]:
+                if value[0]+1 >= value[1]:
                     break
             else:
                 chessboard[pos[0], pos[1]] = alpha_beta
