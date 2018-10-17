@@ -161,13 +161,13 @@ class AI(object):
                 elif value_temp == temp_max_second:
                     max_second_list.append(pos)
         pos_list = max_list
-        if len(pos_list) > 200:
-            pos_list = pos_list[0:5]
+        if len(pos_list) > 20:
+            pos_list = pos_list[0:8]
         return pos_list
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 4:
+            if time < 6:
                 chessboard[pos[0],pos[1]] = alpha_beta
                 pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)

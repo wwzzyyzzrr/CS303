@@ -118,7 +118,7 @@ class AI(object):
             value = 60 + z[3] * 6 + z[4] * 4
         elif z[2] > 0:
             value = 60
-        elif z[3] > 1:  # 双冲四
+        elif z[3] + z[11] + z[12] > 1 :  # 双冲四
             value = 56
         elif ((z[3] > 0 or z[11] > 0 or z[12] > 0 )and z[4] > 0):  # 四三
             value = 52
@@ -200,7 +200,7 @@ class AI(object):
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 2:
+            if time < 4:
                 chessboard[pos[0],pos[1]] = alpha_beta
                 pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
@@ -211,7 +211,7 @@ class AI(object):
                 else:
                     if value_temp[0] < value[1]:
                         value[1] = copy.deepcopy(value_temp[0])
-                if value[0] > value[1]:
+                if value[0]+1 >= value[1]:
                     break
             else:
                 chessboard[pos[0], pos[1]] = alpha_beta
