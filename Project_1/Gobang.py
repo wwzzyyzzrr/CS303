@@ -8,6 +8,7 @@ class Gobang(object):
 
     def __init__(self):
         self.__chess_board = numpy.array([[0 for j in range(self.BOARD_SIZE)] for i in range(self.BOARD_SIZE)])
+
         self.__current_move = (-1, -1, -1)
         self.__winner = 0
     def __str__(self):
