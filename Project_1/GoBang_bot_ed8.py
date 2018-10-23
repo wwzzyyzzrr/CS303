@@ -103,12 +103,17 @@ class AI(object):
             elif flag == -1:
                 y.append(9)  # 冲一
 
-            if (x[i][1] > 5 or x[i + 4][1] > 5):
-                y.append(12)
-            elif (x[i][0] > 1 and x[i + 4][1] > 1) or (x[i][1] > 1 and x[i + 4][0] > 1):
-                y.append(11)
-            elif (x[i][0] >= 0 and x[i + 4][1] > 3) or (x[i][1] > 3 and x[i + 4][0] >= 0):
-                y.append(11)
+            
+            if (x[i][1] > 5 or x[i+4][1] > 5):
+                y.append(3)
+            if (x[i][1]>3 and x[i+4][0]>1)or (x[i+4][1]>3 and x[i][0]>1):
+                y.append(3)
+            elif (x[i][0]>1 and x[i+4][1]>1) or (x[i][1]>1 and x[i+4][0]>1):
+                y.append(4)
+            elif (x[i][0]>=0 and x[i+4][1]>3) or (x[i][1]>3 and x[i+4][0]>=0):
+                y.append(4)
+
+
 
         z = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         for m in y:
@@ -199,7 +204,7 @@ class AI(object):
 
     def tree(self, chessboard, alpha_beta,value ,pos_list,time):
         for pos in pos_list:
-            if time < 6:
+            if time < 8:
                 chessboard[pos[0],pos[1]] = alpha_beta
                 pos_list_temp = self.get_pos_list(chessboard, -alpha_beta)
                 value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1)
@@ -210,7 +215,7 @@ class AI(object):
                 else:
                     if value_temp[0] < value[1]:
                         value[1] = copy.deepcopy(value_temp[0])
-                if value[0]+1 >= value[1]:
+                if value[0]+2 >= value[1]:
                     break
             else:
                 chessboard[pos[0], pos[1]] = alpha_beta

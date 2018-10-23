@@ -103,11 +103,13 @@ class AI(object):
                 y.append(9)  # 冲一
 
             if (x[i][1] > 5 or x[i+4][1] > 5):
-                y.append(12)
+                y.append(3)
+            if (x[i][1]>3 and x[i+4][0]>1)or (x[i+4][1]>3 and x[i][0]>1):
+                y.append(3)
             elif (x[i][0]>1 and x[i+4][1]>1) or (x[i][1]>1 and x[i+4][0]>1):
-                y.append(11)
+                y.append(4)
             elif (x[i][0]>=0 and x[i+4][1]>3) or (x[i][1]>3 and x[i+4][0]>=0):
-                y.append(11)
+                y.append(4)
 
 
            
