@@ -237,35 +237,35 @@ For these methods:
   \begin{algorithm}
     \caption{tree}
     \begin{algorithmic}[1]
-      \Function{tree}{ $ self, chessboard, alpha_beta,value ,pos_list,time $ }
-        \For{$ pos \in pos_list $}
-        \If {$ time < 8 $}
-        \State $ chessboard[pos[0],pos[1]] = alpha_beta $
-        \State $ pos_list_temp = self.get_pos_list(chessboard, -alpha_beta) $
-        \State $ value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1) $
-        \State $ chessboard[pos[0], pos[1]] = 0 $
-            \If {$ alpha_beta == self.color $}
-                \If {$ value_temp[1] > value[0] $}
-                \State $ value[0] = copy.deepcopy(value_temp[1]) $
-                \EndIf
-            \Else:
-                \If {$ value_temp[0] < value[1] $}
-                \State $ value[1] = copy.deepcopy(value_temp[0]) $
-                \EndIf
-                \EndIf    
-            \If {$ value[0]+2 >= value[1] $}
-            \State $ break $
-            \EndIf    
-        \Else:
-        \State $ chessboard[pos[0], pos[1]] = alpha_beta $
-        \State $ value_temp = self.calcute_value(chessboard, pos[0], pos[1], alpha_beta) $
-        \State $ self.interger = self.interger + 1 $
-        \State $ chessboard[pos[0], pos[1]] = 0 $
-        \State $ value[0] = value_temp $
-        \EndIf
-        \EndFor
-      \EndFunction
-    \end{algorithmic}
+      \Function{tree}{$chessboard,value,pos\_list,time$}
+      \For{$ pos \in pos\_list $}
+      \If {$ time < 8 $}
+      \State $ chessboard[pos[0],pos[1]] \gets alpha\_beta $
+      \State $ pos\_list\_temp \gets$\Call{get\_pos\_list}{$ chessboard, -alpha\_beta $}
+      \State $ value\_temp\gets$\Call{tree}{$ chessboard,-alpha\_beta,value,pos\_list\_temp,time+1 $}
+      \State $ chessboard[pos[0], pos[1]]\gets 0 $
+          \If {$ alpha\_beta == color $}
+              \If {$ value\_temp[1] > value[0] $}
+              \State $ value[0]\gets value\_temp[1]$
+              \EndIf
+          \Else
+              \If {$ value\_temp[0] < value[1] $}
+              \State $ value[1]\gets value\_temp[0]$
+              \EndIf
+              \EndIf    
+          \If {$ value[0]+2 >= value[1] $}
+          \State $ break $
+          \EndIf    
+      \Else
+      \State $ chessboard[pos[0], pos[1]]\gets alpha\_beta $
+      \State $ value\_temp \gets$\Call{calcute\_value}{$ chessboard, pos[0], pos[1], alpha\_beta $}
+      \State $ interger\gets interger + 1 $
+      \State $ chessboard[pos[0], pos[1]]\gets 0 $
+      \State $ value[0]\gets value_temp $
+      \EndIf
+    \EndFor
+        \EndFunction
+      \end{algorithmic}
   \end{algorithm}
 
 \section{Empirical Verification}
