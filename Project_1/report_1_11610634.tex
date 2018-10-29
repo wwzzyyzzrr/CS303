@@ -1,0 +1,332 @@
+\documentclass[conference,compsoc]{IEEEtran}
+
+\ifCLASSOPTIONcompsoc
+  \usepackage[nocompress]{cite}
+\else
+  \usepackage{cite}
+\fi
+
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{booktabs}
+\floatname{algorithm}{algorithm} 
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage{array}
+\usepackage{url}
+\hyphenation{op-tical net-works semi-conduc-tor}
+\begin{document}
+
+\title{Gomoku}
+\author{\IEEEauthorblockN{Wang Zhiyuan  11610634}
+\IEEEauthorblockA{CSE\\
+Computer Science and Technology\\
+11610634@mail.sustc.edu.cn}}
+\maketitle
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Preliminaries}
+
+\subsection{Software}
+For this project, I write it by Python. The package I have used is use $numpy$ and $copy$
+\subsection{Algorithm}
+For this Project, I use the method of heurlstlc search. The primary part of this Algorithm is the design of the 
+evaluation function.  
+
+And to optimize the Algorithm, I use the Min-Max Analysis to design a game tree, and use Alpha-Beta purning to simplify the process of search. 
+But limited by the time. The depth of the tree should less then 8.
+
+\section{Methodology}
+\subsection{Representation}
+In my code, according to the example given by the teacher, I design six method:  
+\begin{itemize}
+  \item $count()$
+  \item $calcute\_value()$
+  \item $get\_pos\_value()$
+  \item $get\_pos\_list()$
+  \item $tree()$
+  \item $go()$
+\end{itemize}
+For these methods:
+\begin{itemize}
+  \item The $go()$ is the method that test program will call.
+  \item The $count()$, $calcute\_value()$ and $get\_pos\_value()$ can calucute the value of each coordinate in the chessboard which is null now.
+  \item The $get\_pos\_list()$ and $tree()$ will build a game tree.
+\end{itemize}
+
+\subsection{Architecture}
+\begin{itemize}
+  \item $go()$
+  \begin{itemize}
+    \item $count()$
+    \item $calucute\_value()$
+    \item $get\_pos\_value()$
+    \item $calcute\_pos\_list()$
+    \item $tree()$
+    \begin{itemize}
+      \item $count()$
+      \item $calucute\_pos\_value()$
+      \item $get\_pos\_value()$ 
+      \item $calcute\_pos\_list()$
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Detail of Algorithm}
+  Firstly, I need to design a evaluation function to get the value of all the coordinate with null color.
+  I calculate the value of one location by combinate the conditions of 8 directions of this coordinate:
+  \begin{itemize}
+    \item Count how many chess with he same color as yours in one direction
+    \item Count how many chess with the same color as yours if there is one null chess in one direction
+    \item In the end of this direction is null chess or the versus color chess.
+  \end{itemize}
+  \begin{algorithm}
+    \caption {Count}
+    \begin{algorithmic}[1]
+      \Function {count}{$self, chessboard, a, b, j, k, COLOR$}
+      \State $  i\gets 0  $
+      \State $  m\gets 0  $
+      \State $  flag\gets 0  $
+          \While{$ (-1 < a + j < 15  $ $\textbf{and}$ $  -1 < b + k < 15  $ $\textbf{and}$ $  chessboard[a + j, b + k] != -COLOR): $}
+              \If{$ chessboard[a + j, b + k] == COLOR: $}
+                  \If{$ flag == 0: $}
+                  \State $  i\gets i + 1  $
+                  \Else:
+                  \State $  m\gets m + 1  $
+              \State $  a\gets a + j  $
+              \State $  b\gets b + k  $
+                  \EndIf
+              \Else:
+                  \If{$ -1 < a + 2 * j < 15  $ $\textbf{and}$ $  -1 < b + 2 * k < 15: $}
+                      \If{$ chessboard[a + (2 * j), b + (2 * k)] == COLOR  $ $\textbf{and}$ $  flag == 0: $}
+                      \State $  m\gets i  $
+                      \State $  flag\gets 1  $
+                      \State $  a\gets a + j  $
+                      \State $  b\gets b + k  $
+                      \Else:
+                          break
+                      \EndIf
+                  \Else:
+                      break
+                  \EndIf
+              \EndIf
+          \EndWhile
+
+          \If{$ (-1 < a + j < 15  $ $\textbf{and}$ $  -1 < b + k < 15): $}
+              \If{$ chessboard[a + j, b + k] == COLOR\_NONE: $}
+              \State $  i\gets i * 2  $
+              \State $  m\gets m * 2  $
+              \Else:
+              \State $  m\gets m * 2 - 1  $
+              \State $  i\gets i * 2 - 1  $
+              \EndIf
+          \Else:
+          \State $  i\gets i * 2 - 1  $
+          \State $  m\gets m * 2 - 1  $
+          \EndIf
+          return [i, m]
+      \EndFunction
+    \end{algorithmic}
+  \end{algorithm}
+  
+  After get the conditions of all the 8 directions of the null chess coordinates.
+  I can combinate two direction in one line and get the result in this line.
+  \begin{itemize}
+    \item In the \textbf{algorithm 1}. The list returned have two integer:
+          \begin{itemize} 
+            \item The first number show the status in this direction that without any null chess.
+            \item The second number show the status in this direction that with one and only one null chess.
+            \item For each number: If the number of the chess with self.color is $n$, then the value will be $2\times n$ while there is null chess at the end, or the value will be $2\times n -1$
+          \end{itemize}
+    \item According to the sum of the value of the two directions in one line, I can get the chess shape in this line. You can get the detail in the \textbf{algorithm 2} and the value append corresponding to the chess shape is shown on \textbf{TABLE 1.}.
+    \item Then I will statistics the shapes on the 4 lines and give the weight value.
+  \end{itemize}
+
+  \begin{table}[!htbp]
+    \centering
+    \caption{The Table of The Chess Shape}\label{tab:aStrangeTable}
+    \begin{tabular}{|c|c|}
+      \hline
+      1 & Five chesses\\
+      \hline
+      2 & Four chesses without different color chess\\
+      \hline
+      3 & Four chesses with a different color chess on the end\\
+      \hline
+      4 & Three chesses without different color chess\\
+      \hline
+      5 & Three chesses with a different color chess on the end\\
+      \hline
+      6 & Two chesses without different color chess\\
+      \hline
+      7 & Two chesses with a different color chess on the end\\
+      \hline
+      8 & One chess without different color chess\\
+      \hline
+      9 & One chess with a different color chess on the end\\
+      \hline
+      10 & Some chesses with two different color chesses\\
+      \hline
+    \end{tabular}
+  \end{table}
+  \begin{algorithm}
+    \caption{Calculate\_value}
+    \begin{algorithmic}[1]
+      \Function{Value\_Of\_Line}{$i1, i2, m1, m2$}
+      \State $ flag = i1 + i2 $
+        \If {$ flag > 6 $}
+        \State $ y.append(1) $
+            \ElsIf {$ flag == 6 $}
+                \If {$ (i1 * i2 < 0 \textbf{or} i1 == i2 \textbf{or} (i1 == 5 \textbf{or} i2 == 5)) $}
+            \State $ y.append(1)   $
+            \Else:
+            \State $ y.append(2)   $
+            \EndIf
+        \ElsIf {$ flag == 5 $}
+            \State $ y.append(3)   $
+        \ElsIf {$ flag == 4 $}
+            \If {$ (i1 * i2 < 0) $}
+            \State $ y.append(10)   $
+            \Else:
+            \State $ y.append(4)   $
+            \EndIf
+        \ElsIf {$ flag == 3 $}
+        \State $ y.append(5)   $
+        \ElsIf {$ flag == 2 $}
+            \If {$ (i1 == i2 \textbf{or} i1 * i2 < 0) $}
+            \State $ y.append(10)   $
+            \Else:
+            \State $ y.append(6)   $
+            \EndIf
+        \ElsIf {$ flag == 1 $}
+        \State $ y.append(7)   $
+        \ElsIf {$ flag == 0 $}
+            \If {$ (i1 * i2) == 0 $}
+            \State $ y.append(8)   $
+            \Else:
+            \State $ y.append(10)   $
+            \EndIf
+        \ElsIf {$ flag == -1 $}
+        \State $ y.append(9)   $
+        \EndIf %\EndIf \EndIf \EndIf \EndIf \EndIf \EndIf \EndIf \EndIf
+
+        \If {$ (m1 > 5 \textbf{or} m2 > 5) $}
+        \State $ y.append(3) $
+        \ElsIf {$ (m1>3 \textbf{and} x[i+4][0]>1)\textbf{or} (m2>3 \textbf{and} i1>1) $}
+        \State $ y.append(3) $
+        \ElsIf {$ (i1>1 \textbf{and} m2>1) \textbf{or} (m1>1 \textbf{and} x[i+4][0]>1) $}
+        \State $ y.append(4) $
+        \ElsIf {$ (i1>=0 \textbf{and} m2>3) \textbf{or} (m1>3 \textbf{and} x[i+4][0]>=0) $}
+        \State $ y.append(4) $
+        \EndIf %\EndIf \EndIf \EndIf
+      \EndFunction
+    \end{algorithmic}
+  \end{algorithm}
+
+  Then, I will build the game tree with the evaluation fucntion I design above:
+  \begin{itemize}
+    \item Use the evaluation function get the list include the points with thee biggest weight value.
+    \item Use each point in the list as the max layer and build the game tree.
+    \item Add the Alpha-Beta value attribute and set the threshold value of Beta-Alpha to purning.
+  \end{itemize}
+  \begin{algorithm}
+    \caption{tree}
+    \begin{algorithmic}[1]
+      \Function{tree}{ $ self, chessboard, alpha_beta,value ,pos_list,time $ }
+        \For{$ pos \in pos_list $}
+        \If {$ time < 8 $}
+        \State $ chessboard[pos[0],pos[1]] = alpha_beta $
+        \State $ pos_list_temp = self.get_pos_list(chessboard, -alpha_beta) $
+        \State $ value_temp = self.tree(chessboard,-alpha_beta,value,pos_list_temp,time+1) $
+        \State $ chessboard[pos[0], pos[1]] = 0 $
+            \If {$ alpha_beta == self.color $}
+                \If {$ value_temp[1] > value[0] $}
+                \State $ value[0] = copy.deepcopy(value_temp[1]) $
+                \EndIf
+            \Else:
+                \If {$ value_temp[0] < value[1] $}
+                \State $ value[1] = copy.deepcopy(value_temp[0]) $
+                \EndIf
+                \EndIf    
+            \If {$ value[0]+2 >= value[1] $}
+            \State $ break $
+            \EndIf    
+        \Else:
+        \State $ chessboard[pos[0], pos[1]] = alpha_beta $
+        \State $ value_temp = self.calcute_value(chessboard, pos[0], pos[1], alpha_beta) $
+        \State $ self.interger = self.interger + 1 $
+        \State $ chessboard[pos[0], pos[1]] = 0 $
+        \State $ value[0] = value_temp $
+        \EndIf
+        \EndFor
+      \EndFunction
+    \end{algorithmic}
+  \end{algorithm}
+
+\section{Empirical Verification}
+\subsection{Design}
+
+\subsection{Data and data structure}
+
+\subsection{Performance}
+
+\subsection{Result}
+
+\subsection{Analysis}
+
+
+
+% use section* for acknowledgment
+\ifCLASSOPTIONcompsoc
+  % The Computer Society usually uses the plural form
+  \section*{Acknowledgments}
+\else
+  % regular IEEE prefers the singular form
+  \section*{Acknowledgment}
+\fi
+
+
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+\bibitem{reference} XXXXXXX
+\end{thebibliography}
+
+
+
+
+
+% that's all folks
+\end{document}
+
+
