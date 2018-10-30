@@ -152,6 +152,8 @@ For these methods:
     \caption{The Table of The Chess Shape}\label{tab:aStrangeTable}
     \begin{tabular}{|c|c|}
       \hline
+      \textbf{The SUM} & \textbf{Chess Shape}\\
+      \hline
       1 & Five chesses\\
       \hline
       2 & Four chesses without different color chess\\
@@ -233,6 +235,7 @@ For these methods:
     \item Use the evaluation function get the list include the points with thee biggest weight value.
     \item Use each point in the list as the max layer and build the game tree.
     \item Add the Alpha-Beta value attribute and set the threshold value of Beta-Alpha to purning.
+    \item The \text{algorithm 3.} is the algorithm to build the tree. In this algorithm, I do purning when the points have Beta value is not bigger than its Alpha value.
   \end{itemize}
   \begin{algorithm}
     \caption{tree}
@@ -241,8 +244,8 @@ For these methods:
       \For{$ pos \in pos\_list $}
       \If {$ time < 8 $}
       \State $ chessboard[pos[0],pos[1]] \gets alpha\_beta $
-      \State $ pos\_list\_temp \gets$\Call{get\_pos\_list}{$ chessboard, -alpha\_beta $}
-      \State $ value\_temp\gets$\Call{tree}{$ chessboard,-alpha\_beta,value,pos\_list\_temp,time+1 $}
+      \State $ pos\_list\_temp \gets$\Call{get\_pos\_list}{$$ chessboard, -alpha\_beta $$}
+      \State $ value\_temp\gets$\Call{tree}{$$ chessboard,-alpha\_beta,value,pos\_list\_temp,time+1 $$}
       \State $ chessboard[pos[0], pos[1]]\gets 0 $
           \If {$ alpha\_beta == color $}
               \If {$ value\_temp[1] > value[0] $}
@@ -258,7 +261,7 @@ For these methods:
           \EndIf    
       \Else
       \State $ chessboard[pos[0], pos[1]]\gets alpha\_beta $
-      \State $ value\_temp \gets$\Call{calcute\_value}{$ chessboard, pos[0], pos[1], alpha\_beta $}
+      \State $ value\_temp \gets$\Call{calcute\_value}{$$ chessboard, pos[0], pos[1], alpha\_beta $$}
       \State $ interger\gets interger + 1 $
       \State $ chessboard[pos[0], pos[1]]\gets 0 $
       \State $ value[0]\gets value_temp $
@@ -270,25 +273,25 @@ For these methods:
 
 \section{Empirical Verification}
 \subsection{Design}
-
-\subsection{Data and data structure}
-
+For the verification part. I use a flight platform and design three ways to test it:
+\begin{itemize}
+  \item Flight with it by myself and observe if have any problem
+  \item Set some initial sitiuation that check if the algorithm work as I design
+  \item Use the AI VS Platform.In on 10.20.96.148 to test the code.
+\end{itemize}
 \subsection{Performance}
+For the Time Performance:
+\begin{itemize}
+  \item If I just use the evalution function to get the list of the points with the highest weight value and random to get one point as the result I submit. The speed of the AI will be very fast even ignore it.
+  \item If I  build a game tree and use Alpha-Beta value method to purning. If I limit the depth of the tree less then 8 and the size of the list less then 20, each step can be finished in 5 second.
+\end{itemize}
 
 \subsection{Result}
-
+For the capacity of the program, I have use this program play with a Gomoku game of Tecent, this program can win in most of time.
 \subsection{Analysis}
+For this project, I think the most important part is the design of the evaluation, for that the structure of the game tree is same in most of time, and limited by the time we can't search deeply enough. 
+So if the evaluation consider many enough shapes of the chess, and aloat suitabe weight value, it can be seem that the depth of the tree has been boost a lot with a little time cost.
 
-
-
-% use section* for acknowledgment
-\ifCLASSOPTIONcompsoc
-  % The Computer Society usually uses the plural form
-  \section*{Acknowledgments}
-\else
-  % regular IEEE prefers the singular form
-  \section*{Acknowledgment}
-\fi
 
 
 
@@ -319,7 +322,8 @@ For these methods:
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
-\bibitem{reference} XXXXXXX
+\bibitem{reference}
+
 \end{thebibliography}
 
 

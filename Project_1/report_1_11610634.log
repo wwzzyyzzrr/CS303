@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  30 OCT 2018 01:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  30 OCT 2018 16:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -284,19 +284,13 @@ LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 153.
 
 
 ] [2]
-Overfull \hbox (69.83226pt too wide) in paragraph at lines 244--245
-[] $\OML/cmm/m/it/10 pos[]list[]temp \OMS/cmsy/m/n/10  $\OT1/ptm/m/sc/10.03749 get[]pos[]list\OT1/ptm/m/n/10.03749 ($\OML/cmm/m/it/10 chessboard; \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 alpha[]beta$\OT1/ptm/m/n/10.03749 ) 
+Overfull \hbox (13.58646pt too wide) detected at line 248
+\OML/cmm/m/it/10 chessboard; \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 alpha[]beta; value; pos[]list[]temp; time \OT1/cmr/m/n/10 + 1
  []
 
 
-Overfull \hbox (143.07803pt too wide) in paragraph at lines 245--246
-[] $\OML/cmm/m/it/10 value[]temp \OMS/cmsy/m/n/10  $\OT1/ptm/m/sc/10.03749 tree\OT1/ptm/m/n/10.03749 ($\OML/cmm/m/it/10 chessboard; \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 alpha[]beta; value; pos[]list[]temp; time \OT1/cmr/m/n/10 +
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Overfull \hbox (122.56468pt too wide) in paragraph at lines 261--262
-[] $\OML/cmm/m/it/10 value[]temp \OMS/cmsy/m/n/10  $\OT1/ptm/m/sc/10.03749 calcute[]value\OT1/ptm/m/n/10.03749 ($\OML/cmm/m/it/10 chessboard; pos\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; pos\OT1/cmr/m/n/10 [1]\OML/cmm/m/it/10 ; alpha[]beta$\OT1/ptm/m/n/10.03749 ) 
- []
 
 
 ** Conference Paper **
@@ -309,19 +303,17 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
-
-] (./report_1_11610634.aux) ) 
+[3] (./report_1_11610634.aux) ) 
 Here is how much of TeX's memory you used:
- 4029 strings out of 492642
- 59593 string characters out of 6135565
+ 4030 strings out of 492642
+ 59599 string characters out of 6135565
  152022 words of memory out of 5000000
  7905 multiletter control sequences out of 15000+600000
- 42568 words of font info for 82 fonts, out of 8000000 for 9000
+ 43675 words of font info for 83 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  27i,7n,32p,337b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report_1_11610634.pdf (3 pages, 98983 bytes).
+Output written on report_1_11610634.pdf (3 pages, 100555 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)
  33 compressed objects within 1 object stream
