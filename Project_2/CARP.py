@@ -37,6 +37,60 @@ def floyed(matrix,n):
                     matrix[j,k] = matrix[k,j]
     return matrix
 
+def minDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT):
+    car_NO = 1
+    cap =CAPACITY
+    NowPot = DEPOT
+    Node = NowPot
+    edge = (NowPot,NowPot)
+    output1 = ('s 0,')
+    cost = 0
+    flag = 0
+    while len(arcs)>0:
+        min = max_value
+        for i in arcs:
+            if matrixD[i[0], i[1]] <= cap:
+                if min > matrixC[NowPot, i[0]]:
+                    min = matrixC[NowPot, i[0]]
+                    Node = i[0]
+                    flag = 1
+                    edge = i
+                if min > matrixC[NowPot, i[1]]:
+                    min = matrixC[NowPot, i[1]]
+                    Node = i[1]
+                    flag = 0
+                    edge = i
+        if min != max_value:
+            min = max_value
+            cap -= matrixD[edge[0],edge[1]]
+            arcs.remove(edge)
+            cost += matrixC[NowPot,Node]
+            a = Node
+            NowPot = edge[flag]
+            cost += matrixC[edge[0],edge[1]]
+            b = edge[flag]
+            output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
+        else:
+            b = DEPOT
+            output1 += '0,0,'
+            cost += matrixC[NowPot,0]
+            NowPot = 0
+            cap = CAPACITY
+            car_NO += 1
+    output1 +='0'
+    cost += matrixC[NowPot, 0]
+    return car_NO, output1, cost
+
+def minDemSC(matrixC, arcs, matrixD, CAPACITY, DEPOT):
+    car_NO = 1
+    cap = CAPACITY
+    NowPot = DEPOT
+    Node = NowPot
+    edge = (NowPot, NowPot)
+    output1 = ('s 0')
+    cost = 0
+    flag = 0
+
 def BuildMap():
     a = open("/home/metaron/文件/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat")
     a.readline()
@@ -48,6 +102,8 @@ def BuildMap():
     CAPACITY = int(a.readline().split(' ').pop())
     TCORequired = int(a.readline().split(' ').pop())
     a.readline()
+    nodes = []
+    arcs = set()
     line = a.readline()
     for i in range(0, VERTICES):
         nodes.append(node())
@@ -74,69 +130,13 @@ def BuildMap():
     for i in range(0, VERTICES):
         matrixC[i,i]=0
     matrixC = (floyed(matrixC,VERTICES))
-    return matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired
+    return matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs
 
-if __name__ == '__main__':
-    nodes = []
-    arcs = set()
-    route = []
-    matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired = BuildMap()
-    begin_time = time.time()
-    NowPot = DEPOT
-    cap =CAPACITY
-    min = max_value
-    Node = NowPot
-    edge = (NowPot,NowPot)
-    route.append(Node)
-    cost = 0
-    car_NO = 1
-    output1 = 's 0,'
-    print(len(arcs))
-    while len(arcs)>0:
-        flage = 0
-        for i in arcs:
-            if matrixD[i[0],i[1]] <= cap:
-                if matrixC[NowPot, i[0]] < matrixC[NowPot, i[1]]:
-                    lessNode = 0
-                    flag = 1
-                else:
-                    lessNode = 1
-                    flag = 0
-                min_temp= matrixC[NowPot,i[lessNode]]+matrixC[i[0],i[1]]
-                if min > min_temp:
-                    edge = i
-                    min = min_temp
-                    Node = i[lessNode]
-        if min != max_value:
-            min = max_value
-            cap -= matrixD[edge[0],edge[1]]
-            arcs.remove(edge)
-            #route = route + getRouteTwoNode(NowPot, Node, matrixC, nodes)
-            route.append(Node)
-            cost += matrixC[NowPot,Node]
-            a = Node
-            route.append(edge[flag])
-            NowPot = edge[flag]
-            cost += matrixC[edge[0],edge[1]]
-            b = edge[flag]
-            output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
-        else:
-            #route = route + getRouteTwoNode(NowPot, 0, matrixC, nodes)
-            b = DEPOT
-            output1 += '0,0,'
-            route.append(DEPOT)
-            cost += matrixC[NowPot,0]
-            NowPot = 0
-            cap = CAPACITY
-            car_NO += 1
-    output1 +='0'
-    route.append(DEPOT)
-    cost += matrixC[NowPot, 0]
-    NowPot = 0
-    print(route)
-
-    flag = 0
-
-    print(car_NO)
-    print(output1)
-    print('q %d'%(cost))
+begin_time = time.time()
+matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs= BuildMap()
+car_NO, output1, cost = minDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT)
+NowPot = 0
+print(car_NO)
+print(output1)
+print('q %d'%(cost))
+print(time.time()-begin_time)
