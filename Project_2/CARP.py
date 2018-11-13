@@ -73,7 +73,7 @@ def minDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT):
         else:
             b = DEPOT
             output1 += '0,0,'
-            cost += matrixC[NowPot,0]
+            cost += matrixC[NowPot,DEPOT]
             NowPot = 0
             cap = CAPACITY
             car_NO += 1
@@ -91,8 +91,8 @@ def minDemSC(matrixC, arcs, matrixD, CAPACITY, DEPOT):
     cost = 0
     flag = 0
 
-def BuildMap():
-    a = open("/home/metaron/文件/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat")
+def BuildMap(way):
+    a = open(way)
     a.readline()
     VERTICES = int(a.readline().split(' ').pop())
     DEPOT = int(a.readline().split(' ').pop())-1
@@ -133,7 +133,8 @@ def BuildMap():
     return matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs
 
 begin_time = time.time()
-matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs= BuildMap()
+way = '/home/metaron/文件/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat'
+matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs= BuildMap(way)
 car_NO, output1, cost = minDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT)
 NowPot = 0
 print(car_NO)
