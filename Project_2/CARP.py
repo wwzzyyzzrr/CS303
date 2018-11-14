@@ -48,18 +48,33 @@ def minDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT):
     flag = 0
     while len(arcs)>0:
         min = max_value
+        disDe = max_value
         for i in arcs:
             if matrixD[i[0], i[1]] <= cap:
-                if min > matrixC[NowPot, i[0]]:
+                if  min > matrixC[NowPot, i[0]]:
                     min = matrixC[NowPot, i[0]]
+                    disDe = matrixC[DEPOT,i[0]]
                     Node = i[0]
                     flag = 1
                     edge = i
+                elif min == matrixC[NowPot, i[0]]:
+                    if disDe > matrixC[DEPOT, i[0]]:
+                        disDe = matrixC[DEPOT, i[0]]
+                        Node = i[0]
+                        flag = 1
+                        edge = i
                 if min > matrixC[NowPot, i[1]]:
                     min = matrixC[NowPot, i[1]]
+                    disDe = matrixC[DEPOT, i[1]]
                     Node = i[1]
                     flag = 0
                     edge = i
+                elif min == matrixC[NowPot, i[1]]:
+                    if disDe > matrixC[DEPOT, i[1]]:
+                        disDe = matrixC[DEPOT, i[1]]
+                        Node = i[1]
+                        flag = 0
+                        edge = i
         if min != max_value:
             min = max_value
             cap -= matrixD[edge[0],edge[1]]
@@ -81,15 +96,297 @@ def minDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT):
     cost += matrixC[NowPot, 0]
     return car_NO, output1, cost
 
-def minDemSC(matrixC, arcs, matrixD, CAPACITY, DEPOT):
+def maxDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT):
     car_NO = 1
-    cap = CAPACITY
+    cap =CAPACITY
     NowPot = DEPOT
     Node = NowPot
-    edge = (NowPot, NowPot)
-    output1 = ('s 0')
+    edge = (NowPot,NowPot)
+    output1 = ('s 0,')
     cost = 0
     flag = 0
+    while len(arcs)>0:
+        min = max_value
+        disDe = 0
+        for i in arcs:
+            if matrixD[i[0], i[1]] <= cap:
+                if  min > matrixC[NowPot, i[0]]:
+                    min = matrixC[NowPot, i[0]]
+                    disDe = matrixC[DEPOT,i[0]]
+                    Node = i[0]
+                    flag = 1
+                    edge = i
+                elif min == matrixC[NowPot, i[0]]:
+                    if disDe < matrixC[DEPOT, i[0]]:
+                        disDe = matrixC[DEPOT, i[0]]
+                        Node = i[0]
+                        flag = 1
+                        edge = i
+                if min > matrixC[NowPot, i[1]]:
+                    min = matrixC[NowPot, i[1]]
+                    disDe = matrixC[DEPOT, i[1]]
+                    Node = i[1]
+                    flag = 0
+                    edge = i
+                elif min == matrixC[NowPot, i[1]]:
+                    if disDe < matrixC[DEPOT, i[1]]:
+                        disDe = matrixC[DEPOT, i[1]]
+                        Node = i[1]
+                        flag = 0
+                        edge = i
+        if min != max_value:
+            min = max_value
+            cap -= matrixD[edge[0],edge[1]]
+            arcs.remove(edge)
+            cost += matrixC[NowPot,Node]
+            a = Node
+            NowPot = edge[flag]
+            cost += matrixC[edge[0],edge[1]]
+            b = edge[flag]
+            output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
+        else:
+            b = DEPOT
+            output1 += '0,0,'
+            cost += matrixC[NowPot,DEPOT]
+            NowPot = 0
+            cap = CAPACITY
+            car_NO += 1
+    output1 +='0'
+    cost += matrixC[NowPot, 0]
+    return car_NO, output1, cost
+
+def minDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT):
+    car_NO = 1
+    cap =CAPACITY
+    NowPot = DEPOT
+    Node = NowPot
+    edge = (NowPot,NowPot)
+    output1 = ('s 0,')
+    cost = 0
+    flag = 0
+    while len(arcs)>0:
+        min = max_value
+        demSC = 0
+        for i in arcs:
+            if matrixD[i[0], i[1]] <= cap:
+                if  min > matrixC[NowPot, i[0]]:
+                    min = matrixC[NowPot, i[0]]
+                    if matrixC[NowPot, i[0]] != 0:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[0]]
+                    Node = i[0]
+                    flag = 1
+                    edge = i
+                elif min == matrixC[NowPot, i[0]]:
+                    if matrixC[NowPot,i[0]]!=0 and demSC < matrixD[i[0],i[1]]/matrixC[NowPot,i[0]]:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[0]]
+                        Node = i[0]
+                        flag = 1
+                        edge = i
+
+                if min > matrixC[NowPot, i[1]]:
+                    min = matrixC[NowPot, i[1]]
+                    if matrixC[NowPot,i[1]] != 0:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[1]]
+                    Node = i[1]
+                    flag = 0
+                    edge = i
+                elif min == matrixC[NowPot, i[1]]:
+                    if matrixC[NowPot,i[1]]!=0 and demSC < matrixD[i[0],i[1]]/matrixC[NowPot,i[1]]:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[1]]
+                        Node = i[1]
+                        flag = 0
+                        edge = i
+        if min != max_value:
+            min = max_value
+            cap -= matrixD[edge[0],edge[1]]
+            arcs.remove(edge)
+            cost += matrixC[NowPot,Node]
+            a = Node
+            NowPot = edge[flag]
+            cost += matrixC[edge[0],edge[1]]
+            b = edge[flag]
+            output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
+        else:
+            b = DEPOT
+            output1 += '0,0,'
+            cost += matrixC[NowPot,DEPOT]
+            NowPot = 0
+            cap = CAPACITY
+            car_NO += 1
+    output1 +='0'
+    cost += matrixC[NowPot, 0]
+    return car_NO, output1, cost
+
+def maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT):
+    car_NO = 1
+    cap =CAPACITY
+    NowPot = DEPOT
+    Node = NowPot
+    edge = (NowPot,NowPot)
+    output1 = ('s 0,')
+    cost = 0
+    flag = 0
+    while len(arcs)>0:
+        min = max_value
+        demSC = 0
+        for i in arcs:
+            if matrixD[i[0], i[1]] <= cap:
+                if  min > matrixC[NowPot, i[0]]:
+                    min = matrixC[NowPot, i[0]]
+                    if matrixC[NowPot, i[0]] != 0:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[0]]
+                    Node = i[0]
+                    flag = 1
+                    edge = i
+                elif min == matrixC[NowPot, i[0]]:
+                    if matrixC[NowPot,i[0]]!=0 and demSC > matrixD[i[0],i[1]]/matrixC[NowPot,i[0]]:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[0]]
+                        Node = i[0]
+                        flag = 1
+                        edge = i
+
+                if min > matrixC[NowPot, i[1]]:
+                    min = matrixC[NowPot, i[1]]
+                    if matrixC[NowPot,i[1]] != 0:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[1]]
+                    Node = i[1]
+                    flag = 0
+                    edge = i
+                elif min == matrixC[NowPot, i[1]]:
+                    if matrixC[NowPot,i[1]]!=0 and demSC > matrixD[i[0],i[1]]/matrixC[NowPot,i[1]]:
+                        demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[1]]
+                        Node = i[1]
+                        flag = 0
+                        edge = i
+        if min != max_value:
+            min = max_value
+            cap -= matrixD[edge[0],edge[1]]
+            arcs.remove(edge)
+            cost += matrixC[NowPot,Node]
+            a = Node
+            NowPot = edge[flag]
+            cost += matrixC[edge[0],edge[1]]
+            b = edge[flag]
+            output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
+        else:
+            b = DEPOT
+            output1 += '0,0,'
+            cost += matrixC[NowPot,DEPOT]
+            NowPot = 0
+            cap = CAPACITY
+            car_NO += 1
+    output1 +='0'
+    cost += matrixC[NowPot, 0]
+    return car_NO, output1, cost
+
+def maxminDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT,VEHICLES):
+    car_NO = 1
+    cap =CAPACITY
+    NowPot = DEPOT
+    Node = NowPot
+    edge = (NowPot,NowPot)
+    output1 = ('s 0,')
+    cost = 0
+    flag = 0
+    while len(arcs)>0:
+        if car_NO<VEHICLES/2:
+            min = max_value
+            disDe = 0
+            for i in arcs:
+                if matrixD[i[0], i[1]] <= cap:
+                    if  min > matrixC[NowPot, i[0]]:
+                        min = matrixC[NowPot, i[0]]
+                        disDe = matrixC[DEPOT,i[0]]
+                        Node = i[0]
+                        flag = 1
+                        edge = i
+                    elif min == matrixC[NowPot, i[0]]:
+                        if disDe < matrixC[DEPOT, i[0]]:
+                            disDe = matrixC[DEPOT, i[0]]
+                            Node = i[0]
+                            flag = 1
+                            edge = i
+                    if min > matrixC[NowPot, i[1]]:
+                        min = matrixC[NowPot, i[1]]
+                        disDe = matrixC[DEPOT, i[1]]
+                        Node = i[1]
+                        flag = 0
+                        edge = i
+                    elif min == matrixC[NowPot, i[1]]:
+                        if disDe < matrixC[DEPOT, i[1]]:
+                            disDe = matrixC[DEPOT, i[1]]
+                            Node = i[1]
+                            flag = 0
+                            edge = i
+            if min != max_value:
+                min = max_value
+                cap -= matrixD[edge[0],edge[1]]
+                arcs.remove(edge)
+                cost += matrixC[NowPot,Node]
+                a = Node
+                NowPot = edge[flag]
+                cost += matrixC[edge[0],edge[1]]
+                b = edge[flag]
+                output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
+            else:
+                b = DEPOT
+                output1 += '0,0,'
+                cost += matrixC[NowPot,DEPOT]
+                NowPot = 0
+                cap = CAPACITY
+                car_NO += 1
+        else:
+            min = max_value
+            demSC = 0
+            for i in arcs:
+                if matrixD[i[0], i[1]] <= cap:
+                    if min > matrixC[NowPot, i[0]]:
+                        min = matrixC[NowPot, i[0]]
+                        if matrixC[NowPot, i[0]] != 0:
+                            demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[0]]
+                        Node = i[0]
+                        flag = 1
+                        edge = i
+                    elif min == matrixC[NowPot, i[0]]:
+                        if matrixC[NowPot, i[0]] != 0 and demSC < matrixD[i[0], i[1]] / matrixC[NowPot, i[0]]:
+                            demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[0]]
+                            Node = i[0]
+                            flag = 1
+                            edge = i
+
+                    if min > matrixC[NowPot, i[1]]:
+                        min = matrixC[NowPot, i[1]]
+                        if matrixC[NowPot, i[1]] != 0:
+                            demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[1]]
+                        Node = i[1]
+                        flag = 0
+                        edge = i
+                    elif min == matrixC[NowPot, i[1]]:
+                        if matrixC[NowPot, i[1]] != 0 and demSC < matrixD[i[0], i[1]] / matrixC[NowPot, i[1]]:
+                            demSC = matrixD[i[0], i[1]] / matrixC[NowPot, i[1]]
+                            Node = i[1]
+                            flag = 0
+                            edge = i
+            if min != max_value:
+                min = max_value
+                cap -= matrixD[edge[0], edge[1]]
+                arcs.remove(edge)
+                cost += matrixC[NowPot, Node]
+                a = Node
+                NowPot = edge[flag]
+                cost += matrixC[edge[0], edge[1]]
+                b = edge[flag]
+                output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
+            else:
+                b = DEPOT
+                output1 += '0,0,'
+                cost += matrixC[NowPot, DEPOT]
+                NowPot = 0
+                cap = CAPACITY
+                car_NO += 1
+    output1 +='0'
+    cost += matrixC[NowPot, 0]
+    return car_NO, output1, cost
 
 def BuildMap(way):
     a = open(way)
@@ -135,7 +432,7 @@ def BuildMap(way):
 begin_time = time.time()
 way = '/home/metaron/文件/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat'
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs= BuildMap(way)
-car_NO, output1, cost = minDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT)
+car_NO, output1, cost = maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT)
 NowPot = 0
 print(car_NO)
 print(output1)
