@@ -226,11 +226,12 @@ def maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT):
     output1 = ('s 0,')
     cost = 0
     flag = 0
+    route= [[]]
     while len(arcs)>0:
         min = max_value
         demSC = 0
         for i in arcs:
-            if matrixD[i[0], i[1]] <= cap:
+            if matrixD[i[0], i[1]] <= cap :
                 if  min > matrixC[NowPot, i[0]]:
                     min = matrixC[NowPot, i[0]]
                     if matrixC[NowPot, i[0]] != 0:
@@ -244,7 +245,6 @@ def maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT):
                         Node = i[0]
                         flag = 1
                         edge = i
-
                 if min > matrixC[NowPot, i[1]]:
                     min = matrixC[NowPot, i[1]]
                     if matrixC[NowPot,i[1]] != 0:
@@ -267,8 +267,10 @@ def maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT):
             NowPot = edge[flag]
             cost += matrixC[edge[0],edge[1]]
             b = edge[flag]
+            route[car_NO-1].append(edge)
             output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
         else:
+            route.append([])
             b = DEPOT
             output1 += '0,0,'
             cost += matrixC[NowPot,DEPOT]
@@ -277,7 +279,7 @@ def maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT):
             car_NO += 1
     output1 +='0'
     cost += matrixC[NowPot, 0]
-    return car_NO, output1, cost
+    return route,car_NO, output1, cost
 
 def maxminDisNode(matrixC, arcs, matrixD, CAPACITY, DEPOT,VEHICLES):
     car_NO = 1
@@ -432,9 +434,11 @@ def BuildMap(way):
 begin_time = time.time()
 way = '/home/metaron/文件/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat'
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs= BuildMap(way)
-car_NO, output1, cost = maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT)
+route,car_NO, output1, cost = maxDemSc(matrixC, arcs, matrixD, CAPACITY, DEPOT)
 NowPot = 0
 print(car_NO)
+for i in route:
+    print (i)
 print(output1)
 print('q %d'%(cost))
 print(time.time()-begin_time)
