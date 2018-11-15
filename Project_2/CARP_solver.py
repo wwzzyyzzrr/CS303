@@ -1,19 +1,7 @@
 # -*- coding: UTF-8 -*-
 import numpy  as np
 import  time
-
 import sys
-
-
-class node:
-    def __init__(self):
-        self.nextNode = []
-    def addNextNode(self,node):
-        self.nextNode.append(node)
-
-    def addLastNode(self,node):
-        self.lastNode.append(node)
-
 max_value = 100000000
 
 def getRouteTwoNode(firstnode, endnode, matrix,nodes):
@@ -144,6 +132,7 @@ def maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, point, matrixC,
             edge = i
     return flagValue, min, Node, edge, flag
 
+
 def BuildMap(way):
     a = open(way)
     a.readline()
@@ -155,11 +144,8 @@ def BuildMap(way):
     CAPACITY = int(a.readline().split(' ').pop())
     TCORequired = int(a.readline().split(' ').pop())
     a.readline()
-    nodes = []
     arcs = set()
     line = a.readline()
-    for i in range(0, VERTICES):
-        nodes.append(node())
     matrixC = np.array([[max_value for j in range(VERTICES)] for i in range(VERTICES)])
     matrixD = np.array([[0 for j in range(VERTICES)] for i in range(VERTICES)])
     while (line != 'END'):
@@ -170,8 +156,6 @@ def BuildMap(way):
                 prop.append(int(i))
         prop[0] -= 1
         prop[1] -= 1
-        nodes[prop[0]].addNextNode(prop[1])
-        nodes[prop[1]].addNextNode(prop[0])
         matrixC[prop[0],prop[1]] = prop[2]
         matrixC[prop[1],prop[0]] = prop[2]
         matrixD[prop[0],prop[1]] = prop[3]
@@ -183,14 +167,15 @@ def BuildMap(way):
     for i in range(0, VERTICES):
         matrixC[i,i]=0
     matrixC = (floyed(matrixC))
-    return matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs
+    return matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs
 
 begin_time = time.time()
-arguments = sys.argv
-way = arguments[1]
-max_time = int(arguments[3])
-seed = float(arguments[5])
-matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, nodes, arcs= BuildMap(way)
+#arguments = sys.argv
+#way = arguments[1]
+#max_time = int(arguments[3])
+#seed = float(arguments[5])
+way = 'C:/Users/wwzzy/PycharmProjects/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/gdb10.dat'
+matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
 route,car_NO, output1, cost = doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT)
 NowPot = 0
 print(car_NO)
