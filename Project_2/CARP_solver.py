@@ -1,4 +1,6 @@
 # -*- coding: UTF-8 -*-
+import copy
+
 import numpy  as np
 import  time
 import sys
@@ -30,7 +32,7 @@ def floyed(matrix):
                     matrix[j,k] = matrix[k,j]
     return matrix
 
-def doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT):
+def doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT, type):
     car_NO = 1
     cap =CAPACITY
     NowPot = DEPOT
@@ -45,8 +47,18 @@ def doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT):
         flagValue = 0
         for i in arcs:
             if matrixD[i[0], i[1]] <= cap :
-                flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
-                flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                if type == 0:
+                    flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                elif type ==1:
+                    flagValue,min,Node,edge,flag = minDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = minDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                elif type ==2:
+                    flagValue,min,Node,edge,flag = maxDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = maxDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                elif type ==3:
+                    flagValue,min,Node,edge,flag = minDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = minDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
         if min != max_value:
             min = max_value
             cap -= matrixD[edge[0],edge[1]]
@@ -63,12 +75,12 @@ def doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT):
             b = DEPOT
             output1 += '0,0,'
             cost += matrixC[NowPot,DEPOT]
-            NowPot = 0
+            NowPot = DEPOT
             cap = CAPACITY
             car_NO += 1
     output1 +='0'
     cost += matrixC[NowPot, 0]
-    return route,car_NO, output1, cost
+    return route, output1, cost
 
 def minDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, point, matrixC, matrixD, theOtherNodeIndex):
     if  min > matrixC[NowPot, point]:
@@ -174,10 +186,19 @@ begin_time = time.time()
 #way = arguments[1]
 #max_time = int(arguments[3])
 #seed = float(arguments[5])
-way = 'C:/Users/wwzzy/PycharmProjects/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/gdb10.dat'
+way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat'
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
-route,car_NO, output1, cost = doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT)
+route = []
+output = ''
+cost = max_value
+for type in range(0,4):
+    route_temp, output_temp, cost_temp = doScanning(matrixC, copy.deepcopy(arcs), matrixD, CAPACITY, DEPOT,type)
+    if cost_temp < cost:
+        cost = cost_temp
+        route = route_temp
+        output = output_temp
 NowPot = 0
-print(car_NO)
-print(output1)
+for i in route:
+    print(i)
+print(output)
 print('q %d'%(cost))

@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17159689-dee8-4d62-a434-b8ed8747a8d1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Project_2/CARP_solver.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Project_2/Refbook/CARP_solver.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/CS303.iml" afterPath="$PROJECT_DIR$/.idea/CS303.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Project_2/test.py" afterPath="$PROJECT_DIR$/Project_2/test.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/CS303.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS303.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_2/CARP_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_solver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_2/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_ed2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,15 +16,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CS303$Gobang.coverage" NAME="Gobang Coverage Results" MODIFIED="1538416181740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
-    <SUITE FILE_PATH="coverage/CS303$test.coverage" NAME="test Coverage Results" MODIFIED="1542289149029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
-    <SUITE FILE_PATH="coverage/CS303$GoBang_bot_ed2.coverage" NAME="GoBang_bot_ed2 Coverage Results" MODIFIED="1537582848612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
-    <SUITE FILE_PATH="coverage/CS303$CARP_solver.coverage" NAME="CARP_solver Coverage Results" MODIFIED="1542289153218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$main.coverage" NAME="main Coverage Results" MODIFIED="1540699058884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
-    <SUITE FILE_PATH="coverage/CS303$GoBang_bot.coverage" NAME="GoBang_bot Coverage Results" MODIFIED="1537539712813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$CARP.coverage" NAME="CARP Coverage Results" MODIFIED="1542187479222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$GoBang_bot_ed3.coverage" NAME="GoBang_bot_ed3 Coverage Results" MODIFIED="1537714556245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
+    <SUITE FILE_PATH="coverage/CS303$CARP_ed2.coverage" NAME="CARP_ed2 Coverage Results" MODIFIED="1542362829928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$Gobang.coverage" NAME="Gobang Coverage Results" MODIFIED="1538416181740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
+    <SUITE FILE_PATH="coverage/CS303$GoBang_bot.coverage" NAME="GoBang_bot Coverage Results" MODIFIED="1537539712813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
+    <SUITE FILE_PATH="coverage/CS303$GoBang_bot_ed2.coverage" NAME="GoBang_bot_ed2 Coverage Results" MODIFIED="1537582848612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$Test.coverage" NAME="Test Coverage Results" MODIFIED="1542116938600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS303$CARP_solver.coverage" NAME="CARP_solver Coverage Results" MODIFIED="1542357140449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$test.coverage" NAME="test Coverage Results" MODIFIED="1542357148633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-871989168">
@@ -89,45 +88,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CARP_solver.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CARP_solver.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="175" column="11" lean-forward="true" selection-start-line="175" selection-start-column="11" selection-end-line="175" selection-end-column="11" />
+            <state relative-caret-position="110">
+              <caret line="188" column="95" selection-start-line="188" selection-start-column="95" selection-end-line="188" selection-end-column="95" />
               <folding>
-                <element signature="e#24#43#0" expanded="true" />
-                <element signature="e#150#536#0" expanded="false" />
-                <element signature="e#562#878#0" expanded="false" />
-                <element signature="e#941#2191#0" expanded="false" />
-                <element signature="e#2309#2750#0" expanded="false" />
-                <element signature="e#2868#3309#0" expanded="false" />
-                <element signature="e#3425#4005#0" expanded="false" />
-                <element signature="e#4121#4701#0" expanded="false" />
-                <element signature="e#4727#6003#0" expanded="false" />
+                <element signature="e#24#35#0" expanded="true" />
+                <element signature="e#150#536#0" />
+                <element signature="e#562#878#0" />
+                <element signature="e#2309#2750#0" />
+                <element signature="e#2868#3309#0" />
+                <element signature="e#3425#4005#0" />
+                <element signature="e#4121#4701#0" />
+                <element signature="e#4727#6003#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/test.py">
+      <file leaf-file-name="CARP_ed2.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="235" column="97" lean-forward="false" selection-start-line="235" selection-start-column="97" selection-end-line="235" selection-end-column="97" />
+            <state relative-caret-position="374">
+              <caret line="219" column="36" selection-start-line="219" selection-start-column="36" selection-end-line="219" selection-end-column="36" />
               <folding>
                 <element signature="e#24#43#0" expanded="true" />
-                <element signature="e#309#695#0" expanded="false" />
-                <element signature="e#721#1037#0" expanded="false" />
-                <element signature="e#1100#2350#0" expanded="false" />
-                <element signature="e#2413#3498#0" expanded="false" />
-                <element signature="e#3616#4057#0" expanded="false" />
-                <element signature="e#4175#4616#0" expanded="false" />
-                <element signature="e#4732#5312#0" expanded="false" />
-                <element signature="e#5428#6008#0" expanded="false" />
-                <element signature="e#6033#7309#0" expanded="false" />
-                <element signature="e#7395#7964#0" expanded="false" />
-                <element signature="e#8409#8476#0" expanded="false" />
+                <element signature="e#150#536#0" />
+                <element signature="e#562#878#0" />
+                <element signature="e#941#2195#0" />
+                <element signature="e#1130#2107#0" />
+                <element signature="e#2313#2754#0" />
+                <element signature="e#2872#3313#0" />
+                <element signature="e#3429#4009#0" />
+                <element signature="e#4125#4705#0" />
+                <element signature="e#4731#6007#0" />
+                <element signature="e#6053#6974#0" />
+                <element signature="e#6034#6055#0" />
+                <element signature="e#9072#9323#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="egl-s1-A.dat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -135,9 +143,8 @@
       <file leaf-file-name="val1A.dat" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val1A.dat">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="989">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="946">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
@@ -193,8 +200,9 @@
         <option value="$PROJECT_DIR$/Project_1/main.py" />
         <option value="$PROJECT_DIR$/Test.py" />
         <option value="$PROJECT_DIR$/Project_2/CARP.py" />
-        <option value="$PROJECT_DIR$/Project_2/test.py" />
         <option value="$PROJECT_DIR$/Project_2/CARP_solver.py" />
+        <option value="$PROJECT_DIR$/Project_2/test.py" />
+        <option value="$PROJECT_DIR$/Project_2/CARP_ed2.py" />
       </list>
     </option>
   </component>
@@ -205,31 +213,20 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="3" />
-    <option name="y" value="111" />
+    <option name="x" value="-698" />
+    <option name="y" value="-23" />
     <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="height" value="1034" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -296,8 +293,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.CARP_solver">
+  <component name="RunManager" selected="Python.CARP_ed2">
     <configuration name="CARP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS303" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -308,15 +306,15 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CS303" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="C:\Users\wwzzy\PycharmProjects\CS303\Project_2\CARP.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="CARP_solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="CARP_ed2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS303" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -327,8 +325,26 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_2/CARP_ed2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="CARP_solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CS303" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_2/CARP_solver.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -336,6 +352,7 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="Gobang" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS303" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -346,34 +363,15 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CS303" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_1/Gobang.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CS303" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS303" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -384,33 +382,29 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CS303" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_2/test.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Metaron\PyCharmProject\CS303\Project_2\CARP_ed2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.CARP" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Gobang" />
-      <item index="3" class="java.lang.String" itemvalue="Python.CARP_solver" />
-      <item index="4" class="java.lang.String" itemvalue="Python.test" />
+    <list>
+      <item itemvalue="Python.CARP" />
+      <item itemvalue="Python.Gobang" />
+      <item itemvalue="Python.CARP_solver" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.CARP_ed2" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.CARP_solver" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.CARP" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Gobang" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Test" />
+      <list>
+        <item itemvalue="Python.CARP_ed2" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.CARP_solver" />
+        <item itemvalue="Python.CARP" />
+        <item itemvalue="Python.Gobang" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -470,27 +464,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39370933" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39370933" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" weight="0.39370933" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49791667" visible="true" weight="0.39370933" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12447917" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +510,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -525,18 +521,63 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="176" column="93" lean-forward="false" selection-start-line="176" selection-start-column="93" selection-end-line="176" selection-end-column="93" />
+        <state relative-caret-position="3850">
+          <caret line="175" column="11" lean-forward="true" selection-start-line="175" selection-start-column="11" selection-end-line="175" selection-end-column="11" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#2309#2750#0" />
+            <element signature="e#2868#3309#0" />
+            <element signature="e#3425#4005#0" />
+            <element signature="e#4121#4701#0" />
+            <element signature="e#4727#6003#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="235" column="97" selection-start-line="235" selection-start-column="97" selection-end-line="235" selection-end-column="97" />
           <folding>
             <element signature="e#24#43#0" expanded="true" />
-            <element signature="e#150#536#0" expanded="false" />
-            <element signature="e#562#878#0" expanded="false" />
-            <element signature="e#941#2191#0" expanded="false" />
-            <element signature="e#2309#2750#0" expanded="false" />
-            <element signature="e#2868#3309#0" expanded="false" />
-            <element signature="e#3425#4005#0" expanded="false" />
-            <element signature="e#4121#4701#0" expanded="false" />
-            <element signature="e#4727#6003#0" expanded="false" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#941#2195#0" />
+            <element signature="e#1130#2107#0" />
+            <element signature="e#2313#2754#0" />
+            <element signature="e#2872#3313#0" />
+            <element signature="e#3429#4009#0" />
+            <element signature="e#4125#4705#0" />
+            <element signature="e#4731#6007#0" />
+            <element signature="e#6053#6974#0" />
+            <element signature="e#6034#6055#0" />
+            <element signature="e#9072#9323#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val1A.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="946">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="176" column="93" selection-start-line="176" selection-start-column="93" selection-end-line="176" selection-end-column="93" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#2309#2750#0" />
+            <element signature="e#2868#3309#0" />
+            <element signature="e#3425#4005#0" />
+            <element signature="e#4121#4701#0" />
+            <element signature="e#4727#6003#0" />
           </folding>
         </state>
       </provider>
@@ -544,88 +585,75 @@
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val1A.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="989">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project_2/test.py">
+    <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="943">
           <caret line="101" column="29" lean-forward="true" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="29" />
           <folding>
             <element signature="e#24#43#0" expanded="true" />
-            <element signature="e#309#695#0" expanded="false" />
-            <element signature="e#721#1037#0" expanded="false" />
-            <element signature="e#1100#2350#0" expanded="false" />
-            <element signature="e#2413#3498#0" expanded="false" />
-            <element signature="e#3616#4057#0" expanded="false" />
-            <element signature="e#4175#4616#0" expanded="false" />
-            <element signature="e#4732#5312#0" expanded="false" />
-            <element signature="e#5428#6008#0" expanded="false" />
-            <element signature="e#6033#7309#0" expanded="false" />
-            <element signature="e#7395#7964#0" expanded="false" />
-            <element signature="e#8409#8476#0" expanded="false" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#941#2195#0" />
+            <element signature="e#1130#2107#0" />
+            <element signature="e#2313#2754#0" />
+            <element signature="e#2872#3313#0" />
+            <element signature="e#3429#4009#0" />
+            <element signature="e#4125#4705#0" />
+            <element signature="e#4731#6007#0" />
+            <element signature="e#6053#6974#0" />
+            <element signature="e#6034#6055#0" />
+            <element signature="e#9072#9323#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state>
           <folding>
-            <element signature="e#24#43#0" expanded="true" />
-            <element signature="e#150#536#0" expanded="false" />
-            <element signature="e#562#878#0" expanded="false" />
-            <element signature="e#941#2191#0" expanded="false" />
-            <element signature="e#2309#2750#0" expanded="false" />
-            <element signature="e#2868#3309#0" expanded="false" />
-            <element signature="e#3425#4005#0" expanded="false" />
-            <element signature="e#4121#4701#0" expanded="false" />
-            <element signature="e#4727#6003#0" expanded="false" />
+            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#2309#2750#0" />
+            <element signature="e#2868#3309#0" />
+            <element signature="e#3425#4005#0" />
+            <element signature="e#4121#4701#0" />
+            <element signature="e#4727#6003#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-e1-A.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project_2/test.py">
+    <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="e#24#43#0" expanded="true" />
-            <element signature="e#309#695#0" expanded="false" />
-            <element signature="e#721#1037#0" expanded="false" />
-            <element signature="e#1100#2350#0" expanded="false" />
-            <element signature="e#2413#3498#0" expanded="false" />
-            <element signature="e#3616#4057#0" expanded="false" />
-            <element signature="e#4175#4616#0" expanded="false" />
-            <element signature="e#4732#5312#0" expanded="false" />
-            <element signature="e#5428#6008#0" expanded="false" />
-            <element signature="e#6033#7309#0" expanded="false" />
-            <element signature="e#7395#7964#0" expanded="false" />
-            <element signature="e#8409#8476#0" expanded="false" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#941#2195#0" />
+            <element signature="e#1130#2107#0" />
+            <element signature="e#2313#2754#0" />
+            <element signature="e#2872#3313#0" />
+            <element signature="e#3429#4009#0" />
+            <element signature="e#4125#4705#0" />
+            <element signature="e#4731#6007#0" />
+            <element signature="e#6053#6974#0" />
+            <element signature="e#6034#6055#0" />
+            <element signature="e#9072#9323#0" />
           </folding>
         </state>
       </provider>
@@ -638,26 +666,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/gdb10.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state>
           <folding>
-            <element signature="e#24#43#0" expanded="true" />
-            <element signature="e#150#536#0" expanded="false" />
-            <element signature="e#562#878#0" expanded="false" />
-            <element signature="e#941#2191#0" expanded="false" />
-            <element signature="e#2309#2750#0" expanded="false" />
-            <element signature="e#2868#3309#0" expanded="false" />
-            <element signature="e#3425#4005#0" expanded="false" />
-            <element signature="e#4121#4701#0" expanded="false" />
-            <element signature="e#4727#6003#0" expanded="false" />
+            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#2309#2750#0" />
+            <element signature="e#2868#3309#0" />
+            <element signature="e#3425#4005#0" />
+            <element signature="e#4121#4701#0" />
+            <element signature="e#4727#6003#0" />
           </folding>
         </state>
       </provider>
@@ -674,7 +696,7 @@
     <entry file="file://$PROJECT_DIR$/Project_1/human.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -682,7 +704,7 @@
     <entry file="file://$PROJECT_DIR$/Project_1/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3388">
-          <caret line="157" column="9" lean-forward="false" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="9" />
+          <caret line="157" column="9" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -690,7 +712,7 @@
     <entry file="file://$PROJECT_DIR$/Project_1/sb_bot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
-          <caret line="25" column="43" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="25" selection-end-column="43" />
+          <caret line="25" column="43" selection-start-line="14" selection-end-line="25" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -698,7 +720,7 @@
     <entry file="file://$PROJECT_DIR$/Project_1/GoBang_bot_ed2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="112" column="24" lean-forward="false" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
+          <caret line="112" column="24" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -706,7 +728,7 @@
     <entry file="file://$PROJECT_DIR$/Project_1/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
-          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="11" />
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -714,130 +736,117 @@
     <entry file="file://$PROJECT_DIR$/Project_1/Gobang.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_1/GoBang_bot_ed5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
-          <caret line="167" column="64" lean-forward="false" selection-start-line="167" selection-start-column="64" selection-end-line="167" selection-end-column="64" />
+          <caret line="167" column="64" selection-start-line="167" selection-start-column="64" selection-end-line="167" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_1/GoBang_bot_ed3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-114">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <caret selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="129" lean-forward="false" selection-start-line="0" selection-start-column="129" selection-end-line="0" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state>
+          <caret column="129" selection-start-column="129" selection-end-column="129" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-e1-A.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/gdb10.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Refbook/CARP_solver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1281">
-          <caret line="634" column="0" lean-forward="true" selection-start-line="634" selection-start-column="0" selection-end-line="634" selection-end-column="0" />
+          <caret line="634" lean-forward="true" selection-start-line="634" selection-end-line="634" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/gdb1.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_1/GoBang_bot_ed4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
-          <caret line="140" column="38" lean-forward="false" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="38" />
+          <caret line="140" column="38" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val1A.dat">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="946">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project_2/test.py">
+    <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="235" column="97" lean-forward="false" selection-start-line="235" selection-start-column="97" selection-end-line="235" selection-end-column="97" />
-          <folding>
-            <element signature="e#24#43#0" expanded="true" />
-            <element signature="e#309#695#0" expanded="false" />
-            <element signature="e#721#1037#0" expanded="false" />
-            <element signature="e#1100#2350#0" expanded="false" />
-            <element signature="e#2413#3498#0" expanded="false" />
-            <element signature="e#3616#4057#0" expanded="false" />
-            <element signature="e#4175#4616#0" expanded="false" />
-            <element signature="e#4732#5312#0" expanded="false" />
-            <element signature="e#5428#6008#0" expanded="false" />
-            <element signature="e#6033#7309#0" expanded="false" />
-            <element signature="e#7395#7964#0" expanded="false" />
-            <element signature="e#8409#8476#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="66">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="175" column="11" lean-forward="true" selection-start-line="175" selection-start-column="11" selection-end-line="175" selection-end-column="11" />
+        <state relative-caret-position="110">
+          <caret line="188" column="95" selection-start-line="188" selection-start-column="95" selection-end-line="188" selection-end-column="95" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#2309#2750#0" />
+            <element signature="e#2868#3309#0" />
+            <element signature="e#3425#4005#0" />
+            <element signature="e#4121#4701#0" />
+            <element signature="e#4727#6003#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="219" column="36" selection-start-line="219" selection-start-column="36" selection-end-line="219" selection-end-column="36" />
           <folding>
             <element signature="e#24#43#0" expanded="true" />
-            <element signature="e#150#536#0" expanded="false" />
-            <element signature="e#562#878#0" expanded="false" />
-            <element signature="e#941#2191#0" expanded="false" />
-            <element signature="e#2309#2750#0" expanded="false" />
-            <element signature="e#2868#3309#0" expanded="false" />
-            <element signature="e#3425#4005#0" expanded="false" />
-            <element signature="e#4121#4701#0" expanded="false" />
-            <element signature="e#4727#6003#0" expanded="false" />
+            <element signature="e#150#536#0" />
+            <element signature="e#562#878#0" />
+            <element signature="e#941#2195#0" />
+            <element signature="e#1130#2107#0" />
+            <element signature="e#2313#2754#0" />
+            <element signature="e#2872#3313#0" />
+            <element signature="e#3429#4009#0" />
+            <element signature="e#4125#4705#0" />
+            <element signature="e#4731#6007#0" />
+            <element signature="e#6053#6974#0" />
+            <element signature="e#6034#6055#0" />
+            <element signature="e#9072#9323#0" />
           </folding>
         </state>
       </provider>
