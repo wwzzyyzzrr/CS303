@@ -1,16 +1,8 @@
 # -*- coding: UTF-8 -*-
 import numpy  as np
-import time
-import copy
+import  time
+import  copy
 import sys
-
-
-class node:
-    def __init__(self, route, cost, carNum):
-        self.route = route+[self]
-        self.cost = cost
-        self.carNum = carNum
-
 max_value = 100000000
 
 def getRouteTwoNode(firstnode, endnode, matrix,nodes):
@@ -39,47 +31,7 @@ def floyed(matrix):
                     matrix[j,k] = matrix[k,j]
     return matrix
 
-def doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT):
-    car_NO = 1
-    cap =CAPACITY
-    NowPot = DEPOT
-    Node = NowPot
-    edge = (NowPot,NowPot)
-    output1 = ('s 0,')
-    cost = 0
-    flag = 0
-    route= [[]]
-    while len(arcs)>0:
-        min = max_value
-        flagValue = 0
-        for i in arcs:
-            if matrixD[i[0], i[1]] <= cap :
-                flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
-                flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
-        if min != max_value:
-            min = max_value
-            cap -= matrixD[edge[0],edge[1]]
-            arcs.remove(edge)
-            cost += matrixC[NowPot,Node]
-            a = Node
-            NowPot = edge[flag]
-            cost += edge[2]
-            b = edge[flag]
-            route[car_NO-1].append((a,b))
-            output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
-        else:
-            route.append([])
-            b = DEPOT
-            output1 += '0,0,'
-            cost += matrixC[NowPot,DEPOT]
-            NowPot = 0
-            cap = CAPACITY
-            car_NO += 1
-    output1 +='0'
-    cost += matrixC[NowPot, 0]
-    return route,car_NO, output1, cost
-
-def getOneTrip(matrixC, arcs, matrixD, CAPACITY, DEPOT):
+def doScanning(matrixC, arcs, matrixD, CAPACITY, DEPOT, type):
     car_NO = 1
     cap =CAPACITY
     NowPot = DEPOT
@@ -94,8 +46,18 @@ def getOneTrip(matrixC, arcs, matrixD, CAPACITY, DEPOT):
         flagValue = 0
         for i in arcs:
             if matrixD[i[0], i[1]] <= cap :
-                flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
-                flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                if type == 0:
+                    flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = maxDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                elif type ==1:
+                    flagValue,min,Node,edge,flag = minDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = minDemSC(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                elif type ==2:
+                    flagValue,min,Node,edge,flag = maxDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = maxDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
+                elif type ==3:
+                    flagValue,min,Node,edge,flag = minDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[0], matrixC, matrixD, 1)
+                    flagValue,min,Node,edge,flag = minDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, i[1], matrixC, matrixD, 0)
         if min != max_value:
             min = max_value
             cap -= matrixD[edge[0],edge[1]]
@@ -106,15 +68,17 @@ def getOneTrip(matrixC, arcs, matrixD, CAPACITY, DEPOT):
             cost += edge[2]
             b = edge[flag]
             route.append((a,b))
+            output1 += '(' + str(a + 1) + ',' + str(b + 1) + '),'
         else:
             b = DEPOT
             output1 += '0,0,'
-            NowPot = 0
+            cost += matrixC[NowPot,DEPOT]
+            NowPot = DEPOT
             cap = CAPACITY
             car_NO += 1
     output1 +='0'
     cost += matrixC[NowPot, 0]
-    return route, cost
+    return route
 
 def minDisNode(DEPOT, Node, edge, flag, min, NowPot, flagValue, i, point, matrixC, matrixD, theOtherNodeIndex):
     if  min > matrixC[NowPot, point]:
@@ -214,39 +178,66 @@ def BuildMap(way):
     matrixC = (floyed(matrixC))
     return matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs
 
-rr = []
-
-def localSearch(matrixC, matrixD, trip, n, index, CAPACITY, VEHICLES):
-    cap = 0
+def localSearch(route, matrixC, matrixD, CAPACITY, DEPOT, VEHICLES):
+    rr = []
+    localSearchSplit(route, matrixC, matrixD, 0, 0, CAPACITY, [], DEPOT, 1, VEHICLES, rr)
+    node = []
+    cost_node = max_value
+    for i in rr:
+        if i[0] < cost_node:
+            cost_node = i[0]
+            node = i[1]
+    routeFinal = []
+    node = [-1] + node + [len(route) - 1]
+    for i in range(0, len(node) - 1):
+        routeFinal.append(route[node[i] + 1:node[i + 1] + 1])
+    output1 = 's 0,'
     cost = 0
-    for i in range(index, len(trip)):
-        if i != len(trip)-1:
-            cost += matrixC[trip[i][1],DEPOT]+matrixC[DEPOT,trip[i+1][0]]-matrixC[trip[i][1],trip[i+1][0]]
-        cap += matrixD[trip[i][0],trip[i][1]]
-        if cap > CAPACITY/2:
-            if cap < CAPACITY:
-                if n.carNum < VEHICLES:
-                    subnode = node(n.route, n.cost+cost, n.carNum+1)
-                    localSearch(matrixC, matrixD, trip, subnode, i+1, CAPACITY, VEHICLES)
+    for i in range(0, len(routeFinal)):
+        NowPot = DEPOT
+        for j in routeFinal[i]:
+            cost += matrixC[NowPot, j[0]]
+            output1 += '(' + str(j[0] + 1) + ',' + str(j[1] + 1) + '),'
+            NowPot = j[1]
+        cost += matrixC[DEPOT, NowPot]
+        if i < len(routeFinal) - 1:
+            output1 += '0,0,'
+    output1 += '0'
+    arcCost = 0
+    for i in arcs:
+        arcCost += i[2]
+    return routeFinal, output1, arcCost+cost
+
+def localSearchSplit(trip, matrixC, matrixD, index, cost, CAPACITY, route, DEPOT, carNum, VEHICLES, rr):
+    cap = 0
+    for i in range(index,len(trip)):
+        cap = cap + matrixD[trip[i][0],trip[i][1]]
+        if cap > CAPACITY//2:
+            if cap <= CAPACITY:
                 if i == len(trip)-1:
-                    rr.append(n)
+                    rr.append((cost,route))
+                    break
+                if carNum < VEHICLES:
+                    route_temp = copy.deepcopy(route)
+                    route_temp.append(i)
+                    cost_temp = cost + matrixC[DEPOT,trip[i][1]]+matrixC[DEPOT,trip[i+1][0]]-matrixC[trip[i][1],trip[i+1][0]]
+                    localSearchSplit(trip, matrixC, matrixD, i+1, cost_temp, CAPACITY, route_temp, DEPOT, carNum+1, VEHICLES, rr)
+    return rr
 
-
-
-way = 'C:/Users/wwzzy/PycharmProjects/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-e1-A.dat'
+begin_time = time.time()
+#arguments = sys.argv
+#way = arguments[1]
+#max_time = int(arguments[3])
+#seed = float(arguments[5])
+way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat'
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
-arcs1 = copy.deepcopy(arcs)
-route,cost = getOneTrip(matrixC, arcs1, matrixD,CAPACITY, DEPOT)
-n = node([],0,1)
-localSearch(matrixC, matrixD, route, n, -1, CAPACITY, VEHICLES)
-print(rr)
-cc = max_value
-FinalRoute = []
-for nn in rr:
-    if nn.cost < cc:
-        FinalRoute = nn.route
-        cc = nn.cost
-print(route)
+output1 = ''
+cost =max_value
+for type in range(0,4):
+    route = doScanning(matrixC, copy.deepcopy(arcs), matrixD, CAPACITY, DEPOT,0)
+    routeFinal, output, cost_temp = localSearch(route, matrixC, matrixD, CAPACITY, DEPOT, VEHICLES)
+    if cost > cost_temp:
+        output1 = output
+        cost = cost_temp
+print(output1)
 print(cost)
-print(FinalRoute)
-print(cc+cost)
