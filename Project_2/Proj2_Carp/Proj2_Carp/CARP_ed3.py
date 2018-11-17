@@ -226,7 +226,7 @@ def localSearchSplit(trip, matrixC, matrixD, index, cost, CAPACITY, route, DEPOT
                     localSearchSplit(trip, matrixC, matrixD, i+1, cost_temp, CAPACITY, route_temp, DEPOT, carNum+1, VEHICLES, rr)
     return rr
 
-def MS(route_in, matrixC, matrixD, CAPACITY, DEPOT, arcs, output_ini, cost_ini):
+def MS(route_in, matrixC, matrixD, CAPACITY, DEPOT, output_ini, cost_ini):
     routeTwoDimension = copy.deepcopy(route_in)
     tripChoice = []
     for i in range(0, 2*len(routeTwoDimension)//3):
@@ -257,6 +257,97 @@ def MS(route_in, matrixC, matrixD, CAPACITY, DEPOT, arcs, output_ini, cost_ini):
     else:
         return route_in, output_ini, cost_ini
 
+def getPop(size, IniRoute, output1, cost, matrixC, matrixD, CAPACITY, DEPOT):
+    prop = [[IniRoute, output1, cost]]
+    reply = 0
+    while len(prop)<size:
+        Clone = True
+        if reply > 15:
+            break
+        reply = 0
+        while Clone:
+            route_ini, output_ini, cost_ini = MS(prop[random.randint(0,len(prop)-1)][0], matrixC, matrixD, CAPACITY, DEPOT, output1, cost)
+            reply+=1
+            for i in prop:
+                if i[1]==output_ini:
+                    Clone = True
+                    break
+                Clone = False
+            if reply > 15:
+                break
+        prop.append([route_ini,output_ini,cost_ini])
+    return prop
+
+def crossover(matrixC, matrixD, CAPACITY, DEPOT, s1_temp, s2_temp):
+    s1, s2 = copy.deepcopy(s1_temp), copy.deepcopy(s2_temp)
+    i1 , i2 = random.randint(0,len(s1)-1), random.randint(0,len(s2)-1)
+    r1 = s1[i1]
+    r2 = s2[i2]
+    a1 = random.randint(0, len(r1)-1)
+    a2 = random.randint(0, len(r2)-1)
+    r11, r12 = copy.deepcopy(r1[0:a1]), copy.deepcopy(r1[a1:])
+    r21, r22 = copy.deepcopy(r2[0:a2]), copy.deepcopy(r2[a2:])
+    print(r12)
+    print(r22)
+    needDelete = []
+    for i in r22:
+        if i not in r12:
+            needDelete.append(i)
+    print(needDelete)
+    delete = []
+    for k in needDelete:
+        for i in range(0, len(s1)):
+            for j in range(0, len(s1[i])):
+                if s1[i][j][0] == k[0] and s1[i][j][1] == k[1]:
+                    del s1[i][j]
+                    delete.append(k)
+                    break
+    print(delete)
+    needAdd=[]
+    for i in r12:
+        if i not in r22:
+            needAdd.append(i)
+    print(needAdd)
+    s1 = s1[0:i1]+[r11+r22]+s1[i1+1:]
+    while len(needAdd)>0:
+        edge = needAdd.pop()
+        cost_extra = matrixC[DEPOT,edge[0]]+matrixC[edge[1],DEPOT]
+        position = (len(s1), 0)
+        for i in range(0, len(s1)):
+            cap = matrixD[edge[0],edge[1]]
+            for j in s1[i]:
+                cap += matrixD[j[0],j[1]]
+            if cap <= CAPACITY:
+                cost_temp = matrixC[DEPOT,edge[0]]+matrixC[edge[1],s1[i][0][0]]
+                position_temp = (i,0)
+                if cost_extra>cost_temp:
+                    cost_extra = cost_temp
+                    position = position_temp
+                for j in range(0, len(s1[i])-1):
+                    cost_temp = matrixC[s1[i][j][1],edge[0]]+matrixC[edge[1],s1[i][j+1][0]]
+                    position_temp = (i,j+1)
+                    if cost_extra > cost_temp:
+                        cost_extra = cost_temp
+                        position = position_temp
+                cost_temp = matrixC[s1[i][len(s1[i])-1][1], edge[0]]+matrixC[edge[1],DEPOT]
+                position_temp = (i, len(s1[i]))
+                if cost_extra > cost_temp:
+                    cost_extra = cost_temp
+                    position = position_temp
+        if position[0] == len(s1):
+            s1.append([edge])
+        else:
+            s1[position[0]].insert(position[1], edge)
+    IniRoute, output1, cost = MS(s1, matrixC, matrixD, CAPACITY, DEPOT, '', max_value)
+    total = 0
+    for i in s1:
+        print(i)
+        total += len(i)
+    print(output1)
+    print('q %d'%cost)
+    print(total)
+
+
 begin_time = time.time()
 #arguments = sys.argv
 #way = arguments[1]
@@ -278,11 +369,6 @@ for type in range(0,4):
         output1 = output
         cost = cost_temp
         IniRoute = routeFinal
-first_time = time.time()-begin_time
-print(first_time)
-while time.time() - begin_time < 30 -first_time:
-    IniRoute,output1,cost = MS(IniRoute, matrixC, matrixD, CAPACITY, DEPOT, arcs, output1, cost)
-
-print(output1)
-print('q %d'%cost)
-print(time.time()-begin_time)
+pop = getPop(20, IniRoute, output1, cost, matrixC, matrixD, CAPACITY, DEPOT)
+i2, i1 = random.randint(0, len(pop)-1), random.randint(0, len(pop)-1)
+crossover(matrixC, matrixD, CAPACITY, DEPOT,copy.deepcopy(pop[i1][0]), copy.deepcopy(pop[i2][0]))
