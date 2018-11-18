@@ -407,12 +407,12 @@ def single2opt(route_in, matrixC, matrixD, CAPACITY, DEPOT, output_ini, cost_ini
 
 
 begin_time = time.time()
-arguments = sys.argv
-way = arguments[1]
-max_time = int(arguments[3])
-seed = float(arguments[5])
-#way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat'
-#max_time = 120
+#arguments = sys.argv
+#way = arguments[1]
+#max_time = int(arguments[3])
+#seed = float(arguments[5])
+way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-e1-A.dat'
+max_time = 150
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
 solution_ini = []
 while time.time()-begin_time<max_time//6:
@@ -442,7 +442,7 @@ while time.time()-begin_time<max_time//6:
 pop = solution_ini
 #for i in range(0,4):
 #    pop += getPop(4, solution_ini[i][0], solution_ini[i][1], solution_ini[i][2], matrixC, matrixD, CAPACITY, DEPOT)
-for i in range(0,100):
+for i in range(0,1000):
     for i in pop:
         if time.time() -begin_time>max_time-5:
             break

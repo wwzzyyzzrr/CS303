@@ -280,72 +280,107 @@ def getPop(size, IniRoute, output1, cost, matrixC, matrixD, CAPACITY, DEPOT):
 
 def crossover(matrixC, matrixD, CAPACITY, DEPOT, s1_temp, s2_temp):
     s1, s2 = copy.deepcopy(s1_temp), copy.deepcopy(s2_temp)
-    i1 , i2 = random.randint(0,len(s1)-1), random.randint(0,len(s2)-1)
-    r1 = s1[i1]
-    r2 = s2[i2]
-    a1 = random.randint(0, len(r1)-1)
-    a2 = random.randint(0, len(r2)-1)
-    r11, r12 = copy.deepcopy(r1[0:a1]), copy.deepcopy(r1[a1:])
-    r21, r22 = copy.deepcopy(r2[0:a2]), copy.deepcopy(r2[a2:])
-    print(r12)
-    print(r22)
-    needDelete = []
-    for i in r22:
-        if i not in r12:
-            needDelete.append(i)
-    print(needDelete)
-    delete = []
-    for k in needDelete:
-        for i in range(0, len(s1)):
-            for j in range(0, len(s1[i])):
-                if s1[i][j][0] == k[0] and s1[i][j][1] == k[1]:
-                    del s1[i][j]
-                    delete.append(k)
-                    break
-    print(delete)
-    needAdd=[]
-    for i in r12:
-        if i not in r22:
-            needAdd.append(i)
-    print(needAdd)
-    s1 = s1[0:i1]+[r11+r22]+s1[i1+1:]
-    while len(needAdd)>0:
-        edge = needAdd.pop()
-        cost_extra = matrixC[DEPOT,edge[0]]+matrixC[edge[1],DEPOT]
-        position = (len(s1), 0)
-        for i in range(0, len(s1)):
-            cap = matrixD[edge[0],edge[1]]
-            for j in s1[i]:
-                cap += matrixD[j[0],j[1]]
-            if cap <= CAPACITY:
-                cost_temp = matrixC[DEPOT,edge[0]]+matrixC[edge[1],s1[i][0][0]]
-                position_temp = (i,0)
-                if cost_extra>cost_temp:
-                    cost_extra = cost_temp
-                    position = position_temp
-                for j in range(0, len(s1[i])-1):
-                    cost_temp = matrixC[s1[i][j][1],edge[0]]+matrixC[edge[1],s1[i][j+1][0]]
-                    position_temp = (i,j+1)
+    totals = total = 0
+    for i in s1:
+        totals += len(i)
+    while total != totals:
+        s1, s2 = copy.deepcopy(s1_temp), copy.deepcopy(s2_temp)
+        i1 , i2 = random.randint(0,len(s1)-1), random.randint(0,len(s2)-1)
+        r1 = s1[i1]
+        r2 = s2[i2]
+        a1 = random.randint(0, len(r1)-1)
+        a2 = random.randint(0, len(r2)-1)
+        r11, r12 = copy.deepcopy(r1[0:a1]), copy.deepcopy(r1[a1:])
+        r21, r22 = copy.deepcopy(r2[0:a2]), copy.deepcopy(r2[a2:])
+        needDelete = []
+        for i in r22:
+            if i not in r12 and (i[1],i[0]) not in r12:
+                needDelete.append(i)
+        delete = []
+        for k in needDelete:
+            for i in range(0, len(s1)):
+                length = len(s1[i])
+                for j in range(0, len(s1[i])):
+                    if (s1[i][j][0] == k[0] and s1[i][j][1] == k[1]) or (s1[i][j][1] == k[0] and s1[i][j][0] == k[1]):
+                        while len(s1[i]) == length:
+                            del s1[i][j]
+                        delete.append(k)
+                        break
+        needAdd=[]
+        for i in r12:
+            if i not in r22 and (i[1],i[0]) not in r22:
+                needAdd.append(i)
+        s1[i1] = r11+r22
+        add = []
+        for edge in needAdd:
+            cost_extra = matrixC[DEPOT,edge[0]]+matrixC[edge[1],DEPOT]
+            position = (len(s1), 0, 0)
+            for i in range(0, len(s1)):
+                cap = matrixD[edge[0],edge[1]]
+                for j in s1[i]:
+                    cap += matrixD[j[0],j[1]]
+                if cap <= CAPACITY:
+                    try:
+                        cost_temp = matrixC[DEPOT,edge[0]]+matrixC[edge[1],s1[i][0][0]]
+                    except:
+                        continue
+                    position_temp = (i,0,0)
+                    if cost_extra>cost_temp:
+                        cost_extra = cost_temp
+                        position = position_temp
+                    try:
+                        cost_temp = matrixC[DEPOT,edge[1]]+matrixC[edge[0],s1[i][0][0]]
+                    except:
+                        continue
+                    position_temp = (i,0,1)
+                    if cost_extra>cost_temp:
+                        cost_extra = cost_temp
+                        position = position_temp
+                    for j in range(0, len(s1[i])-1):
+                        cost_temp = matrixC[s1[i][j][1],edge[0]]+matrixC[edge[1],s1[i][j+1][0]]
+                        position_temp = (i,j+1,0)
+                        if cost_extra > cost_temp:
+                            cost_extra = cost_temp
+                            position = position_temp
+                        cost_temp = matrixC[s1[i][j][1],edge[1]]+matrixC[edge[0],s1[i][j+1][0]]
+                        position_temp = (i,j+1,1)
+                        if cost_extra > cost_temp:
+                            cost_extra = cost_temp
+                            position = position_temp
+                    cost_temp = matrixC[s1[i][len(s1[i])-1][1], edge[0]]+matrixC[edge[1],DEPOT]
+                    position_temp = (i, len(s1[i]),0)
                     if cost_extra > cost_temp:
                         cost_extra = cost_temp
                         position = position_temp
-                cost_temp = matrixC[s1[i][len(s1[i])-1][1], edge[0]]+matrixC[edge[1],DEPOT]
-                position_temp = (i, len(s1[i]))
-                if cost_extra > cost_temp:
-                    cost_extra = cost_temp
-                    position = position_temp
-        if position[0] == len(s1):
-            s1.append([edge])
-        else:
-            s1[position[0]].insert(position[1], edge)
-    IniRoute, output1, cost = MS(s1, matrixC, matrixD, CAPACITY, DEPOT, '', max_value)
-    total = 0
-    for i in s1:
-        print(i)
-        total += len(i)
-    print(output1)
-    print('q %d'%cost)
-    print(total)
+                    cost_temp = matrixC[s1[i][len(s1[i])-1][1], edge[1]]+matrixC[edge[0],DEPOT]
+                    position_temp = (i, len(s1[i]),1)
+                    if cost_extra > cost_temp:
+                        cost_extra = cost_temp
+                        position = position_temp
+            if position[0] == len(s1):
+                if position[2] == 0:
+                    s1.append([edge])
+                    add.append(edge)
+                else:
+                    s1.append([(edge[1],edge[0])])
+                    add.append((edge[1],edge[0]))
+            else:
+                if position[2] == 0:
+                    s1[position[0]].insert(position[1], edge)
+                    add.append(edge)
+                else:
+                    s1[position[0]].insert(position[1], (edge[1],edge[0]))
+                    add.append((edge[1],edge[0]))
+        #IniRoute, output1, cost = MS(s1, matrixC, matrixD, CAPACITY, DEPOT, '', max_value)
+        route = []
+        for i in s1:
+            route = route + i
+        IniRoute = localSearch(route, matrixC, matrixD, CAPACITY, DEPOT, len(s1)+1)
+        output1,cost = getOutputCost(IniRoute,matrixC,arcs)
+        total = 0
+        for i in s1:
+            total += len(i)
+    return IniRoute, output1, cost
 
 
 begin_time = time.time()
@@ -353,7 +388,7 @@ begin_time = time.time()
 #way = arguments[1]
 #max_time = int(arguments[3])
 #seed = float(arguments[5])
-way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat'
+way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat'
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
 output1 = ''
 cost =max_value
@@ -370,5 +405,33 @@ for type in range(0,4):
         cost = cost_temp
         IniRoute = routeFinal
 pop = getPop(20, IniRoute, output1, cost, matrixC, matrixD, CAPACITY, DEPOT)
-i2, i1 = random.randint(0, len(pop)-1), random.randint(0, len(pop)-1)
-crossover(matrixC, matrixD, CAPACITY, DEPOT,copy.deepcopy(pop[i1][0]), copy.deepcopy(pop[i2][0]))
+sub = []
+for i in range(0,60):
+    if time.time()-begin_time > 110:
+        break
+    i2, i1 = random.randint(0, len(pop) - 1), random.randint(0, len(pop) - 1)
+    r1,o1,c1 = crossover(matrixC, matrixD, CAPACITY, DEPOT,copy.deepcopy(pop[i1][0]), copy.deepcopy(pop[i2][0]))
+    while c1>pop[i1][2] and c1>pop[i2][2]:
+        if time.time() - begin_time > 110:
+            break
+        r1, o1, c1 = crossover(matrixC, matrixD, CAPACITY, DEPOT, copy.deepcopy(pop[i1][0]), copy.deepcopy(pop[i2][0]))
+    if c1 <= pop[i1][2] and c1<=pop[i2][2]:
+        if pop[i1][2]<pop[i2][2]:
+            del pop[i1]
+        else:
+            del pop[i2]
+    elif c1 <= pop[i1][2]:
+        del  pop[i1]
+    else:
+        del  pop[i2]
+    pop.append([copy.deepcopy(r1),copy.deepcopy(o1),copy.deepcopy(c1)])
+c_l = max_value
+output = pop[0][1]
+for i in pop:
+    if (i[2])<c_l:
+        c_l = i[2]
+        output = i[1]
+print(output)
+print('q %d'%c_l)
+print(time.time()-begin_time)
+exit(0)
