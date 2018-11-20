@@ -232,7 +232,8 @@ def localSearchSplit(trip, matrixC, matrixD, index, cost, CAPACITY, route, DEPOT
 def MS(route_in, matrixC, matrixD, CAPACITY, DEPOT, output_ini, cost_ini):
     routeTwoDimension = copy.deepcopy(route_in)
     tripChoice = []
-    for i in range(0, 2*len(routeTwoDimension)//3):
+    size = random.randint(len(routeTwoDimension)//2,2*len(routeTwoDimension)//3)
+    for i in range(0, size):
         p = random.randint(0, len(routeTwoDimension)-1)
         tripChoice.append(routeTwoDimension[p])
         del routeTwoDimension[p]
@@ -411,10 +412,11 @@ begin_time = time.time()
 #way = arguments[1]
 #max_time = int(arguments[3])
 #seed = float(arguments[5])
-way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-e1-A.dat'
-max_time = 150
+random.seed(43242)
+way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat'
+max_time = 60
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
-solution_ini = []
+pop = []
 while time.time()-begin_time<max_time//6:
     routeTwoDimension = doScanning(matrixC, copy.deepcopy(arcs), matrixD, CAPACITY, DEPOT,type)
     route = []
@@ -423,30 +425,29 @@ while time.time()-begin_time<max_time//6:
     routeFinal = localSearch(route, matrixC, matrixD, CAPACITY, DEPOT, len(routeTwoDimension))
     output, cost_temp = getOutputCost(routeFinal,matrixC,arcs)
     repeat = False
-    for i in solution_ini:
+    for i in pop:
         if output == i[1]:
             repeat = True
             break
     if repeat == False:
-        if len(solution_ini)<30:
-            solution_ini.append([routeFinal, output, cost_temp])
+        if len(pop)<60:
+            pop.append([routeFinal, output, cost_temp])
         else:
             r_index = 0
-            r_cost = solution_ini[r_index][2]
+            r_cost = pop[r_index][2]
             for i in range(0, 30):
-                if r_cost < solution_ini[i][2]:
+                if r_cost < pop[i][2]:
                     r_index= i
-                    r_cost = solution_ini[r_index][2]
+                    r_cost = pop[r_index][2]
             if r_cost > cost_temp:
-                solution_ini[r_index] = copy.deepcopy([routeFinal,output,cost_temp])
-pop = solution_ini
-#for i in range(0,4):
-#    pop += getPop(4, solution_ini[i][0], solution_ini[i][1], solution_ini[i][2], matrixC, matrixD, CAPACITY, DEPOT)
-for i in range(0,1000):
+                pop[r_index] = copy.deepcopy([routeFinal,output,cost_temp])
+
+for i in range(0,100):
     for i in pop:
-        if time.time() -begin_time>max_time-5:
+        if time.time() -begin_time>max_time-3:
             break
         i[0],i[1],i[2] = MS(i[0], matrixC, matrixD, CAPACITY, DEPOT,i[1],i[2])
+
 #print(time.time() - begin_time)
 c_l = pop[0][2]
 output = pop[0][1]
@@ -456,5 +457,5 @@ for i in pop:
         output = i[1]
 print(output)
 print('q %d'%c_l)
-#print(time.time()-begin_time)
+print(time.time()-begin_time)
 exit(0)

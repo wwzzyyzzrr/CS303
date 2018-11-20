@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17159689-dee8-4d62-a434-b8ed8747a8d1" name="Default" comment="The Third Editon of Pro1">
-      <change afterPath="$PROJECT_DIR$/Project_2/CARP_ed4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Project_2/CARP_ed5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Project_2/Proj2_Carp/text.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_ed1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_2/CARP_ed5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_ed5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_2/CARP_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_solver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project_2/CARP_solver.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_solver.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_ed3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_ed3.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,9 +17,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CS303$CARP_ed4.coverage" NAME="CARP_ed4 Coverage Results" MODIFIED="1542531979824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$CARP_ed4.coverage" NAME="CARP_ed4 Coverage Results" MODIFIED="1542532696974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$main.coverage" NAME="main Coverage Results" MODIFIED="1540699058884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$CARP.coverage" NAME="CARP Coverage Results" MODIFIED="1542187479222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$CARP_ed5.coverage" NAME="CARP_ed5 Coverage Results" MODIFIED="1542555109158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed2.coverage" NAME="CARP_ed2 Coverage Results" MODIFIED="1542474967905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed3__1_.coverage" NAME="CARP_ed3 (1) Coverage Results" MODIFIED="1542525585154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_solver.coverage" NAME="CARP_solver Coverage Results" MODIFIED="1542440274434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
@@ -121,7 +118,7 @@
       <file leaf-file-name="CARP_ed2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
+            <state relative-caret-position="634">
               <caret line="283" column="33" lean-forward="true" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
@@ -145,8 +142,8 @@
       <file leaf-file-name="CARP_ed3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="426" column="71" lean-forward="true" selection-start-line="408" selection-end-line="426" selection-end-column="71" />
+            <state relative-caret-position="194">
+              <caret line="413" column="16" lean-forward="true" selection-start-line="413" selection-start-column="16" selection-end-line="413" selection-end-column="16" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
                 <element signature="e#178#564#0" />
@@ -202,8 +199,8 @@
       <file leaf-file-name="CARP_ed5.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="417" column="36" lean-forward="true" selection-start-line="417" selection-start-column="36" selection-end-line="417" selection-end-column="36" />
+            <state relative-caret-position="286">
+              <caret line="418" column="8" lean-forward="true" selection-start-line="418" selection-start-column="8" selection-end-line="418" selection-end-column="8" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
                 <element signature="e#224#610#0" />
@@ -225,7 +222,7 @@
                 <element signature="e#11815#11892#0" />
                 <element signature="e#11976#14808#0" />
                 <element signature="e#15305#16005#0" />
-                <element signature="e#16421#17352#0" />
+                <element signature="e#16413#17281#0" />
               </folding>
             </state>
           </provider>
@@ -234,8 +231,8 @@
       <file leaf-file-name="CARP_solver.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="414" column="1" selection-start-line="414" selection-start-column="1" selection-end-line="414" selection-end-column="1" />
+            <state relative-caret-position="876">
+              <caret line="470" column="13" lean-forward="true" selection-start-line="470" selection-start-column="13" selection-end-line="470" selection-end-column="13" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
                 <element signature="e#224#610#0" />
@@ -249,14 +246,13 @@
                 <element signature="e#7013#7433#0" />
                 <element signature="e#7480#7947#0" />
                 <element signature="e#8058#8725#0" />
-                <element signature="e#8806#9859#0" />
-                <element signature="e#9943#10549#0" />
-                <element signature="e#10623#15216#0" />
-                <element signature="e#11226#11306#0" />
-                <element signature="e#11368#11761#0" />
-                <element signature="e#11815#11892#0" />
-                <element signature="e#11976#14808#0" />
-                <element signature="e#15305#16005#0" />
+                <element signature="e#10001#10607#0" />
+                <element signature="e#10681#15274#0" />
+                <element signature="e#11284#11364#0" />
+                <element signature="e#11426#11819#0" />
+                <element signature="e#11873#11950#0" />
+                <element signature="e#12034#14866#0" />
+                <element signature="e#15363#16063#0" />
               </folding>
             </state>
           </provider>
@@ -356,9 +352,9 @@
         <option value="$PROJECT_DIR$/Project_2/Proj2_Carp/text.py" />
         <option value="$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_ed3.py" />
         <option value="$PROJECT_DIR$/Project_2/CARP_ed3.py" />
+        <option value="$PROJECT_DIR$/Project_2/CARP_ed4.py" />
         <option value="$PROJECT_DIR$/Project_2/CARP_solver.py" />
         <option value="$PROJECT_DIR$/Project_2/CARP_ed5.py" />
-        <option value="$PROJECT_DIR$/Project_2/CARP_ed4.py" />
       </list>
     </option>
   </component>
@@ -450,7 +446,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.CARP_ed3 (1)">
+  <component name="RunManager" selected="Python.CARP_ed5">
     <configuration name="CARP_ed2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CS303" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -527,7 +523,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="text" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="CARP_ed5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CS303" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -535,12 +531,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_2/Proj2_Carp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_2/Proj2_Carp/text.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_2/CARP_ed5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -549,17 +545,17 @@
     <list>
       <item itemvalue="Python.CARP_ed2" />
       <item itemvalue="Python.CARP_ed3" />
-      <item itemvalue="Python.text" />
       <item itemvalue="Python.CARP_ed3 (1)" />
       <item itemvalue="Python.CARP_ed4" />
+      <item itemvalue="Python.CARP_ed5" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.CARP_ed5" />
         <item itemvalue="Python.CARP_ed4" />
         <item itemvalue="Python.CARP_ed3 (1)" />
         <item itemvalue="Python.CARP_ed3" />
         <item itemvalue="Python.CARP_ed2" />
-        <item itemvalue="Python.text" />
       </list>
     </recent_temporary>
   </component>
@@ -628,7 +624,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.35817575" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" weight="0.35817575" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32925472" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12739871" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -690,7 +686,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="28" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -1073,7 +1069,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
+        <state relative-caret-position="634">
           <caret line="283" column="33" lean-forward="true" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
@@ -1093,33 +1089,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="426" column="71" lean-forward="true" selection-start-line="408" selection-end-line="426" selection-end-column="71" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-            <element signature="e#178#564#0" />
-            <element signature="e#590#906#0" />
-            <element signature="e#975#2888#0" />
-            <element signature="e#3006#3447#0" />
-            <element signature="e#3565#4006#0" />
-            <element signature="e#4122#4702#0" />
-            <element signature="e#4818#5398#0" />
-            <element signature="e#5423#6699#0" />
-            <element signature="e#6774#7194#0" />
-            <element signature="e#7241#7708#0" />
-            <element signature="e#7819#8486#0" />
-            <element signature="e#8573#9626#0" />
-            <element signature="e#9704#10167#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="414" column="1" selection-start-line="414" selection-start-column="1" selection-end-line="414" selection-end-column="1" />
+        <state relative-caret-position="876">
+          <caret line="470" column="13" lean-forward="true" selection-start-line="470" selection-start-column="13" selection-end-line="470" selection-end-column="13" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
             <element signature="e#224#610#0" />
@@ -1133,14 +1106,13 @@
             <element signature="e#7013#7433#0" />
             <element signature="e#7480#7947#0" />
             <element signature="e#8058#8725#0" />
-            <element signature="e#8806#9859#0" />
-            <element signature="e#9943#10549#0" />
-            <element signature="e#10623#15216#0" />
-            <element signature="e#11226#11306#0" />
-            <element signature="e#11368#11761#0" />
-            <element signature="e#11815#11892#0" />
-            <element signature="e#11976#14808#0" />
-            <element signature="e#15305#16005#0" />
+            <element signature="e#10001#10607#0" />
+            <element signature="e#10681#15274#0" />
+            <element signature="e#11284#11364#0" />
+            <element signature="e#11426#11819#0" />
+            <element signature="e#11873#11950#0" />
+            <element signature="e#12034#14866#0" />
+            <element signature="e#15363#16063#0" />
           </folding>
         </state>
       </provider>
@@ -1175,10 +1147,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="413" column="16" lean-forward="true" selection-start-line="413" selection-start-column="16" selection-end-line="413" selection-end-column="16" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+            <element signature="e#178#564#0" />
+            <element signature="e#590#906#0" />
+            <element signature="e#975#2888#0" />
+            <element signature="e#3006#3447#0" />
+            <element signature="e#3565#4006#0" />
+            <element signature="e#4122#4702#0" />
+            <element signature="e#4818#5398#0" />
+            <element signature="e#5423#6699#0" />
+            <element signature="e#6774#7194#0" />
+            <element signature="e#7241#7708#0" />
+            <element signature="e#7819#8486#0" />
+            <element signature="e#8573#9626#0" />
+            <element signature="e#9704#10167#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="417" column="36" lean-forward="true" selection-start-line="417" selection-start-column="36" selection-end-line="417" selection-end-column="36" />
+        <state relative-caret-position="286">
+          <caret line="418" column="8" lean-forward="true" selection-start-line="418" selection-start-column="8" selection-end-line="418" selection-end-column="8" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
             <element signature="e#224#610#0" />
@@ -1200,7 +1195,7 @@
             <element signature="e#11815#11892#0" />
             <element signature="e#11976#14808#0" />
             <element signature="e#15305#16005#0" />
-            <element signature="e#16421#17352#0" />
+            <element signature="e#16413#17281#0" />
           </folding>
         </state>
       </provider>
