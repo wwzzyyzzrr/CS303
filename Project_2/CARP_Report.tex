@@ -17,6 +17,7 @@
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 \usepackage{array}
 \usepackage{url}
+\usepackage{cite}
 \hyphenation{op-tical net-works semi-conduc-tor}
 \begin{document}
 
@@ -26,34 +27,82 @@
 Computer Science and Technology\\
 11610634@mail.sustc.edu.cn}}
 \maketitle
-\IEEEpeerreviewmaketitle
+\IEEEpeerreviewmaketitle 
 
 
 
 \section{Preliminaries}
+  \subsection{Software}
+  For this project, I write it by python, and the extra packets I used is numpy.
 
-\subsection{Software}
+  This project aim to design a excellent enough solution of a Capacitated Arc Routing Problems
 
-
-\subsection{Algorithm}
-
+  \subsection{Algorithm}
+The algorithm I used is Genetic Algorithm, and I design 4 rules to do the pathscanning,  
+design ulusoy, 2-opt, Merge-Split Operator to do the local-search and variation, and use a way that desrible in the paper 
+\cite{Memetic} to do the crossover.
 \section{Methodology}
-\subsection{Representation}
+  \subsection{Representation}
+  In my code, to design the algorithm, I write it into three part:
+  \begin{itemize}
+    \item $pathscanning$: Do the pathscanning, get the initial solution.
+    \item $local search$: For a ordered list, give a best split of it.
+    \item $varition$: For a solution change it and apply the change if the solution can be better.
+    \item $crossover$: Crossover two solution and generate a child solution.
+  \end{itemize}
+  \subsection{Architecture}
+    \begin{itemize}
+      \item Read data an storage:
+        \begin{itemize}
+          \item Open the filename incoming as the parameter
+          \item Storage all the node and the cost of edge in a matrix, and this matrix in fact is the adjacency matrix of the graph.
+          \item Storage all the edge and its demand.
+          \item Storage all the edge that have demand in a set.
+        \end{itemize}
+      \item Use floyd to the adjacency matrix of the graph.
+      \item pathscanning: 
+      Random use the step below in each step.
+        \begin{itemize}
+          \item maximize the distance
+          \item minimize the distance 
+          \item maximize the term dem(t)/sc(t)
+          \item maximize the term dem(t)/sc(t)
+        \end{itemize}
+      \item Choice 30 best result in the pathscanning and generate the initial population
+      \item Do MS(Merge-Split) Operator to the population.
+        \begin{itemize}
+          \item Merge and do split. Then use ulusory.
+        \end{itemize}
+      \item Crossover
+      \item Do MS Operator until the timeout.
+        \begin{itemize}
+          \item Merge and do split. Then use ulusory.
+        \end{itemize}
+    \end{itemize}
+  \subsection{Detail of Algorithm}
+For the detail of the algorithm, I will introduct it in five part.
+  \subsubsection{Read data}
+    When we read Data, I read the data from the file given, and storage the graph in two matrix, both two matrices can 
+    regard as the adjacency matrix of the graph, but on matrix is for the cost and one matrix is for the demand.
 
-\subsection{Architecture}
-
-\subsection{Detail of Algorithm}
- 
+    Then, I will storage all the information of the edges that have demand, including the two nodes and the cost. Why we need this set?
+    When we do pathscanning, we need know when we have satisy all the required edges, the node is used to get the destination point and the next depot.
+    The cost is used to calculation the final cost. Because for the required edge, we can't use the adjacency matrix after floyd. Because for the two node of the required edge, there may be other route between two nodes with less cost than the cost of the edge, then the value in the matrix will be the least coat, but we must use the cost in the edge.
+    The last step is do floyed to the adiacency matrix.
+  \subsubsection{pathscanning}
+    After read data and storage, I will do the pathscanning and get the initial population.
+    When I do the pathscanning, I will use the set that I storage the required edges. 
+    In each step, I will scan the set and choice the best edge. Firstly, I will choice the closest one, if there is many node have the least cost, I will apply four rules randomly.
+  \subsubsection{}
 
 \section{Empirical Verification}
-\subsection{Design}
+  \subsection{Design}
 
-\subsection{Performance}
+  \subsection{Performance}
 
-\subsection{Result}
+  \subsection{Result}
 
-\subsection{Analysis}
-
+  \subsection{Analysis}
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,mylib}
