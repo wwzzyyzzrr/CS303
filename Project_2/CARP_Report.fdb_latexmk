@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex CARP_Report"] 1542773615 "CARP_Report.aux" "CARP_Report.bbl" "CARP_Report" 1542773616
+["bibtex CARP_Report"] 1542791792 "CARP_Report.aux" "CARP_Report.bbl" "CARP_Report" 1542791793
   "/usr/share/texmf-dist/bibtex/bib/IEEEtran/IEEEabrv.bib" 1536124397 20898 a5d2167c380db7dfff810b085c77ed63 ""
   "/usr/share/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1536124397 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "CARP_Report.aux" 1542773616 1292 7cd35aedfe3a09e2f2a8d68f71a6d2a6 ""
+  "CARP_Report.aux" 1542791792 1582 54f3bb799561e56ce7f236d74c5b42e1 ""
   "mylib.bib" 0 -1 0 ""
   (generated)
   "CARP_Report.bbl"
   "CARP_Report.blg"
-["pdflatex"] 1542773615 "/home/metaron/文件/CS303/Project_2/CARP_Report.tex" "CARP_Report.pdf" "CARP_Report" 1542773616
-  "/home/metaron/文件/CS303/Project_2/CARP_Report.tex" 1542773614 4653 a3da82ad3a40f78e36345edb3aa4cb4e ""
+["pdflatex"] 1542791792 "/home/metaron/文件/CS303/Project_2/CARP_Report.tex" "CARP_Report.pdf" "CARP_Report" 1542791793
+  "/home/metaron/文件/CS303/Project_2/CARP_Report.tex" 1542791792 7542 a4b480fc4d52cd69bea72ed350e2c826 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1536122179 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1536122179 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/helvetic/phvr7t.tfm" 1536122179 2520 53e01eef820ca829e42c1333c3fd02b9 ""
@@ -17,16 +17,20 @@
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmbi7t.tfm" 1536122179 2228 e564491c42a4540b5ebb710a75ff306c ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm" 1536122179 2124 2601a75482e9426d33db523edf23570a ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm" 1536122179 4408 25b74d011a4c66b7f212c0cc3c90061b ""
+  "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm" 1536122179 2680 312a2d12b1f1df8ee0212e7ba1962402 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm" 1536122179 2288 f478fc8fed18759effb59f3dad7f3084 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm" 1536122179 4640 532ca3305aad10cc01d769f3f91f1029 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1536122179 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1536122179 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1536122179 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1536122179 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1536122179 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1536122179 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1536122179 46026 6dab18b61c907687b520c72847215a68 ""
   "/usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1536122179 45458 a3faba884469519614ca56ba5f6b1de1 ""
   "/usr/share/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf" 1536122179 1372 788387fea833ef5963f4c5bffe33eb89 ""
   "/usr/share/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf" 1536122179 1380 0ea3a3370054be6da6acd929ec569f06 ""
+  "/usr/share/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf" 1536122179 1948 7330aeef3af211edff3b35fb2c12a0fd ""
   "/usr/share/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf" 1536122179 1384 a9d8adaf491ce34e5fba99dc7bbe5f39 ""
   "/usr/share/texmf-dist/tex/latex/IEEEtran/IEEEtran.cls" 1536124397 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "/usr/share/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty" 1536124470 26750 ce139c05a983e19ddca355b43e29c395 ""
@@ -52,10 +56,10 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1536122179 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1540696390 2883817 ac1ec7f56ee67479173d0f39ae45e7e0 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1540696371 7908120 e4d621261362b4416097476208c161d9 ""
-  "CARP_Report.aux" 1542773616 1292 7cd35aedfe3a09e2f2a8d68f71a6d2a6 ""
+  "CARP_Report.aux" 1542791792 1582 54f3bb799561e56ce7f236d74c5b42e1 ""
   "CARP_Report.bbl" 0 -1 0 "bibtex CARP_Report"
-  "CARP_Report.tex" 1542773614 4653 a3da82ad3a40f78e36345edb3aa4cb4e ""
+  "CARP_Report.tex" 1542791792 7542 a4b480fc4d52cd69bea72ed350e2c826 ""
   (generated)
   "CARP_Report.log"
-  "CARP_Report.pdf"
   "CARP_Report.aux"
+  "CARP_Report.pdf"

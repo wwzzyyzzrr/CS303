@@ -159,7 +159,7 @@ def BuildMap(way):
     line = a.readline()
     matrixC = np.array([[max_value for j in range(VERTICES)] for i in range(VERTICES)])
     matrixD = np.array([[0 for j in range(VERTICES)] for i in range(VERTICES)])
-    while (line != 'END'):
+    while (line != 'END' and line!='END\n'):
         temp = (line.split(' '))
         prop = []
         for i in temp:
@@ -413,8 +413,8 @@ begin_time = time.time()
 #max_time = int(arguments[3])
 #seed = float(arguments[5])
 random.seed(43242)
-way = 'C:/Users/Metaron/PyCharmProject/CS303/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat'
-max_time = 60
+way = '/home/metaron/Downloads/eglese/egl-s4-C.dat'
+max_time = 120
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
 pop = []
 while time.time()-begin_time<max_time//6:

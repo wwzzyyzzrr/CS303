@@ -467,12 +467,3 @@ for i in range(0,1000):
 
 #print(time.time() - begin_time)
 c_l = pop[0][2]
-output = pop[0][1]
-for i in pop:
-    if (i[2])<c_l:
-        c_l = i[2]
-        output = i[1]
-print(output)
-print('q %d'%c_l)
-#print(time.time()-begin_time)
-exit(0)

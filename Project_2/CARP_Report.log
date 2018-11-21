@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  21 NOV 2018 12:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  21 NOV 2018 17:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -278,12 +278,31 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.05249> not available
 LaTeX Warning: Citation `Memetic' on page 1 undefined on input line 43.
 
 LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 48.
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+[] $\OML/cmm/m/it/10 matrixC\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 edgeProp\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [1] \OMS/cmsy/m/n/10  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+[] $\OML/cmm/m/it/10 matrixD\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 edgeProp\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [1] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (38.36426pt too wide) in paragraph at lines 110--111
+[] $\OML/cmm/m/it/10 arcs:add\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 edgeProp\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [1]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [2]))$ 
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
 No file CARP_Report.bbl.
 
-LaTeX Warning: Citation `rivest1987game' on page 1 undefined on input line 109.
+LaTeX Warning: Citation `rivest1987game' on page 2 undefined on input line 145.
 
 
-LaTeX Warning: Citation `knuth1975analysis' on page 1 undefined on input line 110.
+LaTeX Warning: Citation `knuth1975analysis' on page 2 undefined on input line 146.
 
 
 ** Conference Paper **
@@ -296,29 +315,27 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
+Underfull \vbox (badness 1248) has occurred while \output is active []
 
-] [2
-
-] (./CARP_Report.aux)
+ [2] (./CARP_Report.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3951 strings out of 492642
- 58406 string characters out of 6135565
- 131970 words of memory out of 5000000
- 7837 multiletter control sequences out of 15000+600000
- 34516 words of font info for 66 fonts, out of 8000000 for 9000
+ 3981 strings out of 492642
+ 58862 string characters out of 6135565
+ 135970 words of memory out of 5000000
+ 7864 multiletter control sequences out of 15000+600000
+ 37318 words of font info for 69 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 27i,7n,32p,407b,251s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CARP_Report.pdf (2 pages, 61907 bytes).
+ 27i,7n,32p,409b,260s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on CARP_Report.pdf (2 pages, 87583 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 40 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -80,21 +80,57 @@ design ulusoy, 2-opt, Merge-Split Operator to do the local-search and variation,
         \end{itemize}
     \end{itemize}
   \subsection{Detail of Algorithm}
-For the detail of the algorithm, I will introduct it in five part.
-  \subsubsection{Read data}
-    When we read Data, I read the data from the file given, and storage the graph in two matrix, both two matrices can 
-    regard as the adjacency matrix of the graph, but on matrix is for the cost and one matrix is for the demand.
+  For the detail of the algorithm, I will introduct it in some parts.
+    \subsubsection{Read data and pretreatment}
+      When we read Data, I read the data from the file given, and storage the graph in two matrix, both two matrices can 
+      regard as the adjacency matrix of the graph, but on matrix is for the cost and one matrix is for the demand.
 
-    Then, I will storage all the information of the edges that have demand, including the two nodes and the cost. Why we need this set?
-    When we do pathscanning, we need know when we have satisy all the required edges, the node is used to get the destination point and the next depot.
-    The cost is used to calculation the final cost. Because for the required edge, we can't use the adjacency matrix after floyd. Because for the two node of the required edge, there may be other route between two nodes with less cost than the cost of the edge, then the value in the matrix will be the least coat, but we must use the cost in the edge.
-    The last step is do floyed to the adiacency matrix.
-  \subsubsection{pathscanning}
-    After read data and storage, I will do the pathscanning and get the initial population.
-    When I do the pathscanning, I will use the set that I storage the required edges. 
-    In each step, I will scan the set and choice the best edge. Firstly, I will choice the closest one, if there is many node have the least cost, I will apply four rules randomly.
-  \subsubsection{}
-
+      Then, I will storage all the information of the edges that have demand, including the two nodes and the cost. Why we need this set?
+      When we do pathscanning, we need know when we have satisy all the required edges, the node is used to get the destination point and the next depot.
+      The cost is used to calculation the final cost. Because for the required edge, we can't use the adjacency matrix after floyd. Because for the two node of the required edge, there may be other route between two nodes with less cost than the cost of the edge, then the value in the matrix will be the least coat, but we must use the cost in the edge.
+      The last step is do floyed to the adiacency matrix.
+      \begin{algorithm}
+        \caption{ReadData}
+        \begin{algorithmic}[1]
+          \Require The path of the dat file
+          \Ensure The information of the dataset, the matrix of map
+          \Function{BuildMap}{$way$}
+            \State $content \gets open(way)$
+            \State $DEPOT\gets 3rd \quad line$
+            \State $CAPACITY \gets 7th \quad line$
+            \State $VERTICES \gets 2nd \quad line$
+            \State $VEHICLES \gets 6th \quad line$
+            \While {$content is not end$}
+              \State $edgeProp[] \gets line.split('\quad')$
+              \State $edgeProp[0] -= 1$
+              \State $edgeProp[1] -= 1$
+              \State $matrixC[edgeProp[0],edgeProp[1] \gets edgeProp[2]$
+              \State $matrixD[edgeProp[0],edgeProp[1] \gets edgeProp[3]$
+              \If{$edgeProp[3]>0$}
+                \State $arcs.add((edgeProp[0],edgeProp[1],edgeProp[2]))$
+              \EndIf  
+            \EndWhile
+          
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
+    \subsubsection{pathscanning}
+      After read data and storage, I will do the pathscanning and get the initial population.
+      When I do the pathscanning, I will use the set that I storage the required edges. 
+      In each step, I will scan the set and choice the best edge. Firstly, I will choice the closest one, if there is many node have the least cost, I will apply four rules randomly.
+    \subsubsection{Local Search}
+      In the local search, I use ulusory split algorithm to do it. In this part, I will ignore the limitation of the capacity and let the solution be an ordered list.
+      Then, I build a tree to storage each possible case of the split, to decrease the time of search, I will confine that it will split just when the car is half-full or provide more demand.
+      And by this way, I will get the best split scheme of this ordered list.
+    \subsubsection{Merge-Split Operator}
+      In the Merge-Split Operator, it's a variation algorithm to a solution. In this algorithm, it will pop some route randomly, and merge them in an unordered task list.
+      For this unordered task list, I will do a pathscanning for it again and insert them back to the solution, and then do a local seach for it. Then I can get a best solution for this Merge-Split Operation.
+      This Operator has a big step-size, so one main advantage of the MS operator is its capability of generating new solutions that are significantly different from the current solution.  
+    \subsubsection{Crossover}
+    In the crossover, I choice two solution s1, s2 in the populition as the parents randomly. Then, pop two routes r1 from s1, r2 from s2 and split both of them in two part r11, r12 and r21, r22.
+    The second step is compare r22 and r12, choice the task that r22 have but not in r12, them delete these task in the s1 and r11. Then, joint r11 and r22 and insert into s1.
+    The third step is compare r22 and r12, choice the tasks that r12 have but not in r22, insert these task into s1 one by one, and each task should insert into the location that make the cost be least.
+    The last step is do local search for the s1 and get the best solution for the ordered list in the s1. s1 is the child in this crossover.
 \section{Empirical Verification}
   \subsection{Design}
 
@@ -108,6 +144,7 @@ For the detail of the algorithm, I will introduct it in five part.
 \bibliography{IEEEabrv,mylib}
 \cite{rivest1987game}
 \cite{knuth1975analysis}
+
 
 \end{document}
 
