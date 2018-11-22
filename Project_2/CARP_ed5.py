@@ -413,51 +413,50 @@ begin_time = time.time()
 #max_time = int(arguments[3])
 #seed = float(arguments[5])
 random.seed(43242)
-way = '/home/metaron/Downloads/Tests/egl-s2-A.dat'
-max_time = 120
-matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
-pop = []
-times = 0
-while time.time()-begin_time<max_time//6:
-    times+=1
-    routeTwoDimension = doScanning(matrixC, copy.deepcopy(arcs), matrixD, CAPACITY, DEPOT,type)
-    route = []
-    for i in routeTwoDimension:
-        route = route+i
-    routeFinal = localSearch(route, matrixC, matrixD, CAPACITY, DEPOT, len(routeTwoDimension))
-    output, cost_temp = getOutputCost(routeFinal,matrixC,arcs)
-    repeat = False
+way = '/home/metaron/Downloads/Tests/'
+files = ["gdb14.dat","gdb20.dat","gdb5.dat","val10C.dat","val2C.dat","val4D.dat","val6C.dat","val9A.dat","gdb15.dat","gdb21.dat","gdb6.dat","val10D.dat","val3A.dat","val5A.dat","val7A.dat","val9B.dat","gdb16.dat","gdb22.dat","gdb7.dat","val1A.dat","val3B.dat","val5B.dat","val7B.dat","val9C.dat","gdb10.dat","gdb17.dat","gdb23.dat","gdb8.dat","val1B.dat","val3C.dat","val5C.dat","val7C.dat","val9D.dat","gdb11.dat","gdb18.dat","gdb2.dat","gdb9.dat","val1C.dat","val4A.dat","val5D.dat","val8A.dat","gdb12.dat","gdb19.dat","gdb3.dat","val10A.dat","val2A.dat","val4B.dat","val6A.dat","val8B.dat","gdb13a.dat","gdb1.dat","gdb4.dat","val10B.dat","val2B.dat","val4C.dat","val6B.dat","val8C.dat"]
+for filename in files:
+    way += filename
+    max_time = 60
+    matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
+    pop = []
+    times = 0
+    while time.time()-begin_time<max_time//6:
+        times+=1
+        routeTwoDimension = doScanning(matrixC, copy.deepcopy(arcs), matrixD, CAPACITY, DEPOT,type)
+        route = []
+        for i in routeTwoDimension:
+            route = route+i
+        routeFinal = localSearch(route, matrixC, matrixD, CAPACITY, DEPOT, len(routeTwoDimension))
+        output, cost_temp = getOutputCost(routeFinal,matrixC,arcs)
+        repeat = False
+        for i in pop:
+            if output == i[1]:
+                repeat = True
+                break
+        if repeat == False:
+            if len(pop)<60:
+                pop.append([routeFinal, output, cost_temp])
+            else:
+                r_index = 0
+                r_cost = pop[r_index][2]
+                for i in range(0, 30):
+                    if r_cost < pop[i][2]:
+                        r_index= i
+                        r_cost = pop[r_index][2]
+                if r_cost > cost_temp:
+                    pop[r_index] = copy.deepcopy([routeFinal,output,cost_temp])
+    for i in range(0,10000):
+        for i in pop:
+            if time.time() -begin_time>max_time-3:
+                break
+            i[0],i[1],i[2] = MS(i[0], matrixC, matrixD, CAPACITY, DEPOT,i[1],i[2])
+    c_l = pop[0][2]
+    output = pop[0][1]
     for i in pop:
-        if output == i[1]:
-            repeat = True
-            break
-    if repeat == False:
-        if len(pop)<60:
-            pop.append([routeFinal, output, cost_temp])
-        else:
-            r_index = 0
-            r_cost = pop[r_index][2]
-            for i in range(0, 30):
-                if r_cost < pop[i][2]:
-                    r_index= i
-                    r_cost = pop[r_index][2]
-            if r_cost > cost_temp:
-                pop[r_index] = copy.deepcopy([routeFinal,output,cost_temp])
-print(time.time() - begin_time)
-for i in range(0,10000):
-    for i in pop:
-        if time.time() -begin_time>max_time-3:
-            break
-        i[0],i[1],i[2] = MS(i[0], matrixC, matrixD, CAPACITY, DEPOT,i[1],i[2])
-print(time.time()-begin_time)
-#print(time.time() - begin_time)
-c_l = pop[0][2]
-output = pop[0][1]
-for i in pop:
-    if (i[2])<c_l:
-        c_l = i[2]
-        output = i[1]
-print(output)
-print('q %d'%c_l)
-print(time.time()-begin_time)
+        if (i[2])<c_l:
+            c_l = i[2]
+            output = i[1]
+    print(output)
+    print('%s cost %d'%(filename,c_l))
 exit(0)

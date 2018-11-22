@@ -225,7 +225,18 @@ design ulusoy, 2-opt, Merge-Split Operator to do the local-search and variation,
       \begin{algorithmic}[1]
         \Function{crossover}{$matrixC, matrixD, CAPACITY$,
         $DEPOT, s1, s2$}
-        
+          \State $r1 \gets s1[randint(0, len(s1)-1)]$
+          \State $r2 \gets s2[randint(0, len(s2)-1)]$
+          \State $i1 \gets randint(0, len(r1)-1)$
+          \State $i2 \gets randint(0,len(r2)-1)$
+          \State $r11,r12 \gets r1[:i1],r1[i1:]$
+          \State $r21,r22 \gets r2[:i2],r1[i2:]$          
+          \For {$i$ in $r22$}
+            \If{$i$ not in $r12$}
+              \State$Delete\quad i\quad from\quad s1$
+            \EndIf
+          \EndFor 
+          \For {$i$ in $r12$}         
         \EndFunction
       \end{algorithmic}
     \end{algorithm}
