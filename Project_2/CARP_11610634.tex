@@ -39,8 +39,8 @@ Computer Science and Technology\\
 
   \subsection{Algorithm}
 The algorithm I used is Genetic Algorithm, and I design 4 rules to do the pathscanning,  
-design ulusoy, 2-opt, Merge-Split Operator to do the local-search and variation, and use a way that desrible in the paper 
-\cite{Memetic} to do the crossover.
+design ulusoy\cite{ulusoy1985fleet}, 2-opt, Merge-Split Operator to do the local-search and variation, and use a way that desrible in the paper \textbf{Memetic Algorithm with Extended Neighborhood Search for Capacitated Arc Routing Problems}
+\cite{tang2009memetic} to do the crossover.
 \section{Methodology}
   \subsection{Representation}
   In my code, to design the algorithm, I write it into three part:
@@ -236,25 +236,87 @@ design ulusoy, 2-opt, Merge-Split Operator to do the local-search and variation,
               \State$Delete\quad i\quad from\quad s1$
             \EndIf
           \EndFor 
-          \For {$i$ in $r12$}         
+          \For {$i$ in $r12$}
+            \If{$i$ not in $r22$}
+              \State $needAdd.append(i)$
+            \EndIf
+          \EndFor
+          \State $r1\gets r11+r22$
+          \For{$i$ in $needAdd$}
+            \State $Insert\quad i\quad in\quad s1\quad let \quad cost\quad least$
+          \EndFor
+          \State $localsearch()for\quad s1$
+          \State \Return $s1$
         \EndFunction
       \end{algorithmic}
     \end{algorithm}
 \section{Empirical Verification}
   \subsection{Design}
-
+    For the Design of the Verification, I implement a program of this algorithm and test it effect of the case.
+    For the detail of the parameter of the program:
+    \begin{itemize}
+      \item pathScanning
+        \begin{itemize}
+          \item The rule of pathscanning is random choice when decide which task next.
+        \end{itemize}
+      \item localsearch
+        \begin{itemize}
+          \item The car must be between half-full and full when Split the tasks.
+        \end{itemize}
+      \item Merge-Split Operator
+        \begin{itemize}
+          \item The number of the routes we choice to add in the unordered list should between $1/2$ to $\frac{2}{3}$ of the total
+          \item The subsolution should be added into the end of the solution without the routes choiced and then do the local Search
+        \end{itemize}
+      \item Crossover
+      \begin{itemize}
+        \item The two solutions is select randomly in the population
+        \item The routes to merge and the index to split is also randomly choice.
+        \item After crossover, the Child solution will add into the population if there is any solution worse than it and pop that solution.
+      \end{itemize}
+    \end{itemize}
   \subsection{Performance}
-
+    The test was do in a $Intel\quad 6200U\quad 2@2.8GHz$ with $12GB$ memaory Computer.  
+    And the test result of the dataset not in the platform is On the table behind.
+    For the case in gdb and val, I run the program 60 seconds, and for the case in the egl, I run the program 120 seconds.
+    And run each case 5 time.
+    \begin{table}[!htbp]
+      \centering
+      \caption{Result of test case}\label{tab:aStrangeTable}
+      \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Case} & \textbf{Vertices} & \textbf{Req Edges} & \textbf{best Cost} & \textbf{Ave Cost} & \textbf{Theory Cost}\\
+        \hline
+        gdb20 & 11 & 22 & 121 & 121 & 121 \\
+        \hline
+        gdb5 & 13 & 26 & 383 & 383 & 377 \\
+        \hline
+        val1c & 24 & 39 & 250 & 253.8& 245 \\
+        \hline
+        val7a & 40 & 66 & 279 & 280 & 279 \\
+        \hline
+        egl-e2-A & 77 & 72 & 5210 & 5286 & 5018 \\
+        \hline
+        egl-s1-C & 190 & 75 & 9521 & 9548 & 8518 \\
+        \hline
+      \end{tabular}
+    \end{table}
   \subsection{Result}
-
+    For the test, the result is good and can not much higher than the theory best cost.
+    But if the dataset is big, the algorithm need more time to get the best solution it can get.
   \subsection{Analysis}
+    My algorithm can have great effect in small dataset, can get a great result and calculate fast.
+    But if in a big dataset, it will be convergence so fast and calculate so slowly.
 
+    The reason of the convergence is that the MS operator can't import big difference to a solution getted, but the crossover is so slowly and can't do many times in the time limit.
+    And why it will calculate slowly when use in a big dataset is that local search use much time to get a best solution of a ordered list. And the time used will increase in exponent!
+    
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,mylib}
-\cite{rivest1987game}
-\cite{knuth1975analysis}
-
-
+\cite{tang2009memetic}
+\cite{lacomme2001genetic}
+\cite{dror2012arc}
+\cite{ulusoy1985fleet}
 \end{document}
 
 

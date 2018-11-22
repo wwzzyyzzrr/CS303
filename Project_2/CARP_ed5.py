@@ -407,17 +407,15 @@ def single2opt(route_in, matrixC, matrixD, CAPACITY, DEPOT, output_ini, cost_ini
 
 
 
-begin_time = time.time()
 #arguments = sys.argv
 #way = arguments[1]
 #max_time = int(arguments[3])
 #seed = float(arguments[5])
 random.seed(43242)
-way = '/home/metaron/Downloads/Tests/'
-files = ["gdb14.dat","gdb20.dat","gdb5.dat","val10C.dat","val2C.dat","val4D.dat","val6C.dat","val9A.dat","gdb15.dat","gdb21.dat","gdb6.dat","val10D.dat","val3A.dat","val5A.dat","val7A.dat","val9B.dat","gdb16.dat","gdb22.dat","gdb7.dat","val1A.dat","val3B.dat","val5B.dat","val7B.dat","val9C.dat","gdb10.dat","gdb17.dat","gdb23.dat","gdb8.dat","val1B.dat","val3C.dat","val5C.dat","val7C.dat","val9D.dat","gdb11.dat","gdb18.dat","gdb2.dat","gdb9.dat","val1C.dat","val4A.dat","val5D.dat","val8A.dat","gdb12.dat","gdb19.dat","gdb3.dat","val10A.dat","val2A.dat","val4B.dat","val6A.dat","val8B.dat","gdb13a.dat","gdb1.dat","gdb4.dat","val10B.dat","val2B.dat","val4C.dat","val6B.dat","val8C.dat"]
-for filename in files:
-    way += filename
-    max_time = 60
+way = '/home/metaron/Downloads/Tests/egl-e2-A.dat'
+for i in range(5):
+    begin_time = time.time()
+    max_time = 120
     matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
     pop = []
     times = 0
@@ -458,5 +456,5 @@ for filename in files:
             c_l = i[2]
             output = i[1]
     print(output)
-    print('%s cost %d'%(filename,c_l))
+    print('cost %d'%(c_l))
 exit(0)
