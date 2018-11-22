@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  21 NOV 2018 17:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  21 NOV 2018 23:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -280,7 +280,7 @@ LaTeX Warning: Citation `Memetic' on page 1 undefined on input line 43.
 LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 48.
 
 Underfull \hbox (badness 10000) in paragraph at lines 107--108
-[] $\OML/cmm/m/it/10 matrixC\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 edgeProp\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [1] \OMS/cmsy/m/n/10  
+[] $\OML/cmm/m/it/10 matrixC\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 edgeProp\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [1]$$\OMS/cmsy/m/n/10  
  []
 
 
@@ -289,20 +289,74 @@ Underfull \hbox (badness 10000) in paragraph at lines 108--109
  []
 
 
-Overfull \hbox (38.36426pt too wide) in paragraph at lines 110--111
-[] $\OML/cmm/m/it/10 arcs:add\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 edgeProp\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [1]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [2]))$ 
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+[] $\OML/cmm/m/it/10 arcs:add\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 edgeProp\OT1/cmr/m/n/10 [0]\OML/cmm/m/it/10 ; edgeProp\OT1/cmr/m/n/10 [1]\OML/cmm/m/it/10 ;$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
+[] \OT1/ptm/b/n/10.03749 if $\OML/cmm/m/it/10 matrix\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i; j\OT1/cmr/m/n/10 ]! = \OMS/cmsy/m/n/10 1$ \OT1/ptm/m/n/10.03749 and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+[] $\OML/cmm/m/it/10 matrix\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k; j\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10  
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 140--141
+[]\OT1/ptm/b/n/10.03749 func-tion \OT1/ptm/m/sc/10.03749 doscan-ning\OT1/ptm/m/n/10.03749 ($\OML/cmm/m/it/10 matrixC$\OT1/ptm/m/n/10.03749 , $\OML/cmm/m/it/10 arcs$\OT1/ptm/m/n/10.03749 , $\OML/cmm/m/it/10 matrixD$\OT1/ptm/m/n/10.03749 ,
+ []
+
+
+Overfull \hbox (8.40582pt too wide) in paragraph at lines 172--175
+[]\OT1/ptm/b/n/10.03749 func-tion \OT1/ptm/m/sc/10.03749 ulu-soy\OT1/ptm/m/n/10.03749 ($\OML/cmm/m/it/10 trip; matrixC; matrixD; index; cost$\OT1/ptm/m/n/10.03749 ,
+ []
+
+
+Overfull \hbox (10.96986pt too wide) in paragraph at lines 172--175
+\OML/cmm/m/it/10 CAPACITY; route; DEPOT; carNum; VEHICLES$\OT1/ptm/m/n/10.03749 ,
+ []
+
+
+Underfull \hbox (badness 2903) in paragraph at lines 178--179
+[] \OT1/ptm/b/n/10.03749 if $\OML/cmm/m/it/10 cap > CAPACITY==\OT1/cmr/m/n/10 2$ \OT1/ptm/m/n/10.03749 and $\OML/cmm/m/it/10 cap <
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--189
+\OT1/ptm/m/n/10.03749 +$\OML/cmm/m/it/10 matrixC\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 DEPOT; trip\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 + 1][0]]$ \OT1/ptm/m/n/10.03749 +$\OML/cmm/m/it/10 cost$ \OT1/ptm/m/n/10.03749 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+[] $\OML/cmm/m/it/10 ulusory\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 trip; matrixC; matrixD; i \OT1/cmr/m/n/10 +
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; cost; CAPACITY; route; DEPOT; carNum \OT1/cmr/m/n/10 +
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
+Overfull \hbox (16.89957pt too wide) in paragraph at lines 204--206
+[]\OT1/ptm/b/n/10.03749 func-tion \OT1/ptm/m/sc/10.03749 MS\OT1/ptm/m/n/10.03749 ($\OML/cmm/m/it/10 route[]n; matrixC; matrixD; CAPACITY$\OT1/ptm/m/n/10.03749 ,
+ []
+
+[2]
+Overfull \hbox (15.0172pt too wide) in paragraph at lines 226--228
+[]\OT1/ptm/b/n/10.03749 func-tion \OT1/ptm/m/sc/10.03749 crossover\OT1/ptm/m/n/10.03749 ($\OML/cmm/m/it/10 matrixC; matrixD; CAPACITY$\OT1/ptm/m/n/10.03749 ,
+ []
+
 No file CARP_Report.bbl.
 
-LaTeX Warning: Citation `rivest1987game' on page 2 undefined on input line 145.
+LaTeX Warning: Citation `rivest1987game' on page 3 undefined on input line 243.
 
 
-LaTeX Warning: Citation `knuth1975analysis' on page 2 undefined on input line 146.
+LaTeX Warning: Citation `knuth1975analysis' on page 3 undefined on input line 244.
 
 
 ** Conference Paper **
@@ -315,27 +369,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
+[3
 
-Underfull \vbox (badness 1248) has occurred while \output is active []
-
- [2] (./CARP_Report.aux)
+] (./CARP_Report.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3981 strings out of 492642
- 58862 string characters out of 6135565
- 135970 words of memory out of 5000000
- 7864 multiletter control sequences out of 15000+600000
- 37318 words of font info for 69 fonts, out of 8000000 for 9000
+ 4004 strings out of 492642
+ 59212 string characters out of 6135565
+ 147970 words of memory out of 5000000
+ 7887 multiletter control sequences out of 15000+600000
+ 37825 words of font info for 70 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 27i,7n,32p,409b,260s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CARP_Report.pdf (2 pages, 87583 bytes).
+ 27i,7n,32p,409b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on CARP_Report.pdf (3 pages, 103963 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 47 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

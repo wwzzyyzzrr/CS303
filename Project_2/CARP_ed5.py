@@ -159,7 +159,7 @@ def BuildMap(way):
     line = a.readline()
     matrixC = np.array([[max_value for j in range(VERTICES)] for i in range(VERTICES)])
     matrixD = np.array([[0 for j in range(VERTICES)] for i in range(VERTICES)])
-    while (line != 'END' and line!='END\n'):
+    while (line != 'END'):
         temp = (line.split(' '))
         prop = []
         for i in temp:
@@ -413,11 +413,13 @@ begin_time = time.time()
 #max_time = int(arguments[3])
 #seed = float(arguments[5])
 random.seed(43242)
-way = '/home/metaron/Downloads/eglese/egl-s4-C.dat'
+way = '/home/metaron/Downloads/Tests/egl-s2-A.dat'
 max_time = 120
 matrixC, matrixD, VERTICES, DEPOT, REdges, NREdges, VEHICLES, CAPACITY, TCORequired, arcs= BuildMap(way)
 pop = []
+times = 0
 while time.time()-begin_time<max_time//6:
+    times+=1
     routeTwoDimension = doScanning(matrixC, copy.deepcopy(arcs), matrixD, CAPACITY, DEPOT,type)
     route = []
     for i in routeTwoDimension:
@@ -441,13 +443,13 @@ while time.time()-begin_time<max_time//6:
                     r_cost = pop[r_index][2]
             if r_cost > cost_temp:
                 pop[r_index] = copy.deepcopy([routeFinal,output,cost_temp])
-
-for i in range(0,100):
+print(time.time() - begin_time)
+for i in range(0,10000):
     for i in pop:
         if time.time() -begin_time>max_time-3:
             break
         i[0],i[1],i[2] = MS(i[0], matrixC, matrixD, CAPACITY, DEPOT,i[1],i[2])
-
+print(time.time()-begin_time)
 #print(time.time() - begin_time)
 c_l = pop[0][2]
 output = pop[0][1]

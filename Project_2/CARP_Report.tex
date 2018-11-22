@@ -104,13 +104,29 @@ design ulusoy, 2-opt, Merge-Split Operator to do the local-search and variation,
               \State $edgeProp[] \gets line.split('\quad')$
               \State $edgeProp[0] -= 1$
               \State $edgeProp[1] -= 1$
-              \State $matrixC[edgeProp[0],edgeProp[1] \gets edgeProp[2]$
+              \State $matrixC[edgeProp[0],edgeProp[1]$$ \gets edgeProp[2]$
               \State $matrixD[edgeProp[0],edgeProp[1] \gets edgeProp[3]$
               \If{$edgeProp[3]>0$}
-                \State $arcs.add((edgeProp[0],edgeProp[1],edgeProp[2]))$
+                \State $arcs.add((edgeProp[0],edgeProp[1],$
+                $edgeProp[2]))$
               \EndIf  
             \EndWhile
-          
+            \State $martixC \gets floyd(matrixC)$
+            \State \Return $DEPOT$, $VEHICLES$, $VERTICES$, $matrixC$, $matrixD$, $arcs$
+          \EndFunction
+          \Function{floyd}{metrixC}
+            \State $n \gets len(matrix)$
+            \For{$i$ from 0 to $n$}
+              \For{$j$ from 0 to $n$}
+                \For{$k$ from 0 to $n$}
+                  \If{$matrix[i,j]!=\infty$ and $matrix[i,k]!=\infty$}
+                    \State $matrix[k,j] \gets min(matrix[k,j], matrix[i,k]=matrix[i,j])$
+                    \State $matrix[j,k]\gets matrix[k,j]$
+                  \EndIf
+                \EndFor
+              \EndFor  
+            \EndFor
+            \State \Return $matrix$
           \EndFunction
         \end{algorithmic}
       \end{algorithm}
@@ -118,19 +134,101 @@ design ulusoy, 2-opt, Merge-Split Operator to do the local-search and variation,
       After read data and storage, I will do the pathscanning and get the initial population.
       When I do the pathscanning, I will use the set that I storage the required edges. 
       In each step, I will scan the set and choice the best edge. Firstly, I will choice the closest one, if there is many node have the least cost, I will apply four rules randomly.
+      \begin{algorithm}
+        \caption{Do pathScanning}
+        \begin{algorithmic}[1]
+          \Function{doscanning}{$matrixC$, $arcs$, $matrixD$, $CAPACITY$, $DEPOT$}
+            \While{arc is not emoty}
+              \For{$edge$ in $arcs$}
+                \State $type \gets random.randomint(0,3)$
+                \If{$type == 0$}
+                  \State use rule: maximize the term dem(t)/sc(t)
+                \ElsIf{$type == 1$}
+                  \State use rule: minimize the term dem(t)/sc(t)
+                \ElsIf{$type == 2$}
+                  \State use rule: maximize the distance
+                \ElsIf{$type == 3$}
+                  \State use rule: minimize the distance
+                \EndIf
+              \EndFor
+              \If{The car is not full:}
+                \State $route[car_No-1].append(edge)$
+              \Else
+                \State $car_Num\gets car_Num +1$
+                \State $route.append([])$
+              \EndIf
+            \EndWhile
+            \State\Return $route$
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
     \subsubsection{Local Search}
       In the local search, I use ulusory split algorithm to do it. In this part, I will ignore the limitation of the capacity and let the solution be an ordered list.
       Then, I build a tree to storage each possible case of the split, to decrease the time of search, I will confine that it will split just when the car is half-full or provide more demand.
       And by this way, I will get the best split scheme of this ordered list.
+      \begin{algorithm}
+        \caption{Local Search}
+        \begin{algorithmic}[1]
+          \Function{ulusoy}{$trip,matrixC,matrixD,index,cost$,
+          $CAPACITY,route,DEPOT,carNum,VEHICLES$,
+          $rr$}
+          \State $cap = 0$
+          \For{$i$ from $index$ to $len(trip)$}
+            \State $cap \gets$ $cap = matrixD[trip[i][0],trip[i][1]]$
+            \If{$cap>CAPACITY//2$ and $cap<CAPACITY$}
+              \If{$i == len(trip)-1$}
+                \State $rr.append((cost,route))$
+                break
+              \EndIf
+              \If{carNum<VEHICLES}
+                \State $cost\_t \gets$ 
+                $matrixC[DEPOT,trip[i][1]]$
+                +$matrixC[DEPOT,trip[i+1][0]]$
+                +$cost$
+                -$matrixC[trip[i][1],trip[i+1][0]]$
+                \State $ulusory(trip, matrixC, matrixD, i+1, cost, CAPACITY, route, DEPOT, carNum+1, VEHICLES, rr)$
+                \EndIf
+            \EndIf
+          \EndFor
+          \State\Return $rr$
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
     \subsubsection{Merge-Split Operator}
       In the Merge-Split Operator, it's a variation algorithm to a solution. In this algorithm, it will pop some route randomly, and merge them in an unordered task list.
       For this unordered task list, I will do a pathscanning for it again and insert them back to the solution, and then do a local seach for it. Then I can get a best solution for this Merge-Split Operation.
       This Operator has a big step-size, so one main advantage of the MS operator is its capability of generating new solutions that are significantly different from the current solution.  
+      \begin{algorithm}
+        \caption{Merge-Split Operator}
+        \begin{algorithmic}[1]
+          \Function{MS}{$route_in, matrixC, matrixD, CAPACITY$,
+          $DEPOT, output_ini, cost_ini$}
+            \State tripChoice = []
+            \State $size \gets random.randint(len(route\_in)//2,2*len(route\_in))//3$
+            \For{$i$ from $0$ to $size$ }
+              \State $index\gets random.randint(0, len(route_in)-1)$
+              \State $tripChoice.append(route_in.pop(index))$
+            \EndFor
+            \State $route\_PS = doScanning()for$ $tripChoice$
+            \State $routeFinal = localsearch()for$ $route\_PS$
+            \State \Return routeFinal
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
     \subsubsection{Crossover}
     In the crossover, I choice two solution s1, s2 in the populition as the parents randomly. Then, pop two routes r1 from s1, r2 from s2 and split both of them in two part r11, r12 and r21, r22.
     The second step is compare r22 and r12, choice the task that r22 have but not in r12, them delete these task in the s1 and r11. Then, joint r11 and r22 and insert into s1.
     The third step is compare r22 and r12, choice the tasks that r12 have but not in r22, insert these task into s1 one by one, and each task should insert into the location that make the cost be least.
     The last step is do local search for the s1 and get the best solution for the ordered list in the s1. s1 is the child in this crossover.
+    \begin{algorithm}
+      \caption{Crossover}
+      \begin{algorithmic}[1]
+        \Function{crossover}{$matrixC, matrixD, CAPACITY$,
+        $DEPOT, s1, s2$}
+        
+        \EndFunction
+      \end{algorithmic}
+    \end{algorithm}
 \section{Empirical Verification}
   \subsection{Design}
 
