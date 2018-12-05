@@ -1,4 +1,4 @@
-import sys, copy, time, random
+import sys, copy, time, random, queue
 import numpy as np
 
 def build_map(way):
@@ -37,6 +37,15 @@ def IC(next_node, matrixW, active_set, unactive_set):
                 unactive_set.remove(j)
     return active_set_new
 
+def IC(next_node, matrixW, active_set, unactive_set):
+    active_set_new = []
+    for i in active_set:
+        for j in next_node[i]:
+            if random.random() <= matrixW[i,j] and j in unactive_set:
+                active_set_new.append(j)
+                unactive_set.remove(j)
+    return active_set_new
+
 def LT(next_node, matrixW, active_set, unactive_set,threshold):
     active_set_new = []
     for i in active_set:
@@ -65,29 +74,42 @@ def do_LT(nodes, next_node, matrixW, active_set, unactive_set):
         length += len(active_set)
     return length
 
-def main(network,seed,model,timeout):
-    begin_time=time.time()
-    nodes, edges, matrixW, next_node = build_map(network)
-    active_set, unactive_set = add_seed(seed, nodes)
+def Get_influence(nodes, next_node, matrixW, active_set, unactive_set, model):
     length = 0
-    times_cal = 0
     if model == 'LT':
-        while time.time() - begin_time < timeout-0.5:
-            times_cal+=1
+        for i in range(0, 700):
             length += do_LT(nodes, next_node, matrixW, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 10000:
-                break
     else:
-        while time.time() - begin_time < timeout-0.5:
-            times_cal+=1
-            length += do_IC(next_node, matrixW, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 10000:
-                break           
-    print('{0:.2f}'.format(length/times_cal))
-    print(time.time()-begin_time)
+        for i in range(0, 700):
+            length += do_IC(next_node, matrixW, copy.deepcopy(active_set),  copy.deepcopy(unactive_set))
+    return length/700
+
+def main(network,size,model,timeout):
+    nodes, edges, matrixW, next_node = build_map(network)
+    active_set = set()
+    unactive_set = set()
+    for i in range(0,nodes):
+        unactive_set.add(i)
+    que = queue.PriorityQueue()
+    for i in range(size):
+        for i in unactive_set:
+            active_set.add(i)
+            unactive_set.remove(i)
+            temp = Get_influence(nodes, next_node, matrixW, list(active_set), list(unactive_set), model)
+            que.put((-temp, i))
+            unactive_set.add(i)
+            active_set.remove(i)
+        temp_tuple = que.get()
+        active_set.add(temp_tuple[1])
+        unactive_set.remove(temp_tuple[1])
+        influence = -temp_tuple[0]
+    for i in active_set:
+        print(i)
+
 arguments = sys.argv
 network = arguments[2]
-seed = arguments[4]
+size = int(arguments[4])
 model = arguments[6]
 timeout = float(arguments[8])
-main(network,seed,model,timeout)
+main(network,size,model,timeout)
+        
