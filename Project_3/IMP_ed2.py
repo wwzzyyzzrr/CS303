@@ -98,7 +98,7 @@ def main(network,size,model,timeout):
     for i in range(nodes):
         unactive_set.add(i)
         node_neighbor_num.append(0)
-    for i in range(0,min(max(nodes//50,size),nodes)):
+    for i in range(0,min(nodes//70,size*20,nodes)):
         u = get_max_degree(unactive_set, node_degree_use)
         active_set.add(u)
         unactive_set.remove(u)
@@ -106,24 +106,26 @@ def main(network,size,model,timeout):
             v = j[0]
             node_neighbor_num[v] += 1
             node_degree_use[v] = node_degree[v] - 2*node_neighbor_num[v] - (node_degree[v] - node_neighbor_num[v])*node_neighbor_num[v]*j[1]
+    
+    
     node_select = copy.deepcopy(active_set)
     active_set = set()
     unactive_set = set()
     for i in range(nodes):
         unactive_set.add(i)
     que = queue.PriorityQueue()
-    P_num = 3
+    P_num = 7
     p = multiprocessing.Pool(P_num)
     influence = 0
-    times = 10
+    times = 60
     queue_temp = multiprocessing.Manager().Queue()   
     temp_list = list(node_select)
     list_len = len(temp_list)
-    part_len = list_len//P_num
+    part_len = list_len//P_num-1
     print(len(node_select))
     for i in range(0,P_num):
         p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-    do_Active(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num-1)*part_len:list_len]), model,times,queue_temp, influence)
+    do_Active(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num)*part_len:list_len]), model,times,queue_temp, influence)
     p.close()
     while not queue_temp.empty():
         que.put(queue_temp.get())
@@ -131,14 +133,19 @@ def main(network,size,model,timeout):
     while not queue_temp.empty():
         que.put(queue_temp.get())
     temp_tuple = que.get()
+    while temp_tuple[1] not in unactive_set:
+            temp_tuple = que.get()
     active_set.add(temp_tuple[1])
     unactive_set.remove(temp_tuple[1])
     node_select.remove(temp_tuple[1])
     influence -= temp_tuple[0]
     for j in range(size-1):
+        print(active_set)
         print(j+1)
         p = multiprocessing.Pool(P_num)
         B = que.get()
+        while B[1] not in unactive_set:
+            B = que.get()
         active_set.add(B[1])
         unactive_set.remove(B[1])
         temp = Get_influence(nodes, next_node, active_set, unactive_set, model,times) - influence
@@ -153,7 +160,7 @@ def main(network,size,model,timeout):
             part_len = list_len//P_num
             for i in range(0,P_num):
                 p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-            do_Active(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num-1)*part_len:list_len]), model,times,queue_temp, influence)
+            do_Active(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num)*part_len:list_len]), model,times,queue_temp, influence)
             p.close()
             while not queue_temp.empty():
                 que.put(queue_temp.get())
@@ -161,13 +168,20 @@ def main(network,size,model,timeout):
             while not queue_temp.empty():
                 que.put(queue_temp.get())
             temp_tuple = que.get()
+            while temp_tuple[1] not in unactive_set:
+                temp_tuple = que.get()
             active_set.add(temp_tuple[1])
             unactive_set.remove(temp_tuple[1])
             node_select.remove(temp_tuple[1])
             influence -= temp_tuple[0]
         else:
             que.put(C)
+            node_select.remove(B[1])
             influence += temp
+    for i in active_set:
+        print(i)
+    print(influence)
+    print(time.time()-begin_time)
 
 
 arguments = sys.argv
