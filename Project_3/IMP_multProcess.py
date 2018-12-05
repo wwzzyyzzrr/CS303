@@ -4,14 +4,14 @@ import numpy as np
 def build_map(way):
     a = open(way)
     parameter = a.readline().split(' ')
-    nodes = int(parameter[0])
+    nodes = int(parameter[0])+1
     edges = int(parameter[1])
     next_node = []
     for i in range(0, nodes):
         next_node.append([])
     for i in range(0,edges):
         edge = a.readline().split(' ')
-        next_node[int(edge[0])-1].append((int(edge[1])-1, float(edge[2])))
+        next_node[int(edge[0])].append((int(edge[1]), float(edge[2])))
     return nodes, edges, next_node
 
 def add_seed(way, nodes):
@@ -20,7 +20,7 @@ def add_seed(way, nodes):
     active_set = []
     list_temp = a.readlines()
     for i in list_temp:
-        active_set.append(int(i)-1)
+        active_set.append(int(i))
     for i in range(0, nodes):
         if i not in active_set:
             unactive_set.append(i)
@@ -90,16 +90,17 @@ def main(network,size,model,timeout):
     for i in range(0,nodes):
         unactive_set.add(i)
     que = queue.PriorityQueue()
-    p = multiprocessing.Pool(8)
+    P_num = 4
+    p = multiprocessing.Pool(P_num)
     influence = 0
-    times = 10000
+    times = 100
     queue_temp = multiprocessing.Manager().Queue()        
     temp_list = list(unactive_set)
     list_len = len(temp_list)
-    part_len = list_len//8
-    for i in range(0,7):
+    part_len = list_len//P_num
+    for i in range(0,P_num-1):
         p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-    p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[7*part_len:list_len]), model,times,queue_temp, influence,))
+    p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num-1)*part_len:list_len]), model,times,queue_temp, influence,))
     p.close()
     p.join()
     while not queue_temp.empty():
@@ -109,7 +110,7 @@ def main(network,size,model,timeout):
     unactive_set.remove(temp_tuple[1])
     influence -= temp_tuple[0]
     for j in range(size-1):
-        p = multiprocessing.Pool(8)
+        p = multiprocessing.Pool(P_num)
         B = que.get()[1]
         active_set.add(B)
         unactive_set.remove(B)
@@ -122,10 +123,10 @@ def main(network,size,model,timeout):
             queue_temp = multiprocessing.Manager().Queue()        
             temp_list = list(unactive_set)
             list_len = len(temp_list)
-            part_len = list_len//8
-            for i in range(0,7):
+            part_len = list_len//P_num
+            for i in range(0,P_num-1):
                 p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-            p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[7*part_len:list_len]), model,times,queue_temp, influence,))
+            p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num-1)*part_len:list_len]), model,times,queue_temp, influence,))
             p.close()
             p.join()
             while not queue_temp.empty():
@@ -138,8 +139,7 @@ def main(network,size,model,timeout):
             que.put(C)
             influence += temp
     for i in active_set:
-        print(i+1)
-    print(influence)
+        print(i)
     print(time.time()-begin_time)
 arguments = sys.argv
 network = arguments[2]

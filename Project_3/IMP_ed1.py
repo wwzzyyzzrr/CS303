@@ -1,10 +1,10 @@
-import sys, copy, time, random, queue, multiprocessing
+import sys, copy, time, random, queue
 import numpy as np
 
 def build_map(way):
     a = open(way)
     parameter = a.readline().split(' ')
-    nodes = int(parameter[0])+1
+    nodes = int(parameter[0])
     edges = int(parameter[1])
     next_node = []
     for i in range(0, nodes):
@@ -73,15 +73,6 @@ def Get_influence(nodes, next_node, active_set, unactive_set, model, times):
             length += do_IC(next_node, list(active_set),  list(unactive_set))
     return length/times
 
-def do_Active(nodes, next_node, active_set, unactive_set, work_set, model,times,queue_temp, influence):
-    for i in work_set:
-        active_set.add(i)
-        unactive_set.remove(i)
-        temp = Get_influence(nodes, next_node, active_set, unactive_set, model,times) - influence
-        queue_temp.put((-temp, i))
-        unactive_set.add(i)
-        active_set.remove(i)
-
 def main(network,size,model,timeout):
     begin_time = time.time()
     nodes, edges, next_node = build_map(network)
@@ -90,27 +81,20 @@ def main(network,size,model,timeout):
     for i in range(0,nodes):
         unactive_set.add(i)
     que = queue.PriorityQueue()
-    P_num = 4
-    p = multiprocessing.Pool(P_num)
     influence = 0
-    times = 100
-    queue_temp = multiprocessing.Manager().Queue()        
-    temp_list = list(unactive_set)
-    list_len = len(temp_list)
-    part_len = list_len//P_num
-    for i in range(0,P_num-1):
-        p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-    p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num-1)*part_len:list_len]), model,times,queue_temp, influence,))
-    p.close()
-    p.join()
-    while not queue_temp.empty():
-        que.put(queue_temp.get())
+    times = 500
+    for i in unactive_set:
+        active_set.add(i)
+        unactive_set.remove(i)
+        temp = Get_influence(nodes, next_node, active_set, unactive_set, model, times) - influence
+        que.put((-temp, i))
+        unactive_set.add(i)
+        active_set.remove(i)
     temp_tuple = que.get()
     active_set.add(temp_tuple[1])
     unactive_set.remove(temp_tuple[1])
-    influence -= temp_tuple[0]
+    influence += -temp_tuple[0]
     for j in range(size-1):
-        p = multiprocessing.Pool(P_num)
         B = que.get()[1]
         active_set.add(B)
         unactive_set.remove(B)
@@ -120,26 +104,23 @@ def main(network,size,model,timeout):
             unactive_set.add(B)
             active_set.remove(B)
             que.queue.clear()
-            queue_temp = multiprocessing.Manager().Queue()        
-            temp_list = list(unactive_set)
-            list_len = len(temp_list)
-            part_len = list_len//P_num
-            for i in range(0,P_num-1):
-                p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-            p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num-1)*part_len:list_len]), model,times,queue_temp, influence,))
-            p.close()
-            p.join()
-            while not queue_temp.empty():
-                que.put(queue_temp.get())
+            for i in unactive_set:
+                active_set.add(i)
+                unactive_set.remove(i)
+                temp = Get_influence(nodes, next_node, active_set, unactive_set, model,times) - influence
+                que.put((-temp, i))
+                unactive_set.add(i)
+                active_set.remove(i)
             temp_tuple = que.get()
             active_set.add(temp_tuple[1])
             unactive_set.remove(temp_tuple[1])
-            influence -= temp_tuple[0]
+            influence += -temp_tuple[0]
         else:
             que.put(C)
             influence += temp
     for i in active_set:
-        print(i)
+        print(i+1)
+    print(influence)
     print(time.time()-begin_time)
 arguments = sys.argv
 network = arguments[2]
