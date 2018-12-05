@@ -4,14 +4,14 @@ import numpy as np
 def build_map(way):
     a = open(way)
     parameter = a.readline().split(' ')
-    nodes = int(parameter[0])
+    nodes = int(parameter[0])+1
     edges = int(parameter[1])
     next_node = []
     for i in range(0, nodes):
         next_node.append([])
     for i in range(0,edges):
         edge = a.readline().split(' ')
-        next_node[int(edge[0])-1].append((int(edge[1])-1, float(edge[2])))
+        next_node[int(edge[0])].append((int(edge[1]), float(edge[2])))
     return nodes, edges, next_node
 
 def add_seed(way, nodes):
@@ -20,7 +20,7 @@ def add_seed(way, nodes):
     active_set = []
     list_temp = a.readlines()
     for i in list_temp:
-        active_set.append(int(i)-1)
+        active_set.append(int(i))
     for i in range(0, nodes):
         if i not in active_set:
             unactive_set.append(i)
@@ -73,13 +73,13 @@ def main(network,seed,model,timeout):
         while time.time() - begin_time < timeout-0.5:
             times_cal+=1
             length += do_LT(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 10000:
+            if times_cal > 100:
                 break
     else:
         while time.time() - begin_time < timeout-0.5:
             times_cal+=1
             length += do_IC(next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 10000:
+            if times_cal > 100:
                 break           
     print('{0:.2f}'.format(length/times_cal))
     print(time.time()-begin_time)
