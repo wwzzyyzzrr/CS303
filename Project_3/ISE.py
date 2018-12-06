@@ -73,13 +73,13 @@ def main(network,seed,model,timeout):
         while time.time() - begin_time < timeout-0.5:
             times_cal+=1
             length += do_LT(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 1000:
+            if times_cal > 10000:
                 break
     else:
         while time.time() - begin_time < timeout-0.5:
             times_cal+=1
             length += do_IC(next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 10:
+            if times_cal > 10000:
                 break           
     print('{0:.2f}'.format(length/times_cal))
     print(time.time()-begin_time)
