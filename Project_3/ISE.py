@@ -1,5 +1,6 @@
-import sys, copy, time, random
+import sys, copy, time, random, multiprocessing
 import numpy as np
+
 
 def build_map(way):
     a = open(way)
@@ -63,26 +64,45 @@ def do_LT(nodes, next_node, active_set, unactive_set):
         length += len(active_set)
     return length
 
+def cal(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_num):
+    times_cal = 0
+    if model == 'LT':
+        while time.time() - begin_time < timeout-1:
+            times_cal+=1
+            queue_temp.put(do_LT(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set)))
+            if times_cal > 10000/P_num:
+                break
+    else:
+        while time.time() - begin_time < timeout-1:
+            times_cal+=1
+            queue_temp.put(do_IC(next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set)))
+            if times_cal > 10000/P_num:
+                break
+
 def main(network,seed,model,timeout):
     begin_time=time.time()
     nodes, edges, next_node = build_map(network)
     active_set, unactive_set = add_seed(seed, nodes)
     length = 0
     times_cal = 0
-    if model == 'LT':
-        while time.time() - begin_time < timeout-0.5:
-            times_cal+=1
-            length += do_LT(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 10000:
-                break
-    else:
-        while time.time() - begin_time < timeout-0.5:
-            times_cal+=1
-            length += do_IC(next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set))
-            if times_cal > 10000:
-                break           
+    P_num = 8
+    p = multiprocessing.Pool(P_num)
+    influence = 0
+    queue_temp = multiprocessing.Manager().Queue()
+    for i in range(P_num-1):
+        p.apply_async(cal, args=(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_num,))
+    cal(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_num*2)
+    while not queue_temp.empty():
+        times_cal+=1
+        length+=queue_temp.get()
+    p.close()
+    p.join()
+    while not queue_temp.empty():
+        times_cal+=1
+        length+=queue_temp.get()
     print('{0:.2f}'.format(length/times_cal))
-    print(time.time()-begin_time)
+    #print(times_cal)
+    #print(time.time()-begin_time)
 arguments = sys.argv
 network = arguments[2]
 seed = arguments[4]

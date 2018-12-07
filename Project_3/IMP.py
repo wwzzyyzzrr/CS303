@@ -88,7 +88,7 @@ def do_Active(nodes, next_node, active_set, unactive_set, work_set, model,times,
         active_set.remove(i)
 
 def main(network,size,model,timeout):
-    begin_time = time.time()
+    #begin_time = time.time()
     nodes, edges, next_node, last_node = build_map(network)
     node_degree = cal_degree(next_node,nodes)
     node_degree_use = copy.deepcopy(node_degree)
@@ -98,10 +98,14 @@ def main(network,size,model,timeout):
     for i in range(nodes):
         unactive_set.add(i)
     if nodes>200:
-        times = 50
+        work_size = min(nodes//70,size*20,nodes,200)
+        if size > 10:
+            work_size = size
+        else:
+            time = min(max(nodes/1000, 40),100)
         for i in range(nodes):
             node_neighbor_num.append(0)
-        for i in range(0,min(nodes//70,size*20,nodes)):
+        for i in range(0,work_size):
             u = get_max_degree(unactive_set, node_degree_use)
             active_set.add(u)
             unactive_set.remove(u)
@@ -110,6 +114,10 @@ def main(network,size,model,timeout):
                 node_neighbor_num[v] += 1
                 node_degree_use[v] = node_degree[v] - 2*node_neighbor_num[v] - (node_degree[v] - node_neighbor_num[v])*node_neighbor_num[v]*j[1]
         node_select = copy.deepcopy(active_set)
+        if size > 10:
+            for i in node_select:
+                print(i)
+            return
     else:
         times = 700
         node_select = copy.deepcopy(unactive_set)

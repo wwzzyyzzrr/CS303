@@ -98,10 +98,10 @@ def main(network,size,model,timeout):
     for i in range(nodes):
         unactive_set.add(i)
     if nodes>200:
-        times = 10
+        times = 100
         for i in range(nodes):
             node_neighbor_num.append(0)
-        for i in range(0,min(nodes//70,size*2,nodes)):
+        for i in range(0,min(nodes//70,size*20,nodes)):
             u = get_max_degree(unactive_set, node_degree_use)
             active_set.add(u)
             unactive_set.remove(u)
@@ -110,9 +110,6 @@ def main(network,size,model,timeout):
                 node_neighbor_num[v] += 1
                 node_degree_use[v] = node_degree[v] - 2*node_neighbor_num[v] - (node_degree[v] - node_neighbor_num[v])*node_neighbor_num[v]*j[1]
         node_select = copy.deepcopy(active_set)
-        for i in node_select:
-            print(i)
-        return
     else:
         times = 700
         node_select = copy.deepcopy(unactive_set)
@@ -122,7 +119,7 @@ def main(network,size,model,timeout):
     for i in range(nodes):
         unactive_set.add(i)
     que = queue.PriorityQueue()
-    P_num = 3
+    P_num = 16
     p = multiprocessing.Pool(P_num)
     influence = 0
     queue_temp = multiprocessing.Manager().Queue()   
