@@ -70,13 +70,13 @@ def cal(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_nu
         while time.time() - begin_time < timeout-1:
             times_cal+=1
             queue_temp.put(do_LT(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set)))
-            if times_cal > 10000/P_num:
+            if times_cal > 1000/P_num:
                 break
     else:
         while time.time() - begin_time < timeout-1:
             times_cal+=1
             queue_temp.put(do_IC(next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set)))
-            if times_cal > 10000/P_num:
+            if times_cal > 1000/P_num:
                 break
 
 def main(network,seed,model,timeout):
