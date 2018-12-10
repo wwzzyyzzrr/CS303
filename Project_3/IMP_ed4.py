@@ -17,7 +17,7 @@ def build_map(way):
         last_node[int(edge[1])].append((int(edge[0]), float(edge[2])))
     return nodes, edges, next_node, last_node
 
-def generate_RR(nodes, next_node):
+def generate_g(nodes, next_node):
     g = []
     for i in range(nodes):
         g.append([]) 

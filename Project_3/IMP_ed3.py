@@ -69,7 +69,7 @@ def Get_influence(nodes, next_node, active_set, model, times):
             length += do_LT(nodes, next_node, active_set.copy())
     else:
         for i in range(0, times):
-            length += do_IC(next_node, active_set.copy)
+            length += do_IC(next_node, active_set.copy())
     return length/times
 
 def do_Active(nodes, next_node, active_set, work_set, model,times,queue_temp, influence):
@@ -89,11 +89,11 @@ def main(network,size,model,timeout):
     unactive_set = set()
     for i in range(nodes):
         unactive_set.add(i)
-    if nodes>200:
+    if nodes>111200:
         times = 100
         for i in range(nodes):
             node_neighbor_num.append(0)
-        for i in range(0,min(nodes//70,size*20,nodes)):
+        for i in range(0,min(nodes//70,size*50,nodes)):
             u = get_max_degree(unactive_set, node_degree_use)
             active_set.add(u)
             unactive_set.remove(u)
@@ -144,7 +144,7 @@ def main(network,size,model,timeout):
             B = que.get()
         active_set.add(B[1])
         unactive_set.remove(B[1])
-        temp = Get_influence(nodes, next_node, active_set, unactive_set, model,times) - influence
+        temp = Get_influence(nodes, next_node, active_set, model,times) - influence
         C = que.get()
         if temp < -C[0]:
             unactive_set.add(B[1])
