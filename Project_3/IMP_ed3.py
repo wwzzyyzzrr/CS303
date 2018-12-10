@@ -111,7 +111,7 @@ def main(network,size,model,timeout):
     for i in range(nodes):
         unactive_set.add(i)
     que = queue.PriorityQueue()
-    P_num = 4
+    P_num = 8
     p = multiprocessing.Pool(P_num)
     influence = 0
     queue_temp = multiprocessing.Manager().Queue()   
