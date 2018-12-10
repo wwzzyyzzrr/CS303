@@ -31,67 +31,59 @@ def get_max_degree(unactive_set, node_degree):
             node = i
     return node
 
-def IC(next_node, active_set, unactive_set):
-    active_set_new = []
-    for i in active_set:
-        for j in next_node[i]:
-            if random.random() <= j[1] and j[0] in unactive_set:
-                active_set_new.append(j[0])
-                unactive_set.remove(j[0])
-    return active_set_new
+def do_IC(next_node, active_set):
+    active_set_new = (active_set).copy()
+    while active_set_new:
+        active_set_temp = set()
+        for i in active_set_new:
+            for j in next_node[i]:
+                if random.random() < j[1]:
+                    if j[0] not in active_set:
+                        active_set_temp.add(j[0])
+                        active_set.add(j[0])
+        active_set_new = active_set_temp.copy()
+    return len(active_set)
 
-def LT(next_node, active_set, unactive_set,threshold):
-    active_set_new = []
-    for i in active_set:
-        for j in next_node[i] :
-            if j[0] in unactive_set:
-                threshold[j[0]] -= j[1]
-                if threshold[j[0]]<=0:
-                    active_set_new.append(j[0])
-                    unactive_set.remove(j[0])
-    return active_set_new, unactive_set
-
-def do_IC(next_node, active_set,unactive_set):
-    length = len(active_set)
-    while len(active_set)>0:
-        active_set = IC(next_node, active_set, unactive_set)
-        length += len(active_set)
-    return length
-
-def do_LT(nodes, next_node, active_set, unactive_set):
-    length = len(active_set)
+def do_LT(nodes, next_node, active_set):
     threshold = []
     for i in range(0,nodes):
-        threshold.append(random.random())    
-    while len(active_set)>0:
-        active_set, unactve_set = LT(next_node, active_set, unactive_set,threshold)
-        length += len(active_set)
+        threshold.append(random.random())   
+    active_set_new = (active_set).copy()    
+    while active_set_new:
+        active_set_temp = set()
+        for i in active_set_new:
+            for j in next_node[i] :
+                if j[0] not in active_set:
+                    threshold[j[0]] -= j[1]
+                    if threshold[j[0]]<=0:
+                        active_set_temp.add(j[0])
+                        active_set.add(j[0])
+        active_set_new = active_set_temp.copy()    
+    length = len(active_set)
     return length
 
-def Get_influence(nodes, next_node, active_set, unactive_set, model, times):
+def Get_influence(nodes, next_node, active_set, model, times):
     length = 0
     if model == 'LT':
         for i in range(0, times):
-            length += do_LT(nodes, next_node, list(active_set), list(unactive_set))
+            length += do_LT(nodes, next_node, active_set.copy())
     else:
         for i in range(0, times):
-            length += do_IC(next_node, list(active_set),  list(unactive_set))
+            length += do_IC(next_node, active_set.copy)
     return length/times
 
-def do_Active(nodes, next_node, active_set, unactive_set, work_set, model,times,queue_temp, influence):
+def do_Active(nodes, next_node, active_set, work_set, model,times,queue_temp, influence):
     for i in work_set:
         active_set.add(i)
-        unactive_set.remove(i)
-        temp = Get_influence(nodes, next_node, active_set, unactive_set, model,times) - influence
+        temp = Get_influence(nodes, next_node, active_set, model,times) - influence
         queue_temp.put((-temp, i))
-        unactive_set.add(i)
         active_set.remove(i)
 
 def main(network,size,model,timeout):
     begin_time = time.time()
     nodes, edges, next_node, last_node = build_map(network)
     node_degree = cal_degree(next_node,nodes)
-    node_degree_use = copy.deepcopy(node_degree)
+    node_degree_use =(node_degree).copy()
     node_neighbor_num = []
     active_set = set()
     unactive_set = set()
@@ -109,17 +101,17 @@ def main(network,size,model,timeout):
                 v = j[0]
                 node_neighbor_num[v] += 1
                 node_degree_use[v] = node_degree[v] - 2*node_neighbor_num[v] - (node_degree[v] - node_neighbor_num[v])*node_neighbor_num[v]*j[1]
-        node_select = copy.deepcopy(active_set)
+        node_select = (active_set).copy()
     else:
         times = 700
-        node_select = copy.deepcopy(unactive_set)
+        node_select = (unactive_set).copy()
     
     active_set = set()
     unactive_set = set()
     for i in range(nodes):
         unactive_set.add(i)
     que = queue.PriorityQueue()
-    P_num = 16
+    P_num = 4
     p = multiprocessing.Pool(P_num)
     influence = 0
     queue_temp = multiprocessing.Manager().Queue()   
@@ -128,8 +120,8 @@ def main(network,size,model,timeout):
     part_len = list_len//P_num-1
     #print(len(node_select))
     for i in range(0,P_num):
-        p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-    do_Active(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num)*part_len:list_len]), model,times,queue_temp, influence)
+        p.apply_async(do_Active, args=(nodes, next_node, (active_set).copy(), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
+    do_Active(nodes, next_node, (active_set).copy(), set(temp_list[(P_num)*part_len:list_len]), model,times,queue_temp, influence)
     p.close()
     while not queue_temp.empty():
         que.put(queue_temp.get())
@@ -163,8 +155,8 @@ def main(network,size,model,timeout):
             list_len = len(temp_list)
             part_len = list_len//P_num
             for i in range(0,P_num):
-                p.apply_async(do_Active, args=(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
-            do_Active(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set), set(temp_list[(P_num)*part_len:list_len]), model,times,queue_temp, influence)
+                p.apply_async(do_Active, args=(nodes, next_node, (active_set).copy(), set(temp_list[i*part_len:(i+1)*part_len]), model,times,queue_temp, influence,))
+            do_Active(nodes, next_node, (active_set).copy(), set(temp_list[(P_num)*part_len:list_len]), model,times,queue_temp, influence)
             p.close()
             while not queue_temp.empty():
                 que.put(queue_temp.get())

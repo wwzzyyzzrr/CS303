@@ -17,51 +17,45 @@ def build_map(way):
 
 def add_seed(way, nodes):
     a = open(way)
-    unactive_set = []
-    active_set = []
+    unactive_set = set()
+    active_set = set()
     list_temp = a.readlines()
     for i in list_temp:
-        active_set.append(int(i))
+        active_set.add(int(i))
     for i in range(0, nodes):
         if i not in active_set:
-            unactive_set.append(i)
+            unactive_set.add(i)
     return active_set, unactive_set
 
-def IC(next_node, active_set, unactive_set):
-    active_set_new = []
-    for i in active_set:
-        for j in next_node[i]:
-            if random.random() <= j[1] and j[0] in unactive_set:
-                active_set_new.append(j[0])
-                unactive_set.remove(j[0])
-    return active_set_new
+def do_IC(next_node, active_set):
+    active_set_new = (active_set).copy()
+    while active_set_new:
+        active_set_temp = set()
+        for i in active_set_new:
+            for j in next_node[i]:
+                if random.random() < j[1]:
+                    if j[0] not in active_set:
+                        active_set_temp.add(j[0])
+                        active_set.add(j[0])
+        active_set_new = active_set_temp.copy()
+    return len(active_set)
 
-def LT(next_node, active_set, unactive_set,threshold):
-    active_set_new = []
-    for i in active_set:
-        for j in next_node[i] :
-            if j[0] in unactive_set:
-                threshold[j[0]] -= j[1]
-                if threshold[j[0]]<=0:
-                    active_set_new.append(j[0])
-                    unactive_set.remove(j[0])
-    return active_set_new, unactive_set
-
-def do_IC(next_node, active_set,unactive_set):
-    length = len(active_set)
-    while len(active_set)>0:
-        active_set = IC(next_node, active_set, unactive_set)
-        length += len(active_set)
-    return length
-
-def do_LT(nodes, next_node, active_set, unactive_set):
-    length = len(active_set)
+def do_LT(nodes, next_node, active_set):
     threshold = []
     for i in range(0,nodes):
-        threshold.append(random.random())    
-    while len(active_set)>0:
-        active_set, unactve_set = LT(next_node, active_set, unactive_set,threshold)
-        length += len(active_set)
+        threshold.append(random.random())   
+    active_set_new = (active_set).copy()    
+    while active_set_new:
+        active_set_temp = set()
+        for i in active_set_new:
+            for j in next_node[i] :
+                if j[0] not in active_set:
+                    threshold[j[0]] -= j[1]
+                    if threshold[j[0]]<=0:
+                        active_set_temp.add(j[0])
+                        active_set.add(j[0])
+        active_set_new = active_set_temp.copy()    
+    length = len(active_set)
     return length
 
 def cal(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_num):
@@ -69,14 +63,14 @@ def cal(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_nu
     if model == 'LT':
         while time.time() - begin_time < timeout-1:
             times_cal+=1
-            queue_temp.put(do_LT(nodes, next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set)))
-            if times_cal > 1000/P_num:
+            queue_temp.put(do_LT(nodes, next_node, active_set.copy()))
+            if times_cal > 2000/P_num:
                 break
     else:
         while time.time() - begin_time < timeout-1:
             times_cal+=1
-            queue_temp.put(do_IC(next_node, copy.deepcopy(active_set), copy.deepcopy(unactive_set)))
-            if times_cal > 1000/P_num:
+            queue_temp.put(do_IC(next_node, active_set.copy()))
+            if times_cal > 2000/P_num:
                 break
 
 def main(network,seed,model,timeout):
@@ -85,7 +79,7 @@ def main(network,seed,model,timeout):
     active_set, unactive_set = add_seed(seed, nodes)
     length = 0
     times_cal = 0
-    P_num = 8
+    P_num = 4
     p = multiprocessing.Pool(P_num)
     influence = 0
     queue_temp = multiprocessing.Manager().Queue()
@@ -101,8 +95,8 @@ def main(network,seed,model,timeout):
         times_cal+=1
         length+=queue_temp.get()
     print('{0:.2f}'.format(length/times_cal))
-    #print(times_cal)
-    #print(time.time()-begin_time)
+    print(times_cal)
+    print(time.time()-begin_time)
 arguments = sys.argv
 network = arguments[2]
 seed = arguments[4]
