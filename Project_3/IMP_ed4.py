@@ -38,6 +38,8 @@ def get_RRset_lt(last_node, node):
         if temp:
             a_new = temp.pop()
             a.add(a_new)
+        else:
+            break
     return a
 
 def get_RRset(last_node, node):
