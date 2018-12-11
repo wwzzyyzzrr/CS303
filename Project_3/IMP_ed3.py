@@ -89,7 +89,7 @@ def main(network,size,model,timeout):
     unactive_set = set()
     for i in range(nodes):
         unactive_set.add(i)
-    if nodes>111200:
+    if nodes>1200:
         times = 100
         for i in range(nodes):
             node_neighbor_num.append(0)

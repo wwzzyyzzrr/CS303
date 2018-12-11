@@ -55,8 +55,7 @@ def do_LT(nodes, next_node, active_set):
                         active_set_temp.add(j[0])
                         active_set.add(j[0])
         active_set_new = active_set_temp.copy()    
-    length = len(active_set)
-    return length
+    return len(active_set)
 
 def cal(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_num):
     times_cal = 0
@@ -64,13 +63,13 @@ def cal(queue_temp, begin_time, nodes, next_node, active_set, unactive_set, P_nu
         while time.time() - begin_time < timeout-1:
             times_cal+=1
             queue_temp.put(do_LT(nodes, next_node, active_set.copy()))
-            if times_cal > 2000/P_num:
+            if times_cal > 10000/P_num:
                 break
     else:
         while time.time() - begin_time < timeout-1:
             times_cal+=1
             queue_temp.put(do_IC(next_node, active_set.copy()))
-            if times_cal > 2000/P_num:
+            if times_cal > 10000/P_num:
                 break
 
 def main(network,seed,model,timeout):
@@ -79,8 +78,8 @@ def main(network,seed,model,timeout):
     active_set, unactive_set = add_seed(seed, nodes)
     length = 0
     times_cal = 0
-    P_num = 4
-    p = multiprocessing.Pool(P_num)
+    P_num = 8
+    p = multiprocessing.Pool(P_num-1)
     influence = 0
     queue_temp = multiprocessing.Manager().Queue()
     for i in range(P_num-1):
@@ -94,9 +93,9 @@ def main(network,seed,model,timeout):
     while not queue_temp.empty():
         times_cal+=1
         length+=queue_temp.get()
-    print('{0:.2f}'.format(length/times_cal))
-    print(times_cal)
-    print(time.time()-begin_time)
+    print('{0:.4f}'.format(length/times_cal))
+    #print(times_cal)
+    #print(time.time()-begin_time)
 arguments = sys.argv
 network = arguments[2]
 seed = arguments[4]
