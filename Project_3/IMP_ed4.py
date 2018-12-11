@@ -8,17 +8,14 @@ def build_map(way):
     edges = int(parameter[1])
     next_node = []
     last_node = []
-    lt_rr = []
     for i in range(0, nodes):
         next_node.append([])
         last_node.append([])
-        lt_rr.append([])
     for i in range(0,edges):
         edge = a.readline().split(' ')
         next_node[int(edge[0])].append((int(edge[1]), float(edge[2])))
         last_node[int(edge[1])].append((int(edge[0]), float(edge[2])))
-        lt_rr[int(edge[1])].append(int(edge[0]))
-    return nodes, edges, next_node, last_node, lt_rr
+    return nodes, edges, next_node, last_node
 
 def generate_g(nodes, next_node, last_node):
     g = []
@@ -33,11 +30,14 @@ def generate_g(nodes, next_node, last_node):
 def get_RRset_lt(last_node, node):
     a = set([node])
     a_new = node
-    print(a_new)
     while len(last_node[a_new])>0:
-        temp = last_node[a_new].copy()
-        a_new = temp[random.randint(0,len(temp)-1)]
-        a.add(a_new)   
+        temp = set()
+        for i in last_node[a_new]:
+            if i[0] not in a:
+                temp.add(i[0])
+        if temp:
+            a_new = temp.pop()
+            a.add(a_new)
     return a
 
 def get_RRset(last_node, node):
@@ -86,14 +86,19 @@ def node_selection(nodes, R_set, size):
                 RDic[j].remove(i)
     return Set_k
 
-def add_RR(que, times, nodes, last_node):
+def add_RR(que, times, nodes, last_node, model):
     set_temp= []
-    for i in range(times):
-        index = random.randint(0,nodes -1)
-        set_temp.append(get_RRset_lt(last_node, index))
+    if model:
+        for i in range(times):
+            index = random.randint(0,nodes -1)
+            set_temp.append(get_RRset_lt(last_node, index))
+    else:
+        for i in range(times):
+            index = random.randint(0,nodes -1)
+            set_temp.append(get_RRset(last_node, index))
     que.put(set_temp)
 
-def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num):
+def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num, model):
     R_set = []
     LB = 1
     C_n_k = math.factorial(nodes)/(math.factorial(size)*math.factorial(nodes-size))
@@ -110,8 +115,8 @@ def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num):
         times = int((theta_i-len(R_set))//(p_num))+1
         que = multiprocessing.Manager().Queue()
         for t in range(p_num-1):
-            p.apply_async(add_RR, args=(que, times, nodes, last_node))
-        add_RR(que, times, nodes, last_node)
+            p.apply_async(add_RR, args=(que, times, nodes, last_node, model))
+        add_RR(que, times, nodes, last_node, model)
         while not que.empty():
             R_set += que.get()
         p.close()
@@ -128,8 +133,8 @@ def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num):
     times = int((theta-len(R_set))//(p_num))+1
     que = multiprocessing.Manager().Queue()
     for t in range(p_num-1):
-        p.apply_async(add_RR, args=(que, times, nodes, last_node))
-    add_RR(que, times, nodes, last_node)
+        p.apply_async(add_RR, args=(que, times, nodes, last_node, model))
+    add_RR(que, times, nodes, last_node, model)
     while not que.empty():
         R_set += que.get()
     p.close()
@@ -138,18 +143,18 @@ def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num):
         R_set += que.get()
     return R_set
 
-def IMM(nodes, next_node, last_node, lt_rr, size):
+def IMM(nodes, next_node, last_node, size, model):
     lota = 1
-    epsilon = 0.1
+    epsilon = 0.5
     p_num = 7
-    R_set = sampling(nodes, next_node, last_node, size, epsilon, lota, p_num)
+    R_set = sampling(nodes, next_node, last_node, size, epsilon, lota, p_num, model)
     Set_k = node_selection(nodes, R_set, size)
     return Set_k
 
 def main(network,size,model,timeout):
-    nodes, edges, next_node, last_node, lt_rr = build_map(network)
+    nodes, edges, next_node, last_node = build_map(network)
     begin_time = time.time()
-    Set = IMM(nodes, next_node, last_node, lt_rr, size)
+    Set = IMM(nodes, next_node, last_node, size, model)
     for i in Set:
         print(i)
     print(time.time()-begin_time)
@@ -158,6 +163,6 @@ def main(network,size,model,timeout):
 arguments = sys.argv
 network = arguments[2]
 size = int(arguments[4])
-model = arguments[6]
+model = arguments[6]=='LT'
 timeout = float(arguments[8])
 main(network,size,model,timeout)
