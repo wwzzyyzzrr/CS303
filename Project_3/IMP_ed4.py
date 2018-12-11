@@ -57,24 +57,25 @@ def get_fraction(R_set, S):
 
 def node_selection(nodes, R_set, size):
     Set_k = set()
-    while len(Set_k)<size:
-        num = [0 for i in range(0,nodes)]
-        for r in R_set:
-            flag = True
-            for m in Set_k:
-                if m in r:
-                    flag = False
-                    break
-            if flag:
-                for j in r:
-                    num[j] += 1
-        max_value = -1
-        max_node = -1
-        for i in range(0, nodes):
-            if num[i] > max_value:
-                max_value = num[i]
-                max_node = i
-        Set_k.add(max_node)
+    RDic = dict()
+    num = []
+    for i in range(0, nodes):
+        num.append(0)
+    for i in range(0, len(R_set)):
+        for j in R_set[i]:
+            num[j] += 1
+            if j not in RDic.keys():
+                RDic[j] = [i]
+            else:
+                RDic[j].append(i)
+    while len(Set_k) < size:
+        s = num.index(max(num))
+        Set_k.add(s) 
+        rr = RDic[s].copy()
+        for i in rr:
+            for j in R_set[i]:
+                num[j] -= 1
+                RDic[j].remove(i)
     return Set_k
 
 def add_RR(que, times, nodes, last_node):
