@@ -30,10 +30,18 @@ def generate_g(nodes, next_node, last_node):
                 g[j].add(i)
     return g
 
+def get_RRset_lt(last_node, node):
+    a = set([node])
+    a_new = node
+    print(a_new)
+    while len(last_node[a_new])>0:
+        temp = last_node[a_new].copy()
+        a_new = temp[random.randint(0,len(temp)-1)]
+        a.add(a_new)   
+    return a
+
 def get_RRset(last_node, node):
-    a = set()
-    for i in last_node[node]:
-        a.add(i[0])
+    a = set([node])
     a_new = a.copy()
     while a_new:
         a_temp = set()
@@ -82,7 +90,7 @@ def add_RR(que, times, nodes, last_node):
     set_temp= []
     for i in range(times):
         index = random.randint(0,nodes -1)
-        set_temp.append(get_RRset(last_node, index))
+        set_temp.append(get_RRset_lt(last_node, index))
     que.put(set_temp)
 
 def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num):
@@ -128,7 +136,6 @@ def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num):
     p.join()
     while not que.empty():
         R_set += que.get()
-    print(time.time())
     return R_set
 
 def IMM(nodes, next_node, last_node, lt_rr, size):
@@ -145,7 +152,7 @@ def main(network,size,model,timeout):
     Set = IMM(nodes, next_node, last_node, lt_rr, size)
     for i in Set:
         print(i)
-    print(time.time())
+    print(time.time()-begin_time)
 
 
 arguments = sys.argv
