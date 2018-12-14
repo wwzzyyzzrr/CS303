@@ -1,0 +1,178 @@
+\documentclass[conference,compsoc]{IEEEtran}
+
+\ifCLASSOPTIONcompsoc
+  \usepackage[nocompress]{cite}
+\else
+  \usepackage{cite}
+\fi
+
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{booktabs}
+\floatname{algorithm}{algorithm} 
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage{array}
+\usepackage{url}
+\usepackage{cite}
+\hyphenation{op-tical net-works semi-conduc-tor}
+\begin{document}
+
+\title{Influence Maximization Project}
+\author{\IEEEauthorblockN{Wang Zhiyuan  11610634}
+\IEEEauthorblockA{CSE\\
+Computer Science and Technology\\
+11610634@mail.sustc.edu.cn}}
+\maketitle
+\IEEEpeerreviewmaketitle 
+
+
+
+\section{Preliminaries}
+  \subsection{Software}
+    In this project, I do some work to solve the Influence Maximization problem, which aid to find the initial seed set to let the final influence max in the social network.
+
+    To do this work, I do it in two part, one is ISE(Influence Size Estimator), one is IMP(Influence Maximization Problems). And the social network we use is made in two models: IC(Independent Cascade) and LT(Linear Threshold).
+
+    In the Project, I write the program by python and no extra package used. The test data is storaged in the txt. 
+
+  \subsection{Algorithm}
+    The algorithm I have came true is CELF and IMM. 
+    The CELF is a greedy function with pruning, and the IMM is transfer the result of the active each round to the overlay of the RR(Reserve Rsearch) set.
+    
+    In my test, the CElF can always get the best value in the IC model, but for the property of the LT, CELF can't always get the best result of the LT. But the largest dsiadvantage of the CELF is it's speed, when I apply CELF to a social network with 15k nodes and 30k edges. The CELF will work more than 2 hours.
+
+    The IMM can work quickly and accuratly for both IC and LT. For the graph I mentioned last paragraph, IMM can work out in 20 seconds in both IC and LT for a 50 seeds initial set with $\epsilon = 0.1$, number of processing is 8.
+    But IMM is not perfact, this algorithm will consume so much memory when handle a graph has so many nodes with a low $\epsilon$. For example, when I calculate a network with 425k nodes and $\epsilon = 0.1$, it need 13.2GiB memory.
+    
+\section{Methodology}
+  \subsection{Representation}
+    \subsubsection{ISE}
+      In the ISE, I do it in 3 parts:
+      \begin{itemize}
+        \item $Build Map$: Read data from the file and generate the Adjacency \textbf{list}. Then reason that I choose the two dimension list but not the matrix or the dictionary is to get a balance of the memory ad the speed.
+        \item $Create processing Pool$: Create a processing pool to do the multiprocessing to calculate quickly. 
+        \item $Do IC or LT$: Calculate the result of the network and seed given for many time.
+      \end{itemize}
+    \subsubsection{CELF}
+      In the CELF, I do it in 3 parts:
+      \begin{itemize}
+        \item $Build Map$: Read data from the file and generate the Adjacency \textbf{list}. Then reason that I choose the two dimension list but not the matrix or the dictionary is to get a balance of the memory ad the speed.
+        \item $Do ISE$: Get the result of the seeds we choice in the given network and storage it in a \textbf{heap}
+        \item $Choice nodes$: Choice that use the node in the top of the heap or do ISE again
+      \end{itemize}
+    \subsubsection{IMM}
+      In the IMM, I do it in 3 parts:
+      \begin{itemize}
+        \item $Build Map$: Read data from the file and generate the Adjacency \textbf{list}. Then reason that I choose the two dimension list but not the matrix or the dictionary is to get a balance of the memory ad the speed.
+        \item $Sampling$: Calculate the influence and create the \textbf{set} of RR set.
+        \item $Node Selction$: Get the initial nodes set by compare the number of the RR set covered by the node.
+      \end{itemize}
+  \subsection{Architecture}
+    \subsubsection{ISE}
+      \begin{itemize}
+        \item Read data and storage in memory.
+        \item Get the active seeds initial.
+        \item Active the node by the nodes actived last round.
+        \item Do the last step until there are no new node actived in one round
+      \end{itemize}
+    \subsubsection{CELF}
+      \begin{itemize}
+        \item Read data and storage in memory.
+        \item Calculate the influcence of the each nodes
+        \item Choice that use the node on the top of the heap or Calculate the influence again
+        \item Do the last step until the size of the set we get equal to the size we need
+      \end{itemize}
+    \subsubsection{IMM}
+      \begin{itemize}
+        \item Read data and storage in memory.
+        \item Do the sample and generate the list of the RR set
+        \item Do node selection for the list generated last step, get the final set
+      \end{itemize}
+  \subsection{Detail of Algorithm}
+    \subsubsection{ISE}
+      In the ISE, I do 10000 times estimate in 8 processing, each do 1250 times calculations. In each calculation, the program have two parts: LT and IC, choice which parts by the parameter input. The detail of two part can look at algorithm1 and algorithm2.
+      \begin{algorithm}
+        \caption{IC}
+        \begin{algorithmic}[1]
+          \Function{IC}{$nextNode, activeSet$}
+            \State $activeNew\gets activeSet.copy()$
+            \While{$activeNew$}
+              \State $activeTemp \gets new\quad set()$
+              \For{$i\quad in\quad activeNew$}
+                \For{{$j\quad in \quad nextNode[i]$}}
+                  \If{$random<j[1]$}
+                    \If{$j[0]\quad not\quad in\quad activeSet$}
+                      \State activeTemp.add[j[0]]
+                      \State activeSet.add[j[0]]
+                    \EndIf
+                  \EndIf
+                \EndFor
+              \EndFor
+              \State $activeNew = activeTemp.copy()$
+            \EndWhile
+            \Return $activeSet$
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
+
+
+      \begin{algorithm}
+        \caption{LT}
+        \begin{algorithmic}[1]
+          \Function{LT}{$nodes, nextNode, activeSet$}
+            \State $threshold\gets []$
+            \For{$i\gets0\quad to nodes$}
+              \State $threshold.append(random())$
+            \EndFor
+            \State $activeNew\gets activeSet.copy()$
+            \While{activeNew}
+              \State $activeTemp\gets new\quad set()$
+              \For{$i\quad in\quad activeNew$}
+                \For{$j\quad in\quad nextNode$}
+                  \If{$j[0]\quad not\quad in\quad activeSet$}
+                    \State $threshold[j[0]]-=j[1]$
+                    \If{$threshold[j[0]]<=0$}
+                      \State $activeTemp.add(j[0]$
+                      \State $activeSet.add(j[0]$
+                    \EndIf
+                  \EndIf
+                \EndFor
+              \EndFor
+              \State$activeNew\gets activeTemp.copy()$
+            \EndWhile
+            \Return $activeSet$
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
+
+    \subsubsection{CELF}
+      For the CELF, I do once ISE for each node one time and storage them in a heap depend on the influcence increase of the node.
+      Then, choice that using the node on the top of the heap or do the ISE for the nodes leftover.
+      The detail of the CELF will be shown in the algorithm3.
+      \begin{algorithm}
+        \caption{CELF}
+        \begin{algorithmic}[1]
+          \Function{CELF}{$nodes, size$}
+            \State $activeSet = set()$
+            \State $que = PriorityQueue()$
+            \For{$i\quad in\quad 0 \quad to\quad nodes$}
+              \State $que.add(ISE(i, activeSet))$
+            \EndFor
+            
+
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
+\section{Empirical Verification}
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,mylib}
+
+
+\end{document}
+
+
