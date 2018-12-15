@@ -111,37 +111,28 @@ def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num, model):
     for i in range(1, int(math.log2(nodes))):
         x = nodes/(math.pow(2, i))
         theta_i = lambda_a/x
-
-        p = multiprocessing.Pool(p_num)
-        times = int((theta_i-len(R_set))//(p_num))+1
-        que = multiprocessing.Manager().Queue()
-        for t in range(p_num-1):
-            p.apply_async(add_RR, args=(que, times, nodes, last_node, model))
-        add_RR(que, times, nodes, last_node, model)
-        while not que.empty():
-            R_set += que.get()
-        p.close()
-        p.join()
-        while not que.empty():
-            R_set += que.get()  
+        if model:
+            while len(R_set)<theta_i:
+                index = random.randint(0,nodes -1)
+                R_set.append(get_RRset_lt(last_node, index))
+        else:
+            while len(R_set)<theta_i:
+                index = random.randint(0,nodes -1)
+                R_set.append(get_RRset(last_node, index))
         S_i = node_selection(nodes, R_set, size)
         F_R_S = get_fraction(R_set, S_i)
         if nodes*F_R_S >= (1+epsilon_a)*x:
             LB = nodes*F_R_S/(1+epsilon_a)
             break
     theta = lambda_b/LB
-    p = multiprocessing.Pool(p_num)
-    times = int((theta-len(R_set))//(p_num))+1
-    que = multiprocessing.Manager().Queue()
-    for t in range(p_num-1):
-        p.apply_async(add_RR, args=(que, times, nodes, last_node, model))
-    add_RR(que, times, nodes, last_node, model)
-    while not que.empty():
-        R_set += que.get()
-    p.close()
-    p.join()
-    while not que.empty():
-        R_set += que.get()
+    if model:
+        while len(R_set)<theta:
+            index = random.randint(0,nodes -1)
+            R_set.append(get_RRset_lt(last_node, index))
+    else:
+        while len(R_set)<theta:
+            index = random.randint(0,nodes -1)
+            R_set.append(get_RRset(last_node, index))
     return R_set
 
 def IMM(nodes, next_node, last_node, size, model):
