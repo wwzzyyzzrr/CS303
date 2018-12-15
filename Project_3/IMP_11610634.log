@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  13 DEC 2018 16:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  15 DEC 2018 12:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -107,26 +107,28 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24.09> not available
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (/usr/share/texmf-dist/tex/latex/listings/listings.sty (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+)
+\c@theorem=\count95
+ (/usr/share/texmf-dist/tex/latex/listings/listings.sty (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-\lst@mode=\count95
+\lst@mode=\count96
 \lst@gtempboxa=\box28
 \lst@token=\toks16
-\lst@length=\count96
+\lst@length=\count97
 \lst@currlwidth=\dimen126
-\lst@column=\count97
-\lst@pos=\count98
+\lst@column=\count98
+\lst@pos=\count99
 \lst@lostspace=\dimen127
 \lst@width=\dimen128
-\lst@newlines=\count99
-\lst@lineno=\count100
+\lst@newlines=\count100
+\lst@lineno=\count101
 \lst@maxwidth=\dimen129
  (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
-\c@lstnumber=\count101
-\lst@skipnumbers=\count102
+\c@lstnumber=\count102
+\lst@skipnumbers=\count103
 \lst@framebox=\box29
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2018/09/02 1.7 listings configuration
@@ -149,13 +151,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count103
+\inf@bad=\count104
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count104
-\leftroot@=\count105
+\uproot@=\count105
+\leftroot@=\count106
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count106
-\DOTSCASE@=\count107
+\classnum@=\count107
+\DOTSCASE@=\count108
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
@@ -164,15 +166,15 @@ LaTeX Info: Redefining \cdots on input line 596.
 \big@size=\dimen132
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count108
-\c@MaxMatrixCols=\count109
+\macc@depth=\count109
+\c@MaxMatrixCols=\count110
 \dotsspace@=\muskip10
-\c@parentequation=\count110
-\dspbrk@lvl=\count111
+\c@parentequation=\count111
+\dspbrk@lvl=\count112
 \tag@help=\toks18
-\row@=\count112
-\column@=\count113
-\maxfields@=\count114
+\row@=\count113
+\column@=\count114
+\maxfields@=\count115
 \andhelp@=\toks19
 \eqnshift@=\dimen133
 \alignsep@=\dimen134
@@ -190,7 +192,7 @@ LaTeX Info: Redefining \] on input line 2818.
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (/usr/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count115
+\c@float@type=\count116
 \float@exts=\toks22
 \float@box=\box32
 \@float@everytoks=\toks23
@@ -199,20 +201,20 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks24
-\c@algorithm=\count116
+\c@algorithm=\count117
 ) (/usr/share/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count117
-\c@ALG@rem=\count118
-\c@ALG@nested=\count119
+\c@ALG@line=\count118
+\c@ALG@rem=\count119
+\c@ALG@nested=\count120
 \ALG@tlm=\skip47
 \ALG@thistlm=\skip48
-\c@ALG@Lnr=\count120
-\c@ALG@blocknr=\count121
-\c@ALG@storecount=\count122
-\c@ALG@tmpcounter=\count123
+\c@ALG@Lnr=\count121
+\c@ALG@blocknr=\count122
+\c@ALG@storecount=\count123
+\c@ALG@tmpcounter=\count124
 \ALG@tmplength=\skip49
 ) (/usr/share/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
@@ -230,13 +232,16 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen146
 \cmidrulekern=\dimen147
 \defaultaddspace=\dimen148
-\@cmidla=\count124
-\@cmidlb=\count125
+\@cmidla=\count125
+\@cmidlb=\count126
 \@aboverulesep=\dimen149
 \@belowrulesep=\dimen150
-\@thisruleclass=\count126
-\@lastruleclass=\count127
+\@thisruleclass=\count127
+\@lastruleclass=\count128
 \@thisrulewidth=\dimen151
+) (/usr/share/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup4
 ) (/usr/share/texmf-dist/tex/latex/tools/array.sty
 Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \col@sep=\dimen152
@@ -252,32 +257,40 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (./IMP_11610634.aux)
 \openout1 = `IMP_11610634.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 -- Lines per column: 58 (exact).
-\c@lstlisting=\count128
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 29.
+\c@lstlisting=\count129
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 30.
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.05249> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
-LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 48.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
+LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 49.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 49.
+ (/usr/share/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-] (./IMP_11610634.bbl
+] [2]
+Overfull \hbox (1.85944pt too wide) in paragraph at lines 212--213
+[] $\OML/cmm/m/it/10 v \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 Maximizes num\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 RR Set Covered\OT1/cmr/m/n/10 )$ 
+ []
+
+(./IMP_11610634.bbl
 
 ./IMP_11610634.bbl:24: LaTeX Error: Something's wrong--perhaps a missing \item.
 
@@ -302,20 +315,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2] (./IMP_11610634.aux) ) 
+[3] (./IMP_11610634.aux) ) 
 Here is how much of TeX's memory you used:
- 4004 strings out of 492642
- 59254 string characters out of 6135565
- 136970 words of memory out of 5000000
- 7885 multiletter control sequences out of 15000+600000
- 37318 words of font info for 69 fonts, out of 8000000 for 9000
+ 4047 strings out of 492642
+ 60006 string characters out of 6135565
+ 143095 words of memory out of 5000000
+ 7917 multiletter control sequences out of 15000+600000
+ 39935 words of font info for 75 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 27i,7n,32p,370b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on IMP_11610634.pdf (2 pages, 85389 bytes).
+ 27i,7n,32p,608b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on IMP_11610634.pdf (3 pages, 137229 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

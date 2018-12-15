@@ -5,13 +5,14 @@
 \else
   \usepackage{cite}
 \fi
-
+\newtheorem{theorem}{Defination}
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{booktabs}
+\usepackage{mathrsfs}
 \floatname{algorithm}{algorithm} 
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -41,7 +42,7 @@ Computer Science and Technology\\
 
   \subsection{Algorithm}
     The algorithm I have came true is CELF and IMM. 
-    The CELF is a greedy function with pruning, and the IMM is transfer the result of the active each round to the overlay of the RR(Reserve Rsearch) set.
+    The CELF is a greedy function with pruning, and the IMM is transfer the result of the active each round to the overlay of the RR(Reverse Reachable) set.
     
     In my test, the CElF can always get the best value in the IC model, but for the property of the LT, CELF can't always get the best result of the LT. But the largest dsiadvantage of the CELF is it's speed, when I apply CELF to a social network with 15k nodes and 30k edges. The CELF will work more than 2 hours.
 
@@ -119,7 +120,6 @@ Computer Science and Technology\\
         \end{algorithmic}
       \end{algorithm}
 
-
       \begin{algorithm}
         \caption{LT}
         \begin{algorithmic}[1]
@@ -160,13 +160,99 @@ Computer Science and Technology\\
             \State $activeSet = set()$
             \State $que = PriorityQueue()$
             \For{$i\quad in\quad 0 \quad to\quad nodes$}
-              \State $que.add(ISE(i, activeSet))$
+              \State $que.add(i, (ISE(i, activeSet)))$
             \EndFor
-            
-
+            \State $activeSet.add(que.get()[0])$
+            \While{$len(activeSet)<size$}
+              \State $B\gets que.get()$
+              \If{$ISE(B[1], activeSet)<que.get()[1]$}
+                \State $activeSet.add(B[0])$
+              \Else
+                \For{$i\quad in\quad 0 \quad to\quad nodes$}
+                  \If{$i\quad not\quad in\quad activeSet$}
+                    \State $que.add(i, (ISE(i, activeSet)))$
+                  \EndIf
+                \EndFor
+              \EndIf
+            \EndWhile
+            \State \Return $activeSet$
           \EndFunction
         \end{algorithmic}
       \end{algorithm}
+    \subsubsection{IMM}
+      For the IMM, it translate the ability of the activing nodes to the number of the RR set can be covered.
+      \begin{theorem}[Reverse Reachable Set]
+        Let $v$ be a node in network $G$, and $g$ be a graph obtain by removing an each edge $e$ in $G$ with $1-p(e)$ probability. The reverse reachale(RR) set for $v$ in $g$ is the set of nodes in $g$ that can reach $v$.(That is, for each node $u$ in RR Set, there is a directed path from $u$ to $v$)
+      \end{theorem}
+      \begin{theorem}[Random RR set]
+        Let $\mathcal{G}$ be the distribution of $g$ induced by the randomness in edge removal from $G$. A random RR set is an RR set generated on an instance of $g$ randomly sampled from $\mathcal{G}$, for a node selected uniformly at random from g.
+      \end{theorem}
+      After the defination of the RR set and random RR set, how IMM work? By the paper Influence Maximization: Near-Optimal Time Complexity Meets Practical Efficiency\cite{} we can know that if we add many enough RR set in the list R, and select the nodes that can cover the most number of the RR set, we must can get a good enough solution. But how many RR set we need to add in it? This is the work that IMM do more then the algorithm called TIM in the paper Influence Maximization: Near-Optimal Time Complexity Meets Practical Efficiency \cite{} do.
+      First, we set some parameter that we will use in the sampling of the RR set.
+      \begin{equation}        
+        \lambda^{'} = \frac{(2+\frac{2}{3}\epsilon^{'})\cdot (\log(^{n}_{k})+l\cdot \log n+\log\log_{2}^{n})\cdot n}{\epsilon^{'2}}
+      \end{equation}
+      \begin{equation}
+        \lambda^{*} = 2n\cdot ((1-\frac{1}{e})\cdot\alpha +\beta)^2\dot\epsilon^{-2}
+      \end{equation}
+      \begin{equation}
+        \alpha = \sqrt{l\log n+log 2}
+      \end{equation}
+      \begin{equation}
+        \beta = \sqrt{(1-\frac{1}{e})\cdot(\log(^n_k)+l\log n+ \log 2)}
+      \end{equation}
+      First of all, let's look at the algorithm the NodeSelection, in this part, we will get a given size set from the nodes in the G that let the nodes in the set can cover as more as possible.
+      This part not only use in the last step to get the target set, but also use in the sampling part to determine the size of the RR set list we need.
+      \begin{algorithm}
+        \caption{NodeSelection}
+        \begin{algorithmic}[1]
+          \Function{NodeSelection}{$\mathcal{R},k$}
+            \State $S_{k}^{*}\gets set()$
+            \For{$i \gets 1\quad to\quad k$}
+              \State $v\gets Maximizes\quad num(RR\quad Set\quad Covered)$
+              \State $S_{k}^{*}.add(v)$
+            \EndFor
+          \EndFunction
+          \State \Return $S_{k}^{*}$
+        \end{algorithmic}
+      \end{algorithm}
+      In the NodeSelection part, how to let the speed of line 4 be highest is the key of the optimization of the algorithm.
+      When I implment it, I use a \textbf{map} to storage many \textbf{list} as the \textbf{{value}}, each \textbf{list} storage the nodes that can be reached by the \textbf{key} node of this \textbf{list}.
+      And at the same time, I count that the number of the nodes that can be reached for each \textbf{key} node
+      Then, I will do the work that choice the node to add to the target set. I get the node that have the max number of the nodes can be reached, then update the map and the list that used to statistic last step.
+      I will repeat this step until the target set is full.
+      
+      Then, I will do the Sampling part work. The detail of the sampling is in the algorithm5
+      \begin{algorithm}
+        \caption{Sampling}
+        \begin{algorithmic}[1]
+          \Function{Sampling}{$G,k,\epsilon,l$}
+            \State $\mathcal{R}\gets []$
+            \State $LB\gets 1$
+            \State $\epsilon^{'} \gets \sqrt{2}\cdot\epsilon$
+            \For{$i \gets 1\quad to \quad \log_{2}{n}-1$}
+              \State $x\gets n/2^i$
+              \State $\Theta_i \gets \lambda^{'}/x$
+              \While{$|\mathcal{R}|\leq \Theta_i$}
+                \State $v\gets random(G.node)$
+                \State $\mathcal{R}.append(v)$
+              \EndWhile
+              \State $S_i\gets NodeSelection(\mathcal{R},k)$
+              \If{$n\cdot \mathcal{F_R}(S_i)\geq(1+\epsilon^{'}\cdot x$}
+                \State $LB\gets n\cdot\mathcal{F_R}(S_i)/(1+\epsilon^{'}$
+                \State $\textbf{break}$
+              \EndIf
+            \EndFor
+            \State $\Theta\gets\lambda^{*}/LB$
+            \While{$|\mathcal{R}|\leq \Theta$}
+              \State $v\gets random(G.node)$
+              \State $\mathcal{R}.append(v)$
+            \EndWhile
+            \State \Return $\mathcal{R}$
+          \EndFunction
+        \end{algorithmic}
+      \end{algorithm}
+
 \section{Empirical Verification}
 
 \bibliographystyle{IEEEtran}
