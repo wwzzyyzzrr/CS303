@@ -146,8 +146,8 @@ def sampling(nodes, next_node, last_node, size, epsilon, lota, p_num, model):
 
 def IMM(nodes, next_node, last_node, size, model):
     lota = 1
-    epsilon = 0.1
-    p_num = 7
+    epsilon = 0.2
+    p_num = 15
     R_set = sampling(nodes, next_node, last_node, size, epsilon, lota, p_num, model)
     Set_k = node_selection(nodes, R_set, size)
     return Set_k
