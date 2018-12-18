@@ -22,7 +22,7 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 \begin{document}
 
-\title{Influence Maximization Project}
+\title{Influence Maximization Problem}
 \author{\IEEEauthorblockN{Wang Zhiyuan  11610634}
 \IEEEauthorblockA{CSE\\
 Computer Science and Technology\\
@@ -59,7 +59,7 @@ Computer Science and Technology\\
         \item $Do IC or LT$: Calculate the result of the network and seed given for many time.
       \end{itemize}
     \subsubsection{CELF}
-      In the CELF, I do it in 3 parts:
+      In the CELF\cite{lv2014improved}\cite{goyal2011celf++}, I do it in 3 parts:
       \begin{itemize}
         \item $Build Map$: Read data from the file and generate the Adjacency \textbf{list}. Then reason that I choose the two dimension list but not the matrix or the dictionary is to get a balance of the memory ad the speed.
         \item $Do ISE$: Get the result of the seeds we choice in the given network and storage it in a \textbf{heap}
@@ -187,7 +187,7 @@ Computer Science and Technology\\
       \begin{theorem}[Random RR set]
         Let $\mathcal{G}$ be the distribution of $g$ induced by the randomness in edge removal from $G$. A random RR set is an RR set generated on an instance of $g$ randomly sampled from $\mathcal{G}$, for a node selected uniformly at random from g.
       \end{theorem}
-      After the defination of the RR set and random RR set, how IMM work? By the paper Influence Maximization: Near-Optimal Time Complexity Meets Practical Efficiency\cite{} we can know that if we add many enough RR set in the list R, and select the nodes that can cover the most number of the RR set, we must can get a good enough solution. But how many RR set we need to add in it? This is the work that IMM do more then the algorithm called TIM in the paper Influence Maximization: Near-Optimal Time Complexity Meets Practical Efficiency \cite{} do.
+      After the defination of the RR set and random RR set, how IMM work? By the paper Influence Maximization: Near-Optimal Time Complexity Meets Practical Efficiency\cite{tang2015influence} we can know that if we add many enough RR set in the list R, and select the nodes that can cover the most number of the RR set, we must can get a good enough solution. But how many RR set we need to add in it? This is the work that IMM do more then the algorithm called TIM in the paper Influence Maximization: Near-Optimal Time Complexity Meets Practical Efficiency \cite{tang2014influence} do.
       First, we set some parameter that we will use in the sampling of the RR set.
       \begin{equation}        
         \lambda^{'} = \frac{(2+\frac{2}{3}\epsilon^{'})\cdot (\log(^{n}_{k})+l\cdot \log n+\log\log_{2}^{n})\cdot n}{\epsilon^{'2}}
@@ -222,7 +222,8 @@ Computer Science and Technology\\
       Then, I will do the work that choice the node to add to the target set. I get the node that have the max number of the nodes can be reached, then update the map and the list that used to statistic last step.
       I will repeat this step until the target set is full.
       
-      Then, I will do the Sampling part work. The detail of the sampling is in the algorithm5
+      Then, I will do the Sampling part work. The detail of the sampling is in the algorithm5. 
+      In the sampling, it calculate the number of the RR set needed Dynamicly and can save much time.
       \begin{algorithm}
         \caption{Sampling}
         \begin{algorithmic}[1]
@@ -254,10 +255,56 @@ Computer Science and Technology\\
       \end{algorithm}
 
 \section{Empirical Verification}
-
+  \subsection{Design}
+    When I do the verification. I set the $hyperparameters$ $\epsilon = 0.1$, $l = 1$.
+    \subsubsection{Network}: NetHEPT, Amazon and DBLP
+    \subsubsection{Hyperparameter}: $\epsilon = 0.1\quad or\quad 0.2$, $l = 1$. The $\epsilon$ less, the speed lower, but the accuracy higher.
+  \subsection{Performance}
+    I test the program on my computer with AMD Ryzen 1700$3.6GHz@16$ and 16GB memory
+    And the test for the NetHEPT use 16 processing and the test of the Amazon and DBLP will use 1 processing becausing The memory will not enough when calculate a very large network
+    \begin{itemize}
+      \item N: Num of nodes; E: Num of edges; M: Type of model
+      \item S: Size of the seeds; P: Num of processing
+      \item T: Time used; R: The result
+    \end{itemize}
+    \begin{table}[!htbp]
+      \centering
+      \caption{Result of test case}\label{tab:aStrangeTable}
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Network} & \textbf{N} & \textbf{E} & \textbf{M} & \textbf{S} & \textbf{$\epsilon$} &  \textbf{P} & \textbf{T} & \textbf{R}\\
+        \hline
+        NetHEPT&15233&32235&LT&50&0.1&16&13.83&1701.97\\
+        \hline
+        NetHEPT&15233&32235&IC&50&0.1&16&15.71&1295.52\\
+        \hline
+        NetHEPT&15233&32235&LT&50&0.2&16&4.33&1698.73\\
+        \hline
+        NetHEPT&15233&32235&IC&50&0.2&16&4.56&1290.56\\
+        \hline
+        Amazon&548526&13474&LT&50&0.2&1&189.55&852.99\\
+        \hline
+        Amazon&548526&13474&IC&50&0.2&1&347.62&636.59\\
+        \hline
+        Amazon&548526&13474&LT&50&0.5&1&70.15&847.83\\
+        \hline
+        Amazon&548526&13474&IC&50&0.5&1&69.76&628.03\\
+        \hline
+        DBLP&425746&15794&LT&50&0.1&1&376.17&1002.82\\
+        \hline
+        DBLP&425746&15794&LT&50&0.2&1&168.81&1001.21\\
+        \hline
+        DBLP&425746&15794&IC&50&0.2&1&181.13&658.26\\
+        \hline
+      \end{tabular}
+    \end{table}
+  \subsection{Result}
+    From the table above, we can find that IMM have good effect to the IMP problem, but it work slowly in very large network with small $\epsilon$.
+  \subsection{Analysis}
+    For the test, I find that the IMM can work fast, but the performance is limited by the speed of node selction because it can not run in multiprocessing, so the next optimization step is add nodeselection into the multiprocessing.
+    Another limitation of IMM is the memory, when a large number of nodes calculate with a low $\epsilon$, the number of RR set needed will be so large, and these RR set is required in the last node selection. So it will take so much memory, and the multiprocessing also can not be used.
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,mylib}
-
 
 \end{document}
 

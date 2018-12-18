@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  15 DEC 2018 12:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.28)  15 DEC 2018 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -290,20 +290,13 @@ Overfull \hbox (1.85944pt too wide) in paragraph at lines 212--213
 [] $\OML/cmm/m/it/10 v \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 Maximizes num\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 RR Set Covered\OT1/cmr/m/n/10 )$ 
  []
 
-(./IMP_11610634.bbl
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 273.
 
-./IMP_11610634.bbl:24: LaTeX Error: Something's wrong--perhaps a missing \item.
+Overfull \hbox (27.27507pt too wide) in paragraph at lines 273--300
+ [][] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.24 \end{thebibliography}
-                          
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-)
+[3] (./IMP_11610634.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -315,20 +308,22 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3] (./IMP_11610634.aux) ) 
+[4
+
+] (./IMP_11610634.aux) ) 
 Here is how much of TeX's memory you used:
- 4047 strings out of 492642
- 60006 string characters out of 6135565
- 143095 words of memory out of 5000000
- 7917 multiletter control sequences out of 15000+600000
- 39935 words of font info for 75 fonts, out of 8000000 for 9000
+ 4089 strings out of 492642
+ 60571 string characters out of 6135565
+ 143115 words of memory out of 5000000
+ 7949 multiletter control sequences out of 15000+600000
+ 46731 words of font info for 90 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 27i,7n,32p,608b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on IMP_11610634.pdf (3 pages, 137229 bytes).
+ 27i,8n,32p,662b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on IMP_11610634.pdf (4 pages, 154218 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
