@@ -23,21 +23,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CS303$CARP_ed2.coverage" NAME="CARP_ed2 Coverage Results" MODIFIED="1542474967905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed5.coverage" NAME="CARP_ed5 Coverage Results" MODIFIED="1542879964302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed3__1_.coverage" NAME="CARP_ed3 (1) Coverage Results" MODIFIED="1542525585154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
-    <SUITE FILE_PATH="coverage/CS303$main.coverage" NAME="main Coverage Results" MODIFIED="1540699058884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
-    <SUITE FILE_PATH="coverage/CS303$test.coverage" NAME="test Coverage Results" MODIFIED="1542357148633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
-    <SUITE FILE_PATH="coverage/CS303$Test.coverage" NAME="Test Coverage Results" MODIFIED="1542116938600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS303$CARP.coverage" NAME="CARP Coverage Results" MODIFIED="1542187479222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
-    <SUITE FILE_PATH="coverage/CS303$CARP_solver.coverage" NAME="CARP_solver Coverage Results" MODIFIED="1542440274434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
-    <SUITE FILE_PATH="coverage/CS303$Gobang.coverage" NAME="Gobang Coverage Results" MODIFIED="1538416181740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
-    <SUITE FILE_PATH="coverage/CS303$CARP_ed4.coverage" NAME="CARP_ed4 Coverage Results" MODIFIED="1542532696974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$GoBang_bot_ed2.coverage" NAME="GoBang_bot_ed2 Coverage Results" MODIFIED="1537582848612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
-    <SUITE FILE_PATH="coverage/CS303$text.coverage" NAME="text Coverage Results" MODIFIED="1542473724390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2/Proj2_Carp" />
+    <SUITE FILE_PATH="coverage/CS303$main.coverage" NAME="main Coverage Results" MODIFIED="1540699058884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
+    <SUITE FILE_PATH="coverage/CS303$CARP_ed4.coverage" NAME="CARP_ed4 Coverage Results" MODIFIED="1542532696974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$Gobang.coverage" NAME="Gobang Coverage Results" MODIFIED="1538416181740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
+    <SUITE FILE_PATH="coverage/CS303$CARP.coverage" NAME="CARP Coverage Results" MODIFIED="1542187479222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed3.coverage" NAME="CARP_ed3 Coverage Results" MODIFIED="1542477564742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp" />
     <SUITE FILE_PATH="coverage/CS303$GoBang_bot_ed3.coverage" NAME="GoBang_bot_ed3 Coverage Results" MODIFIED="1537714556245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$GoBang_bot.coverage" NAME="GoBang_bot Coverage Results" MODIFIED="1537539712813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
+    <SUITE FILE_PATH="coverage/CS303$text.coverage" NAME="text Coverage Results" MODIFIED="1542473724390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2/Proj2_Carp" />
+    <SUITE FILE_PATH="coverage/CS303$test.coverage" NAME="test Coverage Results" MODIFIED="1542357148633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$Test.coverage" NAME="Test Coverage Results" MODIFIED="1542116938600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS303$CARP_ed2.coverage" NAME="CARP_ed2 Coverage Results" MODIFIED="1542474967905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$CARP_solver.coverage" NAME="CARP_solver Coverage Results" MODIFIED="1542440274434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-871989168">
@@ -335,7 +335,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-4" />
     <option name="width" value="1928" />
     <option name="height" value="1084" />
@@ -530,8 +530,8 @@
     </configuration>
     <list>
       <item itemvalue="Python.CARP_ed2" />
-      <item itemvalue="Python.CARP_ed3" />
       <item itemvalue="Python.CARP_ed3 (1)" />
+      <item itemvalue="Python.CARP_ed3" />
       <item itemvalue="Python.CARP_ed4" />
       <item itemvalue="Python.CARP_ed5" />
     </list>
