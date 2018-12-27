@@ -56,12 +56,12 @@ class SMO:
         if inta >= 0:
             return False
         self.a[j] = self.a[j] + y[i]*(self.e[i,1] - self.e[j,1])/inta
-        updateE(j)
+        self.updateE(j)
         return True
 
     def update_ai(self, i, j, aj_old):
         self.a[i] = self.a[i] + self.y[i]*self.y[j]*(aj_old - self.a[j])
-        updateE(i)
+        self.updateE(i)
 
     def cal_b1(self, i, j):
         return self.b - self.e[i,1] - self.y[i]*np.dot(self.x[i], self.x[i]) - self.y[j]*np.dot(self.x[j], self.x[i])
@@ -71,11 +71,11 @@ class SMO:
 
     def update_b(self, i, j):
         if (self.a[i]>0) and (self.a[i]<self.c):
-            self.b = cal_b1(i,j)
+            self.b = self.cal_b1(i,j)
         elif(self.a[j]>0) and (self.a[j]<self.c):
-            self.b = cal_b2(i, j)
+            self.b = self.cal_b2(i, j)
         else:
-            self.b = (cal_b1(i, j) + cal_b2(i, j))/2
+            self.b = (self.cal_b1(i, j) + self.cal_b2(i, j)) / 2
 
     def changeaijPair(self, i):
         Ei = self.E(i)
@@ -91,7 +91,7 @@ class SMO:
                 H = min(self.c, self.c+self.a[j]-self.a[i])
             if L >= H:
                 return 0
-            flag = update_aj(i, j)
+            flag = self.update_aj(i, j)
             if flag == False:
                 return 0
             if (abs(self.a[j]-aj_old)<self.minmove):
@@ -106,11 +106,11 @@ class SMO:
         aChanged = 0
         if needRepeat:
             for i in range(len(self.x)):
-                aChanged += changeaijPair(i)
+                aChanged += self.changeaijPair(i)
         else:
-            nonBounds = np.nonzero((self.a.A>0)*(self.a.A<C))[0]
+            nonBounds = np.nonzero((self.a.A>0)*(self.a.A<self.c))[0]
             for i in nonBounds:
-                aChanged += changeaijPair(i)
+                aChanged += self.changeaijPair(i)
         return aChanged
 
     def train(self):
