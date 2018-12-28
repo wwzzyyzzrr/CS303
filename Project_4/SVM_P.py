@@ -32,7 +32,7 @@ def predict(x, w):
     return np.sign(np.dot(test, w))
 
 def main():
-    a = open("train_data.txt")
+    a = open("test.txt")
     b = a.readlines()
     matrix = []
     value = []
@@ -44,6 +44,9 @@ def main():
     svm = SVM(np.array(matrix), np.array(value))
     #print(len(np.array(value)))
     svm.train()
+    print(svm.w)
+    a = open("test.txt")
+    b = a.readlines()
     test = []
     value = []
     for i in range(int(len(b)*d),len(b)):
@@ -51,8 +54,10 @@ def main():
         test.append(list(map(float,temp[0:len(temp)-1])))
         value.append(float(temp[len(temp)-1]))
     mm = list(predict(np.array(test), svm.w))
+    wrong = 0
     for i in range(0,len(mm)):
         if mm[i] != value[i]:
-            print("wrong")
+            wrong+=1
+    print(wrong/len(b))
 
 main()

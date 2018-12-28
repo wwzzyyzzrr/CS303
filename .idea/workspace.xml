@@ -6,15 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17159689-dee8-4d62-a434-b8ed8747a8d1" name="Default" comment="The Third Editon of Pro1">
+      <change beforePath="$PROJECT_DIR$/.idea/CS303.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS303.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_Report.aux" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_Report.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_Report.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_Report.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_Report.fls" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_Report.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_Report.log" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_Report.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_Report.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_Report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_Report.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_Report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_Report.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_2/CARP_ed5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_2/CARP_ed5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_4/SMO.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_4/SMO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_4/SVM_P.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_4/SVM_P.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_4/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_4/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_4/train_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Project_4/test.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,238 +23,57 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/CS303$CARP_ed5.coverage" NAME="CARP_ed5 Coverage Results" MODIFIED="1542879964302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed3__1_.coverage" NAME="CARP_ed3 (1) Coverage Results" MODIFIED="1542525585154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$SVM_P.coverage" NAME="SVM_P Coverage Results" MODIFIED="1546019925205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_4" />
     <SUITE FILE_PATH="coverage/CS303$GoBang_bot_ed2.coverage" NAME="GoBang_bot_ed2 Coverage Results" MODIFIED="1537582848612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$main.coverage" NAME="main Coverage Results" MODIFIED="1540699058884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed4.coverage" NAME="CARP_ed4 Coverage Results" MODIFIED="1542532696974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
+    <SUITE FILE_PATH="coverage/CS303$SMO.coverage" NAME="SMO Coverage Results" MODIFIED="1546022979670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_4" />
     <SUITE FILE_PATH="coverage/CS303$Gobang.coverage" NAME="Gobang Coverage Results" MODIFIED="1538416181740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$CARP.coverage" NAME="CARP Coverage Results" MODIFIED="1542187479222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed3.coverage" NAME="CARP_ed3 Coverage Results" MODIFIED="1542477564742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp" />
     <SUITE FILE_PATH="coverage/CS303$GoBang_bot_ed3.coverage" NAME="GoBang_bot_ed3 Coverage Results" MODIFIED="1537714556245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
     <SUITE FILE_PATH="coverage/CS303$GoBang_bot.coverage" NAME="GoBang_bot Coverage Results" MODIFIED="1537539712813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_1" />
+    <SUITE FILE_PATH="coverage/CS303$example.coverage" NAME="example Coverage Results" MODIFIED="1545978085473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_4" />
     <SUITE FILE_PATH="coverage/CS303$text.coverage" NAME="text Coverage Results" MODIFIED="1542473724390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2/Proj2_Carp" />
     <SUITE FILE_PATH="coverage/CS303$test.coverage" NAME="test Coverage Results" MODIFIED="1542357148633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$Test.coverage" NAME="Test Coverage Results" MODIFIED="1542116938600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CS303$CARP_ed2.coverage" NAME="CARP_ed2 Coverage Results" MODIFIED="1542474967905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
     <SUITE FILE_PATH="coverage/CS303$CARP_solver.coverage" NAME="CARP_solver Coverage Results" MODIFIED="1542440274434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Project_2" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-871989168">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="py" value="6" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Python" value="6" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="-46241880">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="9" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.14" value="3" />
-          <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.21" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="12" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="py" value="20" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Python" value="20" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="py" value="6396" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Python" value="6396" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="CS303" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1026">
-              <caret line="204" selection-start-line="204" selection-end-line="204" />
-              <folding>
-                <element signature="e#24#35#0" expanded="true" />
-                <element signature="e#163#549#0" />
-                <element signature="e#575#891#0" />
-                <element signature="e#1149#3099#0" />
-                <element signature="e#3298#3739#0" />
-                <element signature="e#3857#4298#0" />
-                <element signature="e#4414#4994#0" />
-                <element signature="e#5110#5690#0" />
-                <element signature="e#5716#6992#0" />
-                <element signature="e#7393#7607#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1083">
-              <caret line="283" column="33" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
-              <folding>
-                <element signature="e#24#37#0" expanded="true" />
-                <element signature="e#178#564#0" />
-                <element signature="e#590#906#0" />
-                <element signature="e#975#3038#0" />
-                <element signature="e#3156#3597#0" />
-                <element signature="e#3715#4156#0" />
-                <element signature="e#4272#4852#0" />
-                <element signature="e#4968#5548#0" />
-                <element signature="e#5573#6849#0" />
-                <element signature="e#6924#7344#0" />
-                <element signature="e#7391#7858#0" />
-                <element signature="e#7969#8636#0" />
-                <element signature="e#8723#9776#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7429">
-              <caret line="413" column="16" selection-start-line="413" selection-start-column="16" selection-end-line="413" selection-end-column="16" />
-              <folding>
-                <element signature="e#24#37#0" expanded="true" />
-                <element signature="e#178#564#0" />
-                <element signature="e#590#906#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7733">
-              <caret line="414" column="13" selection-start-line="414" selection-start-column="13" selection-end-line="414" selection-end-column="13" />
-              <folding>
-                <element signature="e#24#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Project_2/CARP_ed5.py">
+        <entry file="file://$PROJECT_DIR$/Project_4/SMO.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="414" column="45" selection-start-line="414" selection-start-column="45" selection-end-line="414" selection-end-column="45" />
+            <state relative-caret-position="316">
+              <caret line="47" column="38" lean-forward="true" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
               <folding>
-                <element signature="e#24#37#0" expanded="true" />
-                <element signature="e#224#610#0" />
-                <element signature="e#636#952#0" />
-                <element signature="e#1021#3127#0" />
-                <element signature="e#3245#3686#0" />
-                <element signature="e#3804#4245#0" />
-                <element signature="e#4361#4941#0" />
-                <element signature="e#5057#5637#0" />
-                <element signature="e#7013#7433#0" />
-                <element signature="e#7480#7947#0" />
-                <element signature="e#8058#8725#0" />
-                <element signature="e#8806#9917#0" />
-                <element signature="e#10001#10607#0" />
-                <element signature="e#10681#15274#0" />
-                <element signature="e#15363#16063#0" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/CARP_solver.py">
+        <entry file="file://$PROJECT_DIR$/Project_3/IMP_ed4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2527">
-              <caret line="469" selection-start-line="469" selection-end-line="469" />
+            <state relative-caret-position="247">
+              <caret line="121" column="30" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="121" selection-end-column="30" />
               <folding>
-                <element signature="e#24#37#0" expanded="true" />
-                <element signature="e#224#610#0" />
-                <element signature="e#636#952#0" />
-                <element signature="e#1021#3127#0" />
-                <element signature="e#3245#3686#0" />
-                <element signature="e#3804#4245#0" />
-                <element signature="e#4361#4941#0" />
-                <element signature="e#5057#5637#0" />
-                <element signature="e#5662#6938#0" />
-                <element signature="e#7013#7433#0" />
-                <element signature="e#7480#7947#0" />
-                <element signature="e#8058#8725#0" />
-                <element signature="e#10001#10607#0" />
-                <element signature="e#10681#15274#0" />
-                <element signature="e#11284#11364#0" />
-                <element signature="e#11426#11819#0" />
-                <element signature="e#11873#11950#0" />
-                <element signature="e#12034#14866#0" />
-                <element signature="e#15363#16063#0" />
+                <element signature="e#0#60#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/text.py">
+        <entry file="file://$PROJECT_DIR$/Project_4/SVM_P.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="150" selection-start-column="150" selection-end-column="150" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val7A.dat">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/egl-s1-A.dat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp/CARP_samples/val1A.dat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="587">
+              <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -289,12 +106,20 @@
       <find>(24, 23)</find>
       <find>(6, 5)</find>
       <find>(5, 11)</find>
+      <find>y[0,0</find>
+      <find>e[</find>
+      <find>y[</find>
+      <find>a[</find>
+      <find>self.b</find>
       <find>print</find>
-      <find>route</find>
+      <find>self.E</find>
+      <find>(1)</find>
     </findStrings>
     <replaceStrings>
       <replace>x[i + 4][0]</replace>
       <replace>x[i][0]</replace>
+      <replace>y[0,</replace>
+      <replace>e[0,</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -326,19 +151,16 @@
         <option value="$PROJECT_DIR$/Project_2/CARP_ed4.py" />
         <option value="$PROJECT_DIR$/Project_2/CARP_solver.py" />
         <option value="$PROJECT_DIR$/Project_2/CARP_ed5.py" />
+        <option value="$PROJECT_DIR$/Project_4/example.py" />
+        <option value="$PROJECT_DIR$/Project_4/SVM_P.py" />
+        <option value="$PROJECT_DIR$/Project_4/SMO.py" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-4" />
-    <option name="width" value="1928" />
-    <option name="height" value="1084" />
+    <option name="x" value="776" />
+    <option name="width" value="1272" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -348,7 +170,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -359,39 +180,24 @@
             <path>
               <item name="CS303" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS303" type="462c0819:PsiDirectoryNode" />
-              <item name="Project_2" type="462c0819:PsiDirectoryNode" />
+              <item name="Project_3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CS303" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS303" type="462c0819:PsiDirectoryNode" />
-              <item name="Project_2" type="462c0819:PsiDirectoryNode" />
-              <item name="Proj2_Carp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CS303" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS303" type="462c0819:PsiDirectoryNode" />
-              <item name="Project_2" type="462c0819:PsiDirectoryNode" />
-              <item name="Proj2_Carp" type="462c0819:PsiDirectoryNode" />
-              <item name="Proj2_Carp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CS303" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS303" type="462c0819:PsiDirectoryNode" />
-              <item name="Project_2" type="462c0819:PsiDirectoryNode" />
-              <item name="Proj2_Carp" type="462c0819:PsiDirectoryNode" />
-              <item name="Proj2_Carp" type="462c0819:PsiDirectoryNode" />
-              <item name="CARP_samples" type="462c0819:PsiDirectoryNode" />
+              <item name="Project_4" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -417,73 +223,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.CARP_ed5">
-    <configuration name="CARP_ed2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CS303" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_2/CARP_ed2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="CARP_ed3 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CS303" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_2/CARP_ed3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="CARP_ed3" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CS303" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_2/Proj2_Carp/Proj2_Carp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\Metaron\PyCharmProject\CS303\Project_2\CARP_ed3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.SMO">
     <configuration name="CARP_ed4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CS303" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -528,20 +268,86 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="SMO" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS303" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_4" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_4/SMO.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SVM_P" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS303" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_4" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_4/SVM_P.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS303" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Project_4" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Project_4/example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.CARP_ed2" />
-      <item itemvalue="Python.CARP_ed3 (1)" />
-      <item itemvalue="Python.CARP_ed3" />
       <item itemvalue="Python.CARP_ed4" />
       <item itemvalue="Python.CARP_ed5" />
+      <item itemvalue="Python.SMO" />
+      <item itemvalue="Python.example" />
+      <item itemvalue="Python.SVM_P" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.SMO" />
+        <item itemvalue="Python.SVM_P" />
+        <item itemvalue="Python.example" />
         <item itemvalue="Python.CARP_ed5" />
         <item itemvalue="Python.CARP_ed4" />
-        <item itemvalue="Python.CARP_ed3 (1)" />
-        <item itemvalue="Python.CARP_ed3" />
-        <item itemvalue="Python.CARP_ed2" />
       </list>
     </recent_temporary>
   </component>
@@ -555,6 +361,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537366222582</updated>
+      <workItem from="1545965024620" duration="31734000" />
     </task>
     <task id="LOCAL-00001" summary="Create Pro_1">
       <created>1537366694939</created>
@@ -601,23 +408,26 @@
     <option name="localTasksCounter" value="7" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="38979000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="7" />
+    <frame x="0" y="0" width="1920" height="1038" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13166311" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49887133" visible="true" weight="0.1337953" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" sideWeight="0.5011287" side_tool="true" weight="0.13272922" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.35814455" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.62699825" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295711" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4968017" visible="true" weight="0.38261852" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.36230248" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32925472" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5026652" side_tool="true" weight="0.35817575" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32821077" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.36230248" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -654,9 +464,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create Pro_1" />
     <MESSAGE value="The First Editon of Pro1" />
@@ -673,12 +480,6 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="self.color" />
-        <watch expression="self.color" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-170293590/builtins.py" />
@@ -916,6 +717,48 @@
             <element signature="e#10001#10607#0" />
             <element signature="e#10681#15274#0" />
             <element signature="e#15363#16063#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_4/example.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///usr/lib/python3.7/site-packages/numpy/matrixlib/defmatrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_4/test1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-37597" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_4/SVM_P.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_3/IMP_ed4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="121" column="30" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="121" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_4/SMO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="47" column="38" lean-forward="true" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
