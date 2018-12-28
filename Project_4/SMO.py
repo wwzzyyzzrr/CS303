@@ -14,35 +14,36 @@ class SMO:
         self.toler = toler #Means the range of the size of the mistake 
         self.minmove = minmove #means that the min distance the alpha move each time
         self.K = np.array(np.zeros((self.m,self.m)))
-        p_num = 8
+        for i in range(self.m):
+            self.e.append(self.E(i))
+        for i in range(self.m):
+            for j in range(self.m):
+                self.K[i,j] = self.k(i,j)
+        '''
+        p_num = 15
         que = multiprocessing.Manager().Queue()
         p = multiprocessing.Pool(p_num-1)
-        part_length = self.m//8
-        for i in range(p_num-1):
+        part_length = self.m//p_num
+        for i in range(p_num):
             p.apply_async(self.calculateK, args=(i*part_length,(i+1)*part_length,que))
-        self.calculateK((p_num-1)*part_length, self.m, que)
-        while not que.empty():
-            temp = que.get()
-            index = temp[0]
-            for j in range(1, len(temp)):
-                self.K[index,j-1]=temp[j]
+        self.calculateK((p_num)*part_length, self.m, que)
         p.close()
         p.join()
         while not que.empty():
             temp = que.get()
             index = temp[0]
-            for j in range(1, len(temp)):
-                self.K[index,j-1]=temp[j]
-        for i in range(self.m):
-            self.e.append(self.E(i))
+            self.K[index]=temp[1:]
+        '''
 
     def calculateK(self, start, end, que):
+        temp = []
         for i in range(start, end):
             v = [i]
             for j in range(self.m):
                 v.append(self.k(i,j))
-            que.put(v.copy())
-
+            temp.append(v.copy())
+        for i in temp:
+            que.put(i)
 
     def k(self,i,j):
         return np.dot(self.x[i], self.x[j].T)
