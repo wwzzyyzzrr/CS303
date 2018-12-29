@@ -6,7 +6,8 @@ class SMO:
         self.x = x# Training data, num*dimension
         self.y = y# Label data
         self.m = np.shape(self.x)[0]
-        self.a = np.random.uniform(0,C,self.m,)
+        self.a = np.random.uniform(C/4,3*(C/4),self.m,)
+        #self.a = np.zeros(self.m)
         self.c = C
         self.e = []
         self.b = 0
@@ -61,17 +62,14 @@ class SMO:
         self.e[index] = e
 
     def select_aj(self,i,Ei):
-        ''''''
         max = 0
         index = -1
         self.e[i] = Ei
-        '''
         for j in range(self.m):
             temp = abs(self.e[j]-Ei)
             if temp>max:
                 max = temp
                 index = j
-        '''
         if index == -1:
             index = random.randint(0, len(self.x)-1)
             while(index == i):
@@ -129,8 +127,8 @@ class SMO:
             flag = self.update_aj(i, j, Ei, Ej, H, L)
             if flag == False:
                 return 0
-            #if (abs(self.a[j]-aj_old)<self.minmove):
-             #   return 0
+            if (abs(self.a[j]-aj_old)<self.minmove):
+                return 0
             self.update_ai(i,j,aj_old)
             self.update_b(i, j)
             return 1
@@ -141,21 +139,26 @@ class SMO:
         iters = 0
         notupdate = 0
         last_index = set()
-        while(iters < self.maxIter):
+        over = False
+        while (iters < self.maxIter):
             index = set()
-            for i in range(len(self.a)):
+            for i in range(self.m):
                 if(self.a[i]>0 and self.a[i]<self.c):
                     temp = abs(self.y[i]*self.g(i)-1)
-                if 0 < temp and i not in last_index:
-                    index.add(i)
-            if len(index)==0:
-                for i in range(len(self.a)):
-                    if(self.a[i]==0):
-                        temp = 1-self.y[i]*self.g(i)
-                    else:
-                        temp = self.y[i]*self.g(i) - 1
                     if 0 < temp and i not in last_index:
                         index.add(i)
+            if len(index) == 0:
+                for i in range(self.m):
+                    if(self.a[i]==0):
+                        temp = 1-self.y[i]*self.g(i)
+                        if 0 < temp and i not in last_index:
+                            index.add(i)
+                    elif(self.a[i]==self.c):
+                        temp = self.y[i]*self.g(i) - 1
+                        if 0 < temp and i not in last_index:
+                            index.add(i)
+            if len(index)==0:
+                break
             while len(index)>0:
                 i = index.pop()
                 flag =self.changeaijPair(i)
@@ -169,9 +172,11 @@ class SMO:
                 else:
                     notupdate = 0
                     iters += 1
-                if notupdate > 5000:
+                if notupdate > 500:
+                    print(iters)
+                    over = True
                     break
-            else:
+            if over:
                 break
 
 def cal_w(x, a, y):
@@ -187,6 +192,7 @@ def predict(w, x):
 def main():
     a = open("test1.txt")
     b = a.readlines()
+    #b = b[:len(b)//2]
     matrix = []
     value = []
     d = 1
@@ -194,13 +200,14 @@ def main():
         temp = b[i].split(' ')
         matrix.append(list(map(float,temp[0:len(temp)-1])))
         value.append(float(temp[len(temp)-1]))
-    smo = SMO(np.mat(matrix), np.array(value), 20, 30000, 0.00001, 0)
+    smo = SMO(np.mat(matrix), np.array(value), 10.0, 5000, 0.00001, 0.00001)
     smo.train()
     w = cal_w(smo.x, smo.a, smo.y)
     print(w.T)
     #return 0
     a = open("test2.txt")
     b = a.readlines()
+    #b = b[len(b)//2:]
     test = []
     value = []
     for i in range(len(b)):
