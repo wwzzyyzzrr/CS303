@@ -6,7 +6,7 @@ class SMO:
         self.x = x# Training data, num*dimension
         self.y = y# Label data
         self.m = np.shape(self.x)[0]
-        self.a = np.random.uniform(C/4,3*(C/4),self.m,)
+        self.a = np.random.uniform(0,C,self.m,)
         #self.a = np.zeros(self.m)
         self.c = C
         self.e = []
@@ -17,6 +17,7 @@ class SMO:
         self.K = np.array(np.zeros((self.m,self.m)))
         for i in range(self.m):
             self.e.append(self.E(i))
+
         for i in range(self.m):
             for j in range(self.m):
                 self.K[i,j] = self.k(i,j)
@@ -85,7 +86,6 @@ class SMO:
 
     def update_aj(self, i, j, Ei, Ej, H, L):
         inta = self.K[i,i]+self.K[j,j]-2*self.K[i,j]
-        print(inta)
         if inta <= 0:
             return False
         self.a[j] += self.y[i]*(Ei - Ej)/inta
@@ -173,8 +173,9 @@ class SMO:
                     notupdate = 0
                     iters += 1
                 if notupdate > 500:
-                    print(iters)
                     over = True
+                    break
+                if iters >= self.maxIter:
                     break
             if over:
                 break
@@ -184,15 +185,16 @@ def cal_w(x, a, y):
     w = np.zeros((n,1))
     for i in range(m):
         w += a[i]*y[i]*x[i].T
-    return w
+    return w.T[0]
 
 def predict(w, x):
     return np.sign(np.dot(w,x))
 
 def main():
-    a = open("test1.txt")
+    a = open("test.txt")
     b = a.readlines()
-    #b = b[:len(b)//2]
+    d = int(0.9*len(b))
+    b = b[:d]
     matrix = []
     value = []
     d = 1
@@ -200,27 +202,15 @@ def main():
         temp = b[i].split(' ')
         matrix.append(list(map(float,temp[0:len(temp)-1])))
         value.append(float(temp[len(temp)-1]))
-    smo = SMO(np.mat(matrix), np.array(value), 10.0, 5000, 0.00001, 0.00001)
+    smo = SMO(np.mat(matrix), np.array(value), 1, 10, 0.00001, 0.01)
     smo.train()
     w = cal_w(smo.x, smo.a, smo.y)
-    print(w.T)
-    #return 0
-    a = open("test2.txt")
-    b = a.readlines()
-    #b = b[len(b)//2:]
-    test = []
-    value = []
-    for i in range(len(b)):
-        temp = b[i].split(' ')
-        test.append(list(map(float,temp[0:len(temp)-1])))
-        value.append(float(temp[len(temp)-1]))
-    mm = list(predict(np.array(test), w))
-    wrong = 0
-    for i in range(0,len(mm)):
-        if mm[i] != value[i]:
-            wrong+=1
-    print(wrong/len(b))
-
+    print(w)
+    f = open('smoModel.txt','w') 
+    l = ''
+    for i in w:
+        l+=str(i)+' '
+    print(l,end='',file=f)
 
 time_begin = time.time()
 main()

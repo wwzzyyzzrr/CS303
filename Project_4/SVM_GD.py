@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 class SVM:
     def __init__(self, x, y):
@@ -17,6 +18,14 @@ class SVM:
         return w
     
     def train(self):
+        l = 0
+        randomize = np.arange(len(self.x))
+        np.random.shuffle(randomize)
+        x = self.x[randomize]
+        y = self.y[randomize]
+        for xi, yi in zip(x,y):
+            l += self.get_loss(xi,yi)
+        print(l)
         for epoch in range(self.epochs):
             randomize = np.arange(len(self.x))
             np.random.shuffle(randomize)
@@ -28,22 +37,21 @@ class SVM:
                 self.w = self.cal_sgd(xi,yi,self.w)
             if loss == 0:
                 break
-            elif(loss<10):
+            elif(loss<(l//500)):
                 self.learning_rate = 0.001
-            elif(loss<30):
+            elif(loss<(l//200)):
                 self.learning_rate=0.005
-            elif(loss<50):
+            elif(loss<(l//100)):
                 self.learning_rate=0.01
-            elif(loss<100):
+            elif(loss<(l//50)):
                 self.learning_rate=0.05
-            print(loss)
 
 def predict(x, w):
     test = np.c_[np.ones((x.shape[0])), x]
     return np.sign(np.dot(test, w))
 
 def main():
-    a = open("train_data.txt")
+    a = open("test.txt")
     b = a.readlines()
     matrix = []
     value = []
@@ -55,22 +63,13 @@ def main():
     svm = SVM(np.array(matrix), np.array(value))
     #print(len(np.array(value)))
     svm.train()
-    print(svm.w)
-    a = open("train_data.txt")
-    b = a.readlines()
-    test = []
-    value = []
-    for i in range(int(len(b)*d),len(b)):
-        temp = b[i].split(' ')
-        test.append(list(map(float,temp[0:len(temp)-1])))
-        value.append(float(temp[len(temp)-1]))
-    mm = list(predict(np.array(test), svm.w))
-    wrong = 0
-    for i in range(0,len(mm)):
-        if mm[i] != value[i]:
-            print('wrong')
-            wrong+=1
-    #print(mm)
-    print(wrong/len(mm))
+    #print(svm.w)
+    f = open('GDModel.txt','w') 
+    l = ''
+    for i in svm.w:
+        l+=str(i)+' '
+    print(l,end='',file=f)
 
+begin=time.time()
 main()
+print(time.time()-begin)
