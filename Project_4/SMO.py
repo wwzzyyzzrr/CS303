@@ -191,7 +191,9 @@ def predict(w, x):
     return np.sign(np.dot(w,x))
 
 def main():
-    a = open("test.txt")
+    #path = "test.txt"
+    path = input("Please input the path of training data: ") or "test.txt"
+    a = open(path)
     b = a.readlines()
     d = int(0.9*len(b))
     b = b[:d]

@@ -3,8 +3,8 @@ import numpy as np
 def predict(w, x):
     return np.sign(np.dot(x,w.T))
 
-path = "test0.txt"
-#path = input("Please input the path of the file that need be test") or "test0.txt"
+#path = "test0.txt"
+path = input("Please input the path of the file that need be test") or "test0.txt"
 a = open(path)
 b = a.readlines()
 test = []
@@ -13,8 +13,8 @@ for i in range(len(b)):
     temp = b[i].split(' ')
     test.append(list(map(float,temp[0:len(temp)-1])))
     value.append(float(temp[len(temp)-1]))
-path = "smoModel.txt"
-#path = input("Please input the path of the model") or "smoModel.txt"
+#path = "smoModel.txt"
+path = input("Please input the path of the model") or "smoModel.txt"
 a = open(path)
 b = a.readline()
 temp = b.split(' ')

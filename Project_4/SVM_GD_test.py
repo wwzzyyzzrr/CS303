@@ -4,7 +4,8 @@ def predict(x, w):
     test = np.c_[np.ones((x.shape[0])), x]
     return np.sign(np.dot(test, w))
 
-path = "test0.txt"#input("Please input the path of the file that need be test") or "test.txt"
+#path = "test0.txt"
+path = input("Please input the path of the file that need be test") or "test0.txt"
 a = open(path)
 b = a.readlines()
 test = []
@@ -13,7 +14,8 @@ for i in range(len(b)):
     temp = b[i].split(' ')
     test.append(list(map(float,temp[0:len(temp)-1])))
     value.append(float(temp[len(temp)-1]))
-path = "GDModel.txt" #input("Please input the path of the model") or "GDModel.txt"
+#path = "GDModel.txt" 
+path = input("Please input the path of the model") or "GDModel.txt"
 a = open(path)
 b = a.readline()
 temp = b.split(' ')

@@ -25,7 +25,6 @@ class SVM:
         y = self.y[randomize]
         for xi, yi in zip(x,y):
             l += self.get_loss(xi,yi)
-        print(l)
         for epoch in range(self.epochs):
             randomize = np.arange(len(self.x))
             np.random.shuffle(randomize)
@@ -51,7 +50,9 @@ def predict(x, w):
     return np.sign(np.dot(test, w))
 
 def main():
-    a = open("test.txt")
+    #path = "test.txt"
+    path = input("Please input the path of training data: ") or "test.txt"
+    a = open(path)
     b = a.readlines()
     matrix = []
     value = []

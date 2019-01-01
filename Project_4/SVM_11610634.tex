@@ -21,6 +21,26 @@
 \usepackage{url}
 \usepackage{cite}
 \hyphenation{op-tical net-works semi-conduc-tor}
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
 \begin{document}
 
 \title{Support Vector Machine}
@@ -101,7 +121,7 @@ Computer Science and Technology\\
 
 			The code of the algorithm is shown in the algorithm1.
 
-			\begin{algorithm}
+			\begin{breakablealgorithm}
 				\caption{Gradiet Desent}
 				\begin{algorithmic}[1]
 					\Function{GD}{$epochs, learningRate, size, \bm{w}$}
@@ -119,11 +139,13 @@ Computer Science and Technology\\
 							\EndFor
 							\If{$loss==0$}
 								\State $\bm{Break}$
+							\Else
+								\State $Change\quad learnRate\quad by\quad loss$
 							\EndIf
 						\EndFor
 					\EndFunction
 				\end{algorithmic}
-			\end{algorithm}
+			\end{breakablealgorithm}
 		\subsubsection{SMO}\cite{platt199912}
 			The first step, we get the list of all the $\alpha_i$ that $0<\alpha<C$ and break the KKT, 
 			if there is no $\alpha$ have $0<\alpha<C$ and break the KKT, 
@@ -166,7 +188,8 @@ Computer Science and Technology\\
 					\end{array}
 				\right.
 			\end{equation}
-			\begin{algorithm}
+			$$$$
+			\begin{breakablealgorithm}
 				\caption{Update $\alpha_j$}
 				\begin{algorithmic}[1]
 					\Function{$update\alpha_j$}{$i,j,H,L$}
@@ -179,8 +202,10 @@ Computer Science and Technology\\
 						\State $updateE(j)$
 					\EndFunction
 				\end{algorithmic}
-			\end{algorithm}
-			\begin{algorithm}
+			\end{breakablealgorithm}
+			$$$$
+			$$$$
+			\begin{breakablealgorithm}
 				\caption{update $\alpha_i$}
 				\begin{algorithmic}[1]
 					\Function{$update\alpha_i$}{$i,j,\alpha_jOld$}
@@ -188,8 +213,10 @@ Computer Science and Technology\\
 						\State $updateE(i)$
 					\EndFunction
 				\end{algorithmic}
-			\end{algorithm}
-			\begin{algorithm}
+			\end{breakablealgorithm}
+			$$$$
+			$$$$
+			\begin{breakablealgorithm}
 				\caption{Change $\alpha$}
 				\begin{algorithmic}[1]
 					\Function{changeAlpaha}{i}
@@ -221,8 +248,10 @@ Computer Science and Technology\\
 						\EndIf
 					\EndFunction
 				\end{algorithmic}
-			\end{algorithm}
-			\begin{algorithm}
+			\end{breakablealgorithm}
+			$$$$
+			$$$$
+			\begin{breakablealgorithm}
 				\caption{select $\alpha_j$}
 				\begin{algorithmic}[1]
 					\Function{$selec\alpha_j$}{$i, Ei$}
@@ -244,8 +273,10 @@ Computer Science and Technology\\
 					\State \Return $index, e[index]$
 					\EndFunction
 				\end{algorithmic}
-			\end{algorithm}
-			\begin{algorithm}
+			\end{breakablealgorithm}
+			$$$$
+			$$$$
+			\begin{breakablealgorithm}
 				\caption{SMO}
 				\begin{algorithmic}[1]
 					\Function{SMO}{$maxIter, C, toler, minMove, size$}
@@ -303,7 +334,7 @@ Computer Science and Technology\\
 						\EndWhile
 					\EndFunction
 				\end{algorithmic}
-			\end{algorithm}
+			\end{breakablealgorithm}
 
 \section{Empirical Verification}
   \subsection{Design}
@@ -312,10 +343,10 @@ Computer Science and Technology\\
   \subsection{Performance}
 	The laptop I use is an Intel 6200U 2.8GHz@4 PC with 12GiB memory, for the test, it work just use battery, so the performance will be lower. 
 	\subsubsection{Hyper paramters}
-		In the Gradient Descent, I set the $epochs\gets 1000$, and the $learningRate\gets 0.1$
+		In the Gradient Descent, I set the $epochs\gets 1000$, and the $learningRate\gets [0.05,0.01,0.005,0.001]$
 		In the SMO, I set the $C\gets 200$, $iterTimes\gets 100$, $toler\gets 0.00001$ and $minMoving \gets 0.01$
   \subsection{Result}
-	\begin{table}[!htbp]
+	\begin{table}[h]
 		\centering
 		\caption{Result of Train data on sakai with linear kernel}\label{tab:aStrangeTable}
 		\begin{tabular}{|c|c|c|c|c|c|}
@@ -349,7 +380,7 @@ Computer Science and Technology\\
 	From the result in the table we can know, for a 10 demensions training data, the Gradient Descent can have great Correct Rate and high speed.
 	
 	But by the analysis of the code, we can find, in the Optimization processing of the SMO, the number of demensions of the training data nearly have no influence for the training speed, the speed of the SMO depend on the number of the training data.
-	for the  Gradient Descent, we can find it calculate the $\bm{\omega}$ directly, so it will calculate slowly if there is a large number of demension training data.
+	for the  Gradient Descent, we can find it calculate the $\bm{\omega}$ directly, so it will calculate slowly if there is a large number of demension training data, like when we de the recognization of image by Gradient Descent.
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,mylib}
 
